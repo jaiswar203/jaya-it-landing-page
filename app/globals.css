@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%; /* Darker text for better contrast */
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+
+    --primary: 358 67% 30%; /* jayaa-maroon: #781819 */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 43 90% 54%; /* jayaa-gold: #F4BA1D */
+    --secondary-foreground: 224 71.4% 4.1%; /* Dark text on gold for accessibility */
+
+    --muted: 220 14.3% 95.9%; /* Lighter muted for subtle backgrounds */
+    --muted-foreground: 220 8.9% 46.1%;
+
+    --accent: 30 85% 60%; /* jayaa-orange: #DF943D */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 85%; /* Softer border */
+    --input: 220 13% 91%;
+    --ring: 358 67% 40%; /* Slightly lighter maroon for focus rings */
+
+    --radius: 0.75rem; /* Slightly larger radius for modern feel */
+  }
+
+  .dark {
+    --background: 224 71.4% 6%; /* Darker background */
+    --foreground: 210 20% 96%; /* Lighter text */
+
+    --card: 224 71.4% 9%; /* Slightly lighter card background */
+    --card-foreground: 210 20% 96%;
+
+    --popover: 224 71.4% 6%;
+    --popover-foreground: 210 20% 96%;
+
+    --primary: 358 67% 45%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 43 90% 60%;
+    --secondary-foreground: 224 71.4% 6%;
+
+    --muted: 215 27.9% 14%; /* Darker muted */
+    --muted-foreground: 217.9 10.6% 70%;
+
+    --accent: 30 85% 65%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 40.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+
+    --border: 215 27.9% 20%; /* Softer border for dark mode */
+    --input: 215 27.9% 16.9%;
+    --ring: 358 67% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased; /* Added antialiased */
+    font-feature-settings: "rlig" 1, "calt" 1; /* Enable common ligatures */
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Enhanced Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  border-radius: 10px;
+  border: 1px solid hsl(var(--muted));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--secondary) / 0.8));
+}
+
+/* Grid Pattern Background */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Enhanced Shadows */
+.shadow-subtle {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.shadow-medium {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-large {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-xl-colored {
+  box-shadow: 0 25px 50px -12px rgba(120, 24, 25, 0.25);
+}
+
+/* Gradient Background Animation */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* Glass Morphism Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced Hover Effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Enhanced Animation Classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse Animation for Icons */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(120, 24, 25, 0.4); }
+  50% { box-shadow: 0 0 0 20px rgba(120, 24, 25, 0); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Enhanced Button Hover Effects */
+.btn-enhanced {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-enhanced:hover::before {
+  left: 100%;
+}
+
+/* Text Gradient Animation */
+@keyframes gradient-text {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient-text {
+  background: linear-gradient(-45deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)), hsl(var(--primary)));
+  background-size: 400% 400%;
+  animation: gradient-text 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card Hover Glow Effect */
+.card-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)), hsl(var(--primary)));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.card-glow:hover::before {
+  opacity: 0.7;
+}
+
+/* Improved Typography */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Enhanced Focus States */
+.focus-visible\:ring-enhanced:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--primary));
+}
