@@ -63,9 +63,9 @@ export default function ServicePageLayout({
             {/* Content */}
             <AnimatedDiv className="space-y-8">
               <div className="space-y-6">
-                <div className="inline-flex items-center space-x-2 bg-primary/10 px-6 py-3 rounded-full border border-primary/20">
-                  <Star className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">Premium Service</span>
+                <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg border border-primary/20">
+                  <Star className="h-5 w-5 text-white" />
+                  <span className="text-sm font-semibold text-white uppercase tracking-wider">Premium Service</span>
                 </div>
                 
                 <div className="space-y-4">
@@ -119,9 +119,9 @@ export default function ServicePageLayout({
           {/* Section Header */}
           <div className="text-center mb-16">
             <AnimatedDiv>
-              <div className="inline-flex items-center space-x-2 bg-secondary/20 px-6 py-3 rounded-full mb-8 border border-secondary/20">
-                <Target className="h-5 w-5 text-secondary" />
-                <span className="text-sm font-semibold text-secondary uppercase tracking-wider">Key Services</span>
+              <div className="inline-flex items-center space-x-2 bg-secondary text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-secondary/20">
+                <Target className="h-5 w-5 text-white" />
+                <span className="text-sm font-semibold text-white uppercase tracking-wider">Key Services</span>
               </div>
               <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                 What <span className={`text-transparent bg-gradient-to-r ${gradient} bg-clip-text`}>{serviceName}</span> Offers

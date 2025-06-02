@@ -18,8 +18,7 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
-  ArrowRight,
-  TrendingUp
+  ArrowRight
 } from "lucide-react"
 import AnimatedDiv from "@/components/ui/animated-div"
 import type { Swiper as SwiperType } from 'swiper'
@@ -173,9 +172,9 @@ export default function ClientsPartnersPage() {
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="text-center mb-20">
             <AnimatedDiv>
-              <div className="inline-flex items-center space-x-2 bg-secondary/10 px-6 py-3 rounded-full mb-8 border border-secondary/20">
-                <Building2 className="h-5 w-5 text-secondary" />
-                <span className="text-sm font-semibold text-secondary uppercase tracking-wider">Our Clients</span>
+              <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-primary/20">
+                <Building2 className="h-5 w-5 text-white" />
+                <span className="text-sm font-semibold text-white uppercase tracking-wider">Our Valued Clients</span>
               </div>
               <h2 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
                 Trusted by Industry
@@ -287,9 +286,9 @@ export default function ClientsPartnersPage() {
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="text-center mb-16">
             <AnimatedDiv>
-              <div className="inline-flex items-center space-x-2 bg-primary/10 px-6 py-3 rounded-full mb-8 border border-primary/20">
-                <Handshake className="h-5 w-5 text-primary" />
-                <span className="text-sm font-semibold text-primary uppercase tracking-wider">Strategic Partnerships</span>
+              <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-primary/20">
+                <Handshake className="h-5 w-5 text-white" />
+                <span className="text-sm font-semibold text-white uppercase tracking-wider">Strategic Alliances</span>
               </div>
               <h2 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
                 Trusted Technology

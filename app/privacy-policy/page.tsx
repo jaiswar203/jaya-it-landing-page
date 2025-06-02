@@ -69,9 +69,9 @@ export default function PrivacyPolicyPage() {
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="text-center mb-16">
             <AnimatedDiv>
-              <div className="inline-flex items-center space-x-2 bg-primary/10 px-6 py-3 rounded-full mb-8 border border-primary/20">
-                <Shield className="h-5 w-5 text-primary" />
-                <span className="text-sm font-semibold text-primary uppercase tracking-wider">Privacy & Security</span>
+              <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-primary/20">
+                <Shield className="h-5 w-5 text-white" />
+                <span className="text-sm font-semibold text-white uppercase tracking-wider">Privacy & Data Protection</span>
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
                 Privacy

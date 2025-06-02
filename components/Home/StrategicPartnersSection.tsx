@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
-import { ChevronLeft, ChevronRight, CheckCircle2, Handshake, Shield, Settings } from "lucide-react"
+import { ChevronLeft, ChevronRight, CheckCircle2, Handshake, Shield, Settings, Zap } from "lucide-react"
 import type { Swiper as SwiperType } from 'swiper'
 
 // Import Swiper styles
@@ -121,9 +121,9 @@ export default function StrategicPartnersSection({
         {/* Section Header */}
         <div className="text-center mb-16">
           <AnimatedDiv>
-            <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
-              <Handshake className="h-4 w-4 text-primary" />
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider">{badge}</span>
+            <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg mb-6">
+              <Zap className="h-4 w-4 text-white" />
+              <span className="text-sm font-semibold text-white uppercase tracking-wider">{badge}</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               {title}
@@ -225,6 +225,7 @@ export default function StrategicPartnersSection({
                     slidesPerView: 4,
                   },
                 }}
+                loop
                 className="partners-swiper"
               >
                 {partners.map((partner) => (

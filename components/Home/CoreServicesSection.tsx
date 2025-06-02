@@ -75,9 +75,9 @@ export default function CoreServicesSection({
       <div className="container mx-auto px-4 md:px-6 relative">
         <div className="text-center mb-16">
           <AnimatedDiv>
-            <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
-              <Star className="h-4 w-4 text-primary" />
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider">{badge}</span>
+            <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg mb-6">
+              <Star className="h-4 w-4 text-white" />
+              <span className="text-sm font-semibold text-white uppercase tracking-wider">{badge}</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               {title}
@@ -94,8 +94,8 @@ export default function CoreServicesSection({
         <AnimatedDiv className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <AnimatedDiv key={service.name} delay={index * 0.15}>
-              <Card className="group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm hover:-translate-y-2">
-                <CardHeader className="text-center space-y-4 pb-4">
+              <Card className="group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm hover:-translate-y-2 flex flex-col justify-center">
+                <CardHeader className="text-center space-y-4 pb-4 flex flex-col items-center justify-center flex-1">
                   <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-r ${service.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                     {service.icon}
                   </div>
@@ -108,7 +108,7 @@ export default function CoreServicesSection({
                     </CardDescription>
                   </div>
                 </CardHeader>
-                <CardContent className="pt-0 pb-8">
+                <CardContent className="pt-0 pb-8 flex items-center justify-center">
                   <Button 
                     asChild 
                     variant="ghost" 

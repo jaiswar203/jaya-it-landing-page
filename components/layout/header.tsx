@@ -36,7 +36,11 @@ import {
   Activity,
   Lock,
   AlertTriangle,
-  Mail
+  Mail,
+  FileText,
+  TrendingUp,
+  CheckCircle,
+  HelpCircle
 } from "lucide-react"
 import React, { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
@@ -106,11 +110,13 @@ const solutions = [
 ]
 
 const company = [
-  { name: "About Us", icon: <Users className="h-5 w-5" />, href: "/about", description: "Learn about our mission and values" },
   { name: "Our Team", icon: <Award className="h-5 w-5" />, href: "/team", description: "Meet our expert professionals" },
   { name: "Clients & Partners", icon: <Star className="h-5 w-5" />, href: "/clients-partners", description: "Our trusted partnerships" },
   { name: "Contact Us", icon: <Phone className="h-5 w-5" />, href: "/contact", description: "Get in touch with our team" },
+  { name: "Privacy Policy", icon: <Shield className="h-5 w-5" />, href: "/privacy-policy", description: "How we protect your data" },
+  { name: "Terms of Service", icon: <FileText className="h-5 w-5" />, href: "/terms-of-service", description: "Our service terms and conditions" },
 ]
+
 
 export default function Header() {
   const [mounted, setMounted] = useState(false)
@@ -161,8 +167,17 @@ export default function Header() {
                 <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "hover:bg-primary/10 hover:text-primary transition-all duration-300 font-medium")}>
                   Home
                 </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
+              </Link>
+            </NavigationMenuItem>
+
+            {/* About */}
+            <NavigationMenuItem>
+              <Link href="/about" legacyBehavior passHref>
+                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "hover:bg-primary/10 hover:text-primary transition-all duration-300 font-medium")}>
+                  About
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
 
             {/* Services Mega Menu */}
             <NavigationMenuItem>
@@ -244,7 +259,7 @@ export default function Header() {
                         <p className="text-sm text-gray-600 mb-3">
                           Get personalized cybersecurity recommendations.
                         </p>
-                        <Button asChild size="sm" className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
+                        <Button asChild size="sm" className="w-full bg-primary text-white">
                           <Link href="/contact">
                             <Phone className="h-4 w-4 mr-2" />
                             Contact Us
@@ -258,7 +273,7 @@ export default function Header() {
                   <div className="mt-6 pt-6 border-t border-gray-200/50">
                     <div className="grid grid-cols-2 gap-4">
                       <Link 
-                    href="/services"
+                        href="/services"
                         className="flex items-center justify-center space-x-2 p-3 bg-gradient-to-r from-primary to-secondary text-white rounded-xl hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 group"
                       >
                         <span className="font-medium">View All Services</span>
@@ -283,8 +298,8 @@ export default function Header() {
                 <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "hover:bg-primary/10 hover:text-primary transition-all duration-300 font-medium")}>
                   Solutions
                 </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
+              </Link>
+            </NavigationMenuItem>
 
             {/* Company Dropdown */}
             <NavigationMenuItem>
@@ -292,8 +307,8 @@ export default function Header() {
                 Company
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="w-[500px] p-6 bg-white/98 backdrop-blur-xl border border-gray-200/50 shadow-2xl rounded-lg">
-                  <div className="grid gap-3">
+                <div className="w-[600px] p-6 bg-white/98 backdrop-blur-xl border border-gray-200/50 shadow-2xl rounded-lg">
+                  <div className="grid grid-cols-2 gap-3">
                     {company.map((item) => (
                       <Link
                         key={item.name}
@@ -323,7 +338,7 @@ export default function Header() {
         {/* Right Side Actions */}
         <div className="flex items-center gap-3">
           {/* CTA Button */}
-          <Button asChild className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold">
+          <Button asChild className="bg-primary shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-white">
             <Link href="/contact">
               Consult with us
             </Link>
@@ -357,10 +372,14 @@ export default function Header() {
                   <span className="text-lg font-medium">Home</span>
                 </Link>
                 
+                <Link href="/about" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors duration-300">
+                  <span className="text-lg font-medium">About</span>
+                </Link>
+                
                 <div className="space-y-1">
                   <p className="px-4 py-2 text-lg font-semibold text-primary">Services</p>
                   {serviceCategories.map((service) => (
-                  <Link
+                    <Link
                       key={service.name}
                       href={service.href}
                       className="flex items-center space-x-3 px-6 py-2 rounded-lg hover:bg-primary/10 transition-colors duration-300"
@@ -369,8 +388,8 @@ export default function Header() {
                         {React.cloneElement(service.icon, { className: "h-4 w-4" })}
                       </div>
                       <span className="text-md font-medium">{service.name}</span>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
                 </div>
                 
                 <Link href="/solutions" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors duration-300">
@@ -380,21 +399,21 @@ export default function Header() {
                 <div className="space-y-1">
                   <p className="px-4 py-2 text-lg font-semibold text-primary">Company</p>
                   {company.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
+                    <Link
+                      key={item.name}
+                      href={item.href}
                       className="flex items-center space-x-3 px-6 py-2 rounded-lg hover:bg-primary/10 transition-colors duration-300"
-                  >
+                    >
                       <div className="text-primary">
                         {React.cloneElement(item.icon, { className: "h-4 w-4" })}
                       </div>
                       <span className="text-md font-medium">{item.name}</span>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
                 </div>
 
                 <div className="pt-6">
-                  <Button asChild className="w-full bg-gradient-to-r from-primary to-secondary">
+                  <Button asChild className="w-full bg-primary text-white">
                     <Link href="/contact">Consult with us</Link>
                   </Button>
                 </div>

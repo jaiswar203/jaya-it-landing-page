@@ -59,9 +59,9 @@ export default function WhyChooseUsSection({
       <div className="container mx-auto px-4 md:px-6 relative">
         <div className="text-center mb-16">
           <AnimatedDiv>
-            <div className="inline-flex items-center space-x-2 bg-secondary/20 px-4 py-2 rounded-full mb-6">
-              <Zap className="h-4 w-4 text-secondary" />
-              <span className="text-sm font-semibold text-secondary uppercase tracking-wider">{badge}</span>
+            <div className="inline-flex items-center space-x-2 bg-secondary text-white px-4 py-2 rounded-full shadow-lg mb-6">
+              <Zap className="h-4 w-4 text-white" />
+              <span className="text-sm font-semibold text-white uppercase tracking-wider">{badge}</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               {title}
@@ -75,18 +75,20 @@ export default function WhyChooseUsSection({
         <AnimatedDiv className="grid md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <AnimatedDiv key={benefit.title} delay={index * 0.2}>
-              <Card className={`group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${benefit.bgGradient} hover:-translate-y-1`}>
-                <CardHeader className="text-center pb-4">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white dark:bg-gray-900 shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <div className={benefit.iconColor}>
-                      {benefit.icon}
+              <Card className={`group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${benefit.bgGradient} hover:-translate-y-1 flex flex-col`}>
+                <CardHeader className="text-center pb-4 flex-shrink-0">
+                  <div className="flex justify-center mb-6">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white dark:bg-gray-900 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className={benefit.iconColor}>
+                        {benefit.icon}
+                      </div>
                     </div>
                   </div>
                   <CardTitle className="text-xl mb-4 group-hover:text-primary transition-colors duration-300">
                     {benefit.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="text-center">
+                <CardContent className="text-center flex-grow flex items-center justify-center">
                   <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
                 </CardContent>
               </Card>

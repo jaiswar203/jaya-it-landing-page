@@ -542,7 +542,7 @@ export default function HeroSection() {
               asChild
               size="lg"
               variant="outline"
-              className="border-2 border-white/30 text-primary hover:text-primary hover:bg-white/10 backdrop-blur-sm font-semibold text-lg px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105"
+              className="border-2 border-white/50 text-primary hover:text-primary hover:bg-white hover:border-white backdrop-blur-sm font-semibold text-lg px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105"
             >
               <Link href="/contact" className="flex items-center">
                 <Shield className="mr-2 h-5 w-5" />
@@ -570,13 +570,13 @@ export default function HeroSection() {
                   transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
                   className="group"
                 >
-                  <div className="w-32 h-20 bg-white/20 rounded-lg backdrop-blur-sm border border-white/30 flex items-center justify-center p-3 group-hover:bg-white/30 transition-all duration-300 group-hover:scale-105">
+                  <div className="w-40 h-24 bg-white/90 rounded-lg backdrop-blur-sm border border-white/50 shadow-lg flex items-center justify-center p-4 group-hover:bg-white transition-all duration-300 group-hover:scale-105">
                     <Image
                       src={company.logo}
                       alt={`${company.name} logo`}
                       width={company.width}
                       height={company.height}
-                      className="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                      className="max-w-full max-h-full object-contain transition-opacity duration-300"
                       priority={index < 3}
                     />
                   </div>

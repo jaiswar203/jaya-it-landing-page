@@ -88,15 +88,15 @@ export default function AboutSection({
         <AnimatedDiv className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full">
-                <Sparkles className="h-4 w-4 text-primary" />
-                <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+              <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg">
+                <Sparkles className="h-4 w-4 text-white" />
+                <span className="text-sm font-semibold text-white uppercase tracking-wider">
                   {badge}
                 </span>
               </div>
-              <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold leading-normal">
                 {title}
-                <span className="block text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
+                <span className="block text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text leading-relaxed py-1">
                   {subtitle}
                 </span>
               </h2>
@@ -187,12 +187,7 @@ export default function AboutSection({
                   ))}
                 </div>
 
-                <div className="flex items-center justify-center pt-2">
-                  <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                    <Shield className="h-4 w-4 text-primary" />
-                    <span>ISO Certified & Industry Compliant</span>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

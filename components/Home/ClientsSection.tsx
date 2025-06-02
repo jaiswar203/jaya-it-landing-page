@@ -112,7 +112,7 @@ const defaultClients: Client[] = [
 const stats = [
   {
     icon: <Users className="h-8 w-8" />,
-    value: defaultClients.length.toString(),
+    value: "50+",
     label: "Satisfied Clients",
     color: "from-blue-500 to-cyan-500",
     bgColor: "from-blue-50 to-cyan-50 dark:from-blue-950/20 dark:to-cyan-950/20"
@@ -161,9 +161,9 @@ export default function ClientsSection({
         {/* Section Header */}
         <div className="text-center mb-20">
           <AnimatedDiv>
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-secondary/20 to-primary/20 backdrop-blur-sm px-6 py-3 rounded-full mb-8 border border-secondary/20">
-              <Building2 className="h-5 w-5 text-secondary" />
-              <span className="text-sm font-semibold text-secondary uppercase tracking-wider">{badge}</span>
+            <div className="inline-flex items-center space-x-2 bg-secondary text-white px-4 py-2 rounded-full shadow-lg mb-6">
+              <Building2 className="h-4 w-4 text-white" />
+              <span className="text-sm font-semibold text-white uppercase tracking-wider">{badge}</span>
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
               {title}
@@ -245,13 +245,14 @@ export default function ClientsSection({
               >
                 {[...clients, ...clients, ...clients].map((client, index) => (
                   <SwiperSlide key={`${client.id}-${index}`}>
-                    <div className="flex items-center justify-center h-24 p-4">
+                    <div className="flex items-center justify-center h-24 p-4 bg-white/80 dark:bg-gray-800/80 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
                       <Image
                         src={client.logo}
                         alt={`${client.name} logo`}
-                        width={120}
-                        height={80}
-                        className="object-contain max-w-full max-h-full opacity-70 hover:opacity-100 transition-opacity duration-300"
+                        width={100}
+                        height={60}
+                        className="object-contain max-w-full max-h-full transition-opacity duration-300 filter "
+                        unoptimized
                       />
                     </div>
                   </SwiperSlide>

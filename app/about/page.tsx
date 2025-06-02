@@ -19,9 +19,9 @@ export default function AboutPage() {
           <AnimatedDiv className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div className="space-y-6">
-                <div className="inline-flex items-center space-x-2 bg-primary/10 px-6 py-3 rounded-full border border-primary/20">
-                  <Building2 className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">Premier IT Service Provider</span>
+                <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg border border-primary/20">
+                  <Building2 className="h-5 w-5 text-white" />
+                  <span className="text-sm font-semibold text-white uppercase tracking-wider">Premier IT Service Provider</span>
                 </div>
                 <h2 className="text-4xl lg:text-6xl font-bold leading-tight">
                   Transforming Businesses
@@ -121,9 +121,9 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="text-center mb-20">
             <AnimatedDiv>
-              <div className="inline-flex items-center space-x-2 bg-primary/10 px-6 py-3 rounded-full mb-8 border border-primary/20">
-                <Award className="h-5 w-5 text-primary" />
-                <span className="text-sm font-semibold text-primary uppercase tracking-wider">Our Core Values</span>
+              <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-primary/20">
+                <Award className="h-5 w-5 text-white" />
+                <span className="text-sm font-semibold text-white uppercase tracking-wider">Our Core Values</span>
               </div>
               <h2 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
                 Guiding
@@ -197,9 +197,9 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
               
               <CardHeader className="relative z-10 text-center mb-8">
-                <div className="inline-flex items-center space-x-2 bg-primary/10 px-6 py-3 rounded-full mb-6 border border-primary/20">
-                  <Globe className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">Our Identity</span>
+                <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg mb-6 border border-primary/20">
+                  <Globe className="h-5 w-5 text-white" />
+                  <span className="text-sm font-semibold text-white uppercase tracking-wider">Our Identity</span>
                 </div>
                 <CardTitle className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   Who We Are
@@ -219,9 +219,9 @@ export default function AboutPage() {
                 </p>
 
                 <div className="flex items-center justify-center pt-8">
-                  <div className="flex items-center space-x-2 text-primary bg-primary/10 px-6 py-3 rounded-full border border-primary/20">
-                    <Shield className="h-5 w-5" />
-                    <span className="font-semibold">ISO Certified & Industry Compliant</span>
+                  <div className="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg border border-primary/20">
+                    <Shield className="h-5 w-5 text-white" />
+                    <span className="font-semibold text-white">ISO Certified & Industry Compliant</span>
                   </div>
                 </div>
 
