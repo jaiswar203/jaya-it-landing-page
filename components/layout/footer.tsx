@@ -1,5 +1,8 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { 
   Mail, 
   Phone, 
@@ -29,6 +32,10 @@ import { Button } from "@/components/ui/button"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const pathname = usePathname()
+  
+  // Show CTA section only on specific pages
+  const showCTA = pathname === "/"
   
   const coreServices = [
     { 
@@ -88,56 +95,58 @@ export default function Footer() {
 
       {/* Main Footer Content */}
       <div className="relative">
-        {/* Top Section with CTA */}
-        <div className="border-b border-gray-200/50">
-          <div className="container mx-auto px-4 md:px-6 py-20">
-            <div className="text-center space-y-10">
-              <div className="space-y-6">
-                <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Ready to Secure Your
-                  <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mt-2">
-                    Digital Future?
-                  </span>
-                </h2>
-                <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                  Join hundreds of satisfied clients who trust JAYAA IT Solution for comprehensive cybersecurity protection.
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold shadow-xl hover:shadow-2xl transition-all duration-300 px-8 py-4 text-lg">
-                  <Link href="/contact">
-                    <Phone className="mr-3 h-5 w-5" />
-                    Get Free Security Assessment
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-primary/30 text-primary hover:bg-primary/5 hover:border-primary/50 px-8 py-4 text-lg">
-                  <Link href="/solutions">
-                    Explore All Solutions
-                    <ArrowRight className="ml-3 h-5 w-5" />
-                  </Link>
-                </Button>
-              </div>
+        {/* Top Section with CTA - Only show on specific pages */}
+        {showCTA && (
+          <div className="border-b border-gray-200/50">
+            <div className="container mx-auto px-4 md:px-6 py-20">
+              <div className="text-center space-y-10">
+                <div className="space-y-6">
+                  <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Ready to Secure Your
+                    <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mt-2">
+                      Digital Future?
+                    </span>
+                  </h2>
+                  <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    Join hundreds of satisfied clients who trust JAYAA IT Solution for comprehensive cybersecurity protection.
+                  </p>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                  <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold shadow-xl hover:shadow-2xl transition-all duration-300 px-8 py-4 text-lg">
+                    <Link href="/contact">
+                      <Phone className="mr-3 h-5 w-5" />
+                      Get Free Security Assessment
+                    </Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="border-2 border-primary/30 text-primary hover:bg-primary/5 hover:border-primary/50 px-8 py-4 text-lg">
+                    <Link href="/solutions">
+                      Explore All Solutions
+                      <ArrowRight className="ml-3 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
 
-              {/* Trust Indicators */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 max-w-4xl mx-auto">
-                {[
-                  { icon: <Award className="h-6 w-6" />, text: "ISO Certified" },
-                  { icon: <Shield className="h-6 w-6" />, text: "SOC Compliant" },
-                  { icon: <Activity className="h-6 w-6" />, text: "24/7 Monitoring" },
-                  { icon: <Star className="h-6 w-6" />, text: "Expert Team" },
-                ].map((item, index) => (
-                  <div key={index} className="flex flex-col items-center space-y-3 group">
-                    <div className="p-3 bg-primary/10 rounded-xl text-primary group-hover:scale-110 transition-transform duration-300">
-                      {item.icon}
+                {/* Trust Indicators */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 max-w-4xl mx-auto">
+                  {[
+                    { icon: <Award className="h-6 w-6" />, text: "ISO Certified" },
+                    { icon: <Shield className="h-6 w-6" />, text: "SOC Compliant" },
+                    { icon: <Activity className="h-6 w-6" />, text: "24/7 Monitoring" },
+                    { icon: <Star className="h-6 w-6" />, text: "Expert Team" },
+                  ].map((item, index) => (
+                    <div key={index} className="flex flex-col items-center space-y-3 group">
+                      <div className="p-3 bg-primary/10 rounded-xl text-primary group-hover:scale-110 transition-transform duration-300">
+                        {item.icon}
+                      </div>
+                      <span className="text-sm font-medium text-gray-700">{item.text}</span>
                     </div>
-                    <span className="text-sm font-medium text-gray-700">{item.text}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Main Footer Links */}
         <div className="container mx-auto px-4 md:px-6 py-20">
@@ -204,15 +213,17 @@ export default function Footer() {
                 <p className="text-gray-900 font-semibold text-lg">Follow Us</p>
                 <div className="flex space-x-4">
                   {[
-                    { icon: Linkedin, href: "#", label: "LinkedIn" },
-                    { icon: Twitter, href: "#", label: "Twitter" },
-                    { icon: Facebook, href: "#", label: "Facebook" },
+                    { icon: Linkedin, href: "https://in.linkedin.com/company/jayaaitsolution", label: "LinkedIn" },
+                    { icon: Twitter, href: "https://x.com/jayaaitsolution", label: "Twitter" },
+                    { icon: Facebook, href: "https://www.facebook.com/jayaaitsolution", label: "Facebook" },
                   ].map((social) => (
                     <a
                       key={social.label}
                       href={social.href}
                       className="p-3 bg-gray-100 rounded-xl hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 group"
                       aria-label={social.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <social.icon className="h-5 w-5" />
                     </a>

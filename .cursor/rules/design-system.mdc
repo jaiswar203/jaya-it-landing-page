@@ -1,0 +1,223 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Design System Rules
+
+## Core Design Principles
+
+### 1. Elegant & Modern Aesthetics
+- Use gradient backgrounds, blur effects, and smooth animations
+- Implement glass morphism with backdrop-blur and transparency
+- Apply consistent shadow systems (shadow-lg, shadow-xl, shadow-2xl)
+- Use rounded corners (rounded-xl, rounded-2xl, rounded-3xl) for modern look
+
+### 2. Interactive Elements
+- All cards should have hover effects with transform and shadow changes
+- Implement hover:-translate-y-2 or hover:-translate-y-3 for lift effect
+- Use group classes for coordinated hover animations
+- Icons should scale on hover (group-hover:scale-110)
+- Buttons should have gradient backgrounds and shadow effects
+
+### 3. Color & Gradient System
+- Primary gradients: `from-primary to-secondary`
+- Service-specific gradients:
+  - Peregrine: `from-red-500 to-orange-500`
+  - Pinpoint: `from-blue-500 to-cyan-500`
+  - MSP247: `from-green-500 to-emerald-500`
+  - nCompass: `from-purple-500 to-violet-500`
+
+## Component Structure Patterns
+
+### Section Components
+Every section should follow this structure:
+```typescript
+interface SectionProps {
+  badge?: string
+  title?: string
+  subtitle?: string
+  description?: string
+  className?: string
+  // Additional specific props
+}
+```
+
+### Section Layout Pattern
+```tsx
+<section className="py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-gray-900 relative overflow-hidden">
+  {/* Background Effects */}
+  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
+  <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+  
+  <div className="container mx-auto px-4 md:px-6 relative">
+    {/* Section Header */}
+    <div className="text-center mb-20">
+      <AnimatedDiv>
+        <div className="inline-flex items-center space-x-2 bg-primary/10 px-6 py-3 rounded-full mb-8 border border-primary/20">
+          <Icon className="h-5 w-5 text-primary" />
+          <span className="text-sm font-semibold text-primary uppercase tracking-wider">{badge}</span>
+        </div>
+        <h2 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
+          {title}
+          <span className="block text-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text">
+            {subtitle}
+          </span>
+        </h2>
+        <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+          {description}
+        </p>
+      </AnimatedDiv>
+    </div>
+    
+    {/* Content */}
+  </div>
+</section>
+```
+
+### Card Component Pattern
+```tsx
+<Card className="group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm hover:-translate-y-2 relative overflow-hidden">
+  {/* Gradient Background on Hover */}
+  <div className="absolute inset-0 bg-gradient-to-br {gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+  
+  <CardHeader className="relative z-10">
+    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r {gradient} text-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+      {icon}
+    </div>
+    <CardTitle className="text-xl font-bold text-primary group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text transition-all duration-300">
+      {title}
+    </CardTitle>
+  </CardHeader>
+  
+  <CardContent className="relative z-10">
+    {/* Content */}
+  </CardContent>
+</Card>
+```
+
+## Animation Guidelines
+
+### 1. AnimatedDiv Usage
+- Always wrap content in `<AnimatedDiv>` for entrance animations
+- Use staggered delays for multiple items: `delay={index * 0.1}`
+- Sections should have delays: `delay={0.2}`, `delay={0.4}`, etc.
+
+### 2. Transition Classes
+- Use `transition-all duration-300` for most hover effects
+- Use `duration-500` for more dramatic transformations
+- Apply `ease-in-out` timing for smooth animations
+
+## CTA (Call-to-Action) Guidelines
+
+### 1. CTA Hierarchy
+- **Primary CTAs**: Gradient buttons with primary→secondary gradient
+- **Secondary CTAs**: Outline buttons with border-primary/30
+- **Service CTAs**: Use service-specific gradients
+
+### 2. CTA Placement Rules
+- **Footer CTA**: Only show on home page (`/`) and contact page (`/contact`)
+- **Section CTAs**: Limit to one per major section
+- **Service Pages**: Keep individual service CTAs, remove redundant ones
+
+### 3. CTA Button Pattern
+```tsx
+<Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 text-lg">
+  <Link href="/contact">
+    {text} <ArrowRight className="ml-2 h-5 w-5" />
+  </Link>
+</Button>
+```
+
+## Page Structure Guidelines
+
+### 1. Directory Organization
+- Create dedicated component directories: `/components/services/`, `/components/solutions/`
+- Use index.ts files for clean exports
+- Group related components together
+
+### 2. Shared Layout Components
+- Create reusable layout components for similar page types
+- Use props for customization rather than duplicating code
+- Example: [ServicePageLayout.tsx](mdc:components/services/ServicePageLayout.tsx)
+
+### 3. Page Component Pattern
+```tsx
+import { LayoutComponent } from "@/components/category"
+import { Icon } from "lucide-react"
+
+export default function PageName() {
+  return (
+    <LayoutComponent
+      serviceName="Name"
+      serviceTitle="Title"
+      serviceIcon={<Icon size={120} />}
+      heroDescription="Description"
+      services={servicesArray}
+      gradient="gradient-class"
+      stats={statsArray}
+    />
+  )
+}
+```
+
+## Responsive Design Rules
+
+### 1. Grid Systems
+- Use `grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4` for responsive grids
+- Apply appropriate gaps: `gap-8`, `gap-12`
+- Ensure mobile-first approach
+
+### 2. Typography Scale
+- Headers: `text-4xl lg:text-6xl` for main titles
+- Subtitles: `text-2xl lg:text-3xl`
+- Body: `text-xl` for descriptions, `text-lg` for content
+- Small text: `text-sm` for metadata
+
+### 3. Spacing System
+- Section padding: `py-20 sm:py-28`
+- Container spacing: `px-4 md:px-6`
+- Element spacing: `space-y-8`, `space-y-6`, `space-y-4`
+
+## Accessibility Guidelines
+
+### 1. Interactive Elements
+- Ensure proper focus states with `focus:ring-2 focus:ring-primary`
+- Use semantic HTML elements
+- Provide `aria-label` for icon-only buttons
+
+### 2. Color Contrast
+- Maintain proper contrast ratios
+- Use `text-foreground`, `text-muted-foreground` for content
+- Ensure gradients don't compromise readability
+
+## Performance Considerations
+
+### 1. Image Optimization
+- Use Next.js Image component with proper sizing
+- Provide alt text for all images
+- Use appropriate formats (WebP when possible)
+
+### 2. Animation Performance
+- Use transform and opacity for animations (GPU accelerated)
+- Avoid animating layout properties
+- Use `will-change` sparingly and remove after animation
+
+## Design Consistency Rules
+
+### 1. Component Reusability
+- Create shared components for common patterns
+- Use consistent prop interfaces across similar components
+- Maintain design token consistency
+
+### 2. Visual Hierarchy
+- Use consistent icon sizes: `h-5 w-5` for small, `h-6 w-6` for medium, `h-8 w-8` for large
+- Maintain consistent button sizes and padding
+- Use proper heading hierarchy (h1, h2, h3)
+
+### 3. State Management
+- Implement consistent loading states
+- Use proper error handling with user feedback
+- Maintain consistent form validation patterns
+

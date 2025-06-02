@@ -1,0 +1,344 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# CTA Management Guidelines
+
+## Core CTA Principles
+
+### 1. CTA Hierarchy
+Maintain clear hierarchy in call-to-action elements:
+- **Primary CTA**: Main conversion action (contact, consultation)
+- **Secondary CTA**: Supporting actions (learn more, explore)
+- **Tertiary CTA**: Navigation aids (view all, see more)
+
+### 2. Visual Priority
+Use visual design to establish CTA importance:
+```tsx
+// Primary CTA - Gradient with shadow
+<Button className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg hover:shadow-xl transition-all duration-300">
+  Primary Action
+</Button>
+
+// Secondary CTA - Outline with hover
+<Button variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 hover:border-primary/50">
+  Secondary Action
+</Button>
+
+// Tertiary CTA - Text link with icon
+<Link className="inline-flex items-center text-primary hover:text-secondary font-semibold">
+  View All <ArrowRight className="ml-2 h-4 w-4" />
+</Link>
+```
+
+## CTA Placement Rules
+
+### 1. Footer CTA Conditional Display
+The main footer CTA should only appear on specific pages to avoid overwhelming users:
+
+```tsx
+// components/layout/footer.tsx
+"use client"
+import { usePathname } from "next/navigation"
+
+export default function Footer() {
+  const pathname = usePathname()
+  const showCTA = pathname === "/" || pathname === "/contact"
+  
+  return (
+    <footer>
+      {showCTA && (
+        <div className="cta-section">
+          {/* Large promotional CTA */}
+        </div>
+      )}
+      {/* Regular footer content */}
+    </footer>
+  )
+}
+```
+
+**Pages that should show footer CTA:**
+- Home page (`/`)
+- Contact page (`/contact`)
+
+**Pages that should NOT show footer CTA:**
+- Service pages (`/services/*`)
+- Solution pages (`/solutions/*`)
+- About pages (`/about`, `/team`)
+
+### 2. Section CTA Limits
+Limit CTAs within page sections to maintain focus:
+- **Maximum 1 primary CTA per section**
+- **Maximum 2 total CTAs per section**
+- **Space CTAs at least 100px apart vertically**
+
+### 3. Page-Level CTA Strategy
+
+#### Home Page
+- Hero section: 1 primary CTA
+- Each major section: 1 CTA maximum
+- Footer: Large promotional CTA
+
+#### Service Pages
+- Hero section: 1 primary + 1 secondary CTA
+- Service cards: Individual explore buttons
+- Bottom section: 1 consultation CTA
+- Footer: NO promotional CTA
+
+#### Landing Pages
+- Hero: 1 primary CTA
+- Feature sections: Tertiary CTAs only
+- Bottom: 1 primary CTA
+
+## CTA Content Guidelines
+
+### 1. Action-Oriented Language
+Use clear, action-oriented text:
+```
+✅ Good CTA Text:
+- "Schedule Free Consultation"
+- "Get Security Assessment"
+- "Start Protection Now"
+- "Explore Peregrine"
+
+❌ Poor CTA Text:
+- "Click Here"
+- "Submit"
+- "Learn"
+- "Go"
+```
+
+### 2. Value Proposition
+Include benefit or value when possible:
+```tsx
+// With value proposition
+<Button>Get Free Security Assessment</Button>
+<Button>Schedule Expert Consultation</Button>
+
+// Service-specific value
+<Button>Start 24/7 Protection with Peregrine</Button>
+<Button>Begin Vulnerability Testing</Button>
+```
+
+### 3. Urgency and Scarcity (Use Sparingly)
+Only use urgency when genuine:
+```tsx
+// Acceptable urgency
+<Button>Schedule Today - Limited Slots</Button>
+
+// Avoid fake urgency
+<Button>Act Now - Offer Expires Soon!</Button>
+```
+
+## Service-Specific CTA Patterns
+
+### 1. Service Cards
+Each service card should have its own explore button:
+```tsx
+<Card>
+  <CardContent>
+    {/* Service content */}
+    <Button className={`bg-gradient-to-r ${serviceGradient}`}>
+      Explore {serviceName}
+      <ArrowRight className="ml-2 h-5 w-5" />
+    </Button>
+  </CardContent>
+</Card>
+```
+
+### 2. Individual Service Pages
+Structure CTAs in this order:
+1. Hero section: Primary action + secondary
+2. Services grid: No CTAs (focus on information)
+3. Stats section: No CTAs
+4. Bottom: Consultation CTA
+
+```tsx
+// Hero CTAs
+<div className="flex gap-4">
+  <Button>Start {ServiceName} Now</Button>
+  <Button variant="outline">Learn More</Button>
+</div>
+
+// Bottom CTA
+<Button>Schedule {ServiceName} Consultation</Button>
+```
+
+## CTA Analytics and Testing
+
+### 1. UTM Parameters
+Add tracking parameters to measure CTA effectiveness:
+```tsx
+<Link href="/contact?utm_source=services&utm_medium=cta&utm_campaign=peregrine">
+  Contact Us
+</Link>
+```
+
+### 2. Service-Specific Parameters
+Track which service drove the conversion:
+```tsx
+<Link href="/contact?service=peregrine&source=hero">
+  Get Peregrine Protection
+</Link>
+```
+
+### 3. A/B Testing Considerations
+Test different CTA variations:
+- Button text
+- Color schemes
+- Placement
+- Number of CTAs
+
+## Mobile CTA Considerations
+
+### 1. Touch Target Size
+Ensure CTAs are touch-friendly:
+```tsx
+// Minimum touch target
+<Button className="min-h-[44px] px-6 py-3">
+  Touch-Friendly CTA
+</Button>
+```
+
+### 2. Sticky CTAs for Mobile
+Consider sticky CTAs for long pages:
+```tsx
+// Mobile sticky CTA
+<div className="fixed bottom-4 left-4 right-4 z-50 md:hidden">
+  <Button className="w-full">
+    Primary Mobile Action
+  </Button>
+</div>
+```
+
+### 3. Mobile CTA Stack
+Stack CTAs vertically on mobile:
+```tsx
+<div className="flex flex-col sm:flex-row gap-4">
+  <Button className="w-full sm:w-auto">Primary</Button>
+  <Button variant="outline" className="w-full sm:w-auto">Secondary</Button>
+</div>
+```
+
+## CTA Accessibility
+
+### 1. Screen Reader Support
+Provide descriptive labels:
+```tsx
+<Button aria-label="Schedule a free cybersecurity consultation with our experts">
+  Get Consultation
+</Button>
+```
+
+### 2. Keyboard Navigation
+Ensure proper focus management:
+```tsx
+<Button className="focus:ring-2 focus:ring-primary focus:outline-none">
+  Accessible CTA
+</Button>
+```
+
+### 3. Color Contrast
+Maintain WCAG compliance:
+- Text contrast ratio ≥ 4.5:1
+- Focus indicators must be visible
+- Don't rely solely on color for meaning
+
+## CTA Performance Monitoring
+
+### 1. Key Metrics
+Track these CTA metrics:
+- Click-through rate (CTR)
+- Conversion rate
+- Bounce rate after CTA click
+- Time to conversion
+
+### 2. Conversion Funnel Analysis
+Map CTA performance through funnel:
+```
+CTA Click → Landing Page → Form Fill → Conversion
+```
+
+### 3. Heat Map Analysis
+Use heat maps to understand:
+- Which CTAs get most attention
+- Scroll depth before CTA interaction
+- Mobile vs desktop behavior differences
+
+## CTA Maintenance Rules
+
+### 1. Regular Audits
+Conduct monthly CTA audits:
+- Check for broken links
+- Verify tracking parameters
+- Test responsive behavior
+- Review conversion data
+
+### 2. Content Updates
+Keep CTA text current:
+- Update seasonal offers
+- Refresh value propositions
+- A/B test new messaging
+- Remove expired promotions
+
+### 3. Technical Maintenance
+Ensure CTAs remain functional:
+- Test across browsers
+- Verify mobile behavior
+- Check loading performance
+- Validate analytics tracking
+
+## Anti-Patterns to Avoid
+
+### 1. CTA Overload
+❌ Don't overwhelm users:
+- Multiple CTAs competing for attention
+- CTAs without clear hierarchy
+- Too many options causing paralysis
+
+### 2. Generic CTAs
+❌ Avoid non-specific language:
+- "Click here"
+- "Submit"
+- "Read more"
+- "Continue"
+
+### 3. Misleading CTAs
+❌ Don't deceive users:
+- False urgency
+- Hidden costs after click
+- Mismatched expectations
+- Bait-and-switch tactics
+
+## Success Patterns
+
+### ✅ Effective CTA Examples
+Based on cybersecurity industry best practices:
+
+```tsx
+// High-converting security CTAs
+<Button>Get Free Security Assessment</Button>
+<Button>Schedule Expert Consultation</Button>
+<Button>Start 24/7 Protection</Button>
+<Button>Secure My Business Now</Button>
+<Button>Test My Vulnerabilities</Button>
+```
+
+### ✅ Service-Specific CTAs
+Tailored to each service offering:
+
+```tsx
+// Peregrine (MDR)
+<Button>Start Threat Monitoring</Button>
+
+// Pinpoint (Assessment)
+<Button>Test My Security</Button>
+
+// MSP247 (Managed Services)
+<Button>Get 24/7 Support</Button>
+
+// nCompass (Consulting)
+<Button>Get Expert Advice</Button>
+```

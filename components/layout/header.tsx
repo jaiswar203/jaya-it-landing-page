@@ -168,7 +168,6 @@ export default function Header() {
             <NavigationMenuItem>
               <NavigationMenuTrigger className="hover:bg-primary/10 hover:text-primary transition-all duration-300 font-medium">
                 Services
-                <ChevronDown className="relative top-[1px] ml-1 h-4 w-4 transition duration-300 group-data-[state=open]:rotate-180" />
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="w-[900px] p-6 bg-white/98 backdrop-blur-xl border border-gray-200/50 shadow-2xl rounded-lg">
@@ -291,7 +290,6 @@ export default function Header() {
             <NavigationMenuItem>
               <NavigationMenuTrigger className="hover:bg-primary/10 hover:text-primary transition-all duration-300 font-medium">
                 Company
-                <ChevronDown className="relative top-[1px] ml-1 h-4 w-4 transition duration-300 group-data-[state=open]:rotate-180" />
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="w-[500px] p-6 bg-white/98 backdrop-blur-xl border border-gray-200/50 shadow-2xl rounded-lg">

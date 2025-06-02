@@ -1,0 +1,361 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Component Architecture Guidelines
+
+## Directory Structure
+
+### 1. Component Organization
+```
+components/
+├── ui/                     # Base UI components (shadcn/ui)
+├── layout/                 # Layout components (header, footer)
+├── sections/               # Shared section components
+├── Home/                   # Home page specific components
+├── services/               # Services page components
+├── solutions/              # Solutions page components
+└── [feature]/              # Feature-specific components
+```
+
+### 2. Export Pattern
+Every component directory should have an `index.ts` file:
+```typescript
+// components/services/index.ts
+export { default as ServiceSuitesSection } from './ServiceSuitesSection'
+export { default as CoreCapabilitiesSection } from './CoreCapabilitiesSection'
+export { default as ServicePageLayout } from './ServicePageLayout'
+```
+
+## Component Patterns
+
+### 1. Section Components
+All major section components should follow this interface pattern:
+
+```typescript
+interface SectionProps {
+  badge?: string
+  title?: string
+  subtitle?: string
+  description?: string
+  className?: string
+  // Specific props for the component
+  primaryButtonText?: string
+  primaryButtonHref?: string
+  secondaryButtonText?: string
+  secondaryButtonHref?: string
+}
+```
+
+Example: [ServiceSuitesSection.tsx](mdc:components/services/ServiceSuitesSection.tsx)
+
+### 2. Layout Components
+Create reusable layout components for similar page types:
+
+```typescript
+interface LayoutProps {
+  serviceName: string
+  serviceTitle: string
+  serviceIcon: React.ReactNode
+  heroDescription: string
+  fullDescription: string
+  services: string[]
+  gradient: string
+  stats?: Array<{
+    value: string
+    label: string
+  }>
+}
+```
+
+Example: [ServicePageLayout.tsx](mdc:components/services/ServicePageLayout.tsx)
+
+### 3. Data Structure Patterns
+Use consistent data structures across components:
+
+```typescript
+// Service Category Pattern
+interface ServiceCategory {
+  name: string
+  title: string
+  icon: React.ReactNode
+  description: string
+  href: string
+  items: string[]
+  gradient: string
+  iconBg: string
+}
+
+// Stats Pattern
+interface Stat {
+  value: string
+  label: string
+}
+
+// Feature Pattern
+interface Feature {
+  name: string
+  href: string
+  icon?: React.ReactNode
+  description?: string
+}
+```
+
+## Component Implementation Rules
+
+### 1. Props with Defaults
+Always provide sensible defaults for optional props:
+
+```typescript
+export default function ComponentName({
+  badge = "Default Badge",
+  title = "Default Title",
+  subtitle = "Default Subtitle",
+  description = "Default description text",
+  className = ""
+}: ComponentProps) {
+  // Component implementation
+}
+```
+
+### 2. Gradient System Integration
+Use consistent gradient patterns for service categories:
+
+```typescript
+const serviceGradients = {
+  peregrine: "from-red-500 to-orange-500",
+  pinpoint: "from-blue-500 to-cyan-500",
+  msp247: "from-green-500 to-emerald-500",
+  ncompass: "from-purple-500 to-violet-500"
+}
+```
+
+### 3. Animation Integration
+Always wrap animated content with AnimatedDiv:
+
+```tsx
+import AnimatedDiv from "@/components/ui/animated-div"
+
+// For individual items
+<AnimatedDiv delay={index * 0.1}>
+  <Card>...</Card>
+</AnimatedDiv>
+
+// For sections
+<AnimatedDiv delay={0.2}>
+  <div className="section-content">...</div>
+</AnimatedDiv>
+```
+
+## Page Component Structure
+
+### 1. Page File Organization
+```
+app/
+├── page.tsx                # Home page
+├── services/
+│   ├── page.tsx           # Services landing page
+│   ├── peregrine/
+│   │   └── page.tsx       # Individual service page
+│   └── [service]/
+│       └── page.tsx       # Dynamic service pages
+└── solutions/
+    └── page.tsx           # Solutions page
+```
+
+### 2. Page Component Pattern
+Keep page components minimal and focused on data composition:
+
+```tsx
+import { ServicePageLayout } from "@/components/services"
+import { ServiceIcon } from "lucide-react"
+
+const serviceData = {
+  name: "Service Name",
+  title: "Service Title",
+  description: "Service description",
+  services: [...],
+  stats: [...]
+}
+
+export default function ServicePage() {
+  return (
+    <ServicePageLayout
+      serviceName={serviceData.name}
+      serviceTitle={serviceData.title}
+      serviceIcon={<ServiceIcon size={120} />}
+      // ... other props
+    />
+  )
+}
+```
+
+## Shared Component Guidelines
+
+### 1. UI Components
+Extend shadcn/ui components with custom styling:
+
+```tsx
+// Custom Card component with JAYAA styling
+<Card className="group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm hover:-translate-y-2 relative overflow-hidden">
+  {/* Gradient background effect */}
+  <div className="absolute inset-0 bg-gradient-to-br {gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+  
+  {/* Content with proper z-index */}
+  <CardContent className="relative z-10">
+    {children}
+  </CardContent>
+</Card>
+```
+
+### 2. Icon Components
+Use consistent icon patterns with Lucide React:
+
+```tsx
+// Service icon with gradient background
+<div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r {gradient} text-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+  <ServiceIcon className="h-8 w-8" />
+</div>
+
+// Feature icon with background
+<div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+  <FeatureIcon className="h-5 w-5" />
+</div>
+```
+
+### 3. Button Components
+Standardize button variants:
+
+```tsx
+// Primary CTA Button
+<Button asChild className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg hover:shadow-xl transition-all duration-300">
+  <Link href="/contact">
+    Button Text <ArrowRight className="ml-2 h-5 w-5" />
+  </Link>
+</Button>
+
+// Secondary Button
+<Button asChild variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 hover:border-primary/50">
+  <Link href="/path">Secondary Action</Link>
+</Button>
+
+// Service-specific Button
+<Button asChild className="bg-gradient-to-r {serviceGradient} hover:opacity-90 shadow-lg hover:shadow-xl transition-all duration-300">
+  <Link href={serviceHref}>Explore {serviceName}</Link>
+</Button>
+```
+
+## Component Testing Patterns
+
+### 1. Props Testing
+Test component variations with different prop combinations:
+
+```typescript
+// Test with minimal props
+<Component />
+
+// Test with custom props
+<Component 
+  title="Custom Title"
+  description="Custom description"
+  className="custom-class"
+/>
+
+// Test with all props
+<Component {...fullPropsObject} />
+```
+
+### 2. Responsive Testing
+Ensure components work across different screen sizes:
+- Mobile: 320px-768px
+- Tablet: 768px-1024px
+- Desktop: 1024px+
+
+## Performance Optimization
+
+### 1. Component Lazy Loading
+Use dynamic imports for heavy components:
+
+```typescript
+import dynamic from 'next/dynamic'
+
+const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
+  loading: () => <ComponentSkeleton />
+})
+```
+
+### 2. Memoization
+Use React.memo for expensive components:
+
+```typescript
+import { memo } from 'react'
+
+const ExpensiveComponent = memo(function ExpensiveComponent(props) {
+  // Component implementation
+})
+```
+
+### 3. Image Optimization
+Always use Next.js Image component:
+
+```tsx
+import Image from 'next/image'
+
+<Image
+  src="/path/to/image.jpg"
+  alt="Descriptive alt text"
+  width={400}
+  height={300}
+  className="rounded-lg"
+  priority={isAboveFold}
+/>
+```
+
+## Error Handling
+
+### 1. Component Error Boundaries
+Wrap sections in error boundaries:
+
+```tsx
+<ErrorBoundary fallback={<ErrorFallback />}>
+  <SectionComponent />
+</ErrorBoundary>
+```
+
+### 2. Graceful Degradation
+Handle missing data gracefully:
+
+```tsx
+{data?.items?.length > 0 ? (
+  data.items.map(item => <ItemComponent key={item.id} {...item} />)
+) : (
+  <EmptyState message="No items available" />
+)}
+```
+
+## Accessibility Standards
+
+### 1. Keyboard Navigation
+Ensure all interactive elements are keyboard accessible:
+
+```tsx
+<button 
+  className="focus:ring-2 focus:ring-primary focus:outline-none"
+  onKeyDown={handleKeyDown}
+>
+  Interactive Element
+</button>
+```
+
+### 2. Screen Reader Support
+Provide proper ARIA labels and descriptions:
+
+```tsx
+<section aria-labelledby="section-heading">
+  <h2 id="section-heading">Section Title</h2>
+  <div aria-describedby="section-description">
+    <p id="section-description">Section description</p>
+  </div>
+</section>
+```

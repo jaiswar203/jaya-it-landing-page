@@ -1,0 +1,264 @@
+"use client"
+import { useState } from "react"
+import AnimatedDiv from "@/components/ui/animated-div"
+import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { ChevronLeft, ChevronRight, CheckCircle2, Handshake, Shield, Settings } from "lucide-react"
+import type { Swiper as SwiperType } from 'swiper'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
+interface Partner {
+  id: number
+  name: string
+  logo: string
+}
+
+interface StrategicPartnersSectionProps {
+  badge?: string
+  title?: string
+  subtitle?: string
+  description?: string
+  partners?: Partner[]
+  className?: string
+}
+
+const defaultPartners: Partner[] = [
+  {
+    id: 1,
+    name: "Microsoft",
+    logo: "/partners/strategic/page10_img26.png"
+  },
+  {
+    id: 2,
+    name: "Amazon Web Services",
+    logo: "/partners/strategic/page10_img25.png"
+  },
+  {
+    id: 3,
+    name: "Google Cloud",
+    logo: "/partners/strategic/page10_img24.png"
+  },
+  {
+    id: 4,
+    name: "Cisco",
+    logo: "/partners/strategic/page10_img23.png"
+  },
+  {
+    id: 5,
+    name: "VMware",
+    logo: "/partners/strategic/page10_img22.png"
+  },
+  {
+    id: 6,
+    name: "Oracle",
+    logo: "/partners/strategic/page10_img21.png"
+  },
+  {
+    id: 7,
+    name: "IBM",
+    logo: "/partners/strategic/page10_img20.png"
+  },
+  {
+    id: 8,
+    name: "Salesforce",
+    logo: "/partners/strategic/page10_img19.png"
+  },
+  {
+    id: 9,
+    name: "ServiceNow",
+    logo: "/partners/strategic/page10_img18.jpeg"
+  },
+  {
+    id: 10,
+    name: "Atlassian",
+    logo: "/partners/strategic/page10_img16.jpeg"
+  },
+  {
+    id: 11,
+    name: "Adobe",
+    logo: "/partners/strategic/page10_img14.png"
+  },
+  {
+    id: 12,
+    name: "Slack",
+    logo: "/partners/strategic/page10_img12.png"
+  }
+]
+
+const managedServices = [
+  "License Procurement & Management",
+  "Tool Setup & Configuration", 
+  "24/7 Monitoring & Maintenance",
+  "User Training & Support",
+  "Performance Optimization",
+  "Security & Compliance Monitoring",
+  "Regular Updates & Patches",
+  "Technical Issue Resolution",
+  "Custom Integration Services"
+]
+
+export default function StrategicPartnersSection({
+  badge = "Strategic Partnerships",
+  title = "Trusted Technology",
+  subtitle = "Partners",
+  description = "We collaborate with industry-leading third-party service and tool providers to enhance the value we offer to our clients. Instead of building everything from scratch, we partner with trusted platforms and technologies, providing licenses and managed services so you can focus on your core business.",
+  partners = defaultPartners,
+  className = ""
+}: StrategicPartnersSectionProps) {
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null)
+
+  return (
+    <section className={`py-20 sm:py-28 bg-background relative overflow-hidden ${className}`}>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <AnimatedDiv>
+            <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
+              <Handshake className="h-4 w-4 text-primary" />
+              <span className="text-sm font-semibold text-primary uppercase tracking-wider">{badge}</span>
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              {title}
+              <span className="block text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
+                {subtitle}
+              </span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              {description}
+            </p>
+          </AnimatedDiv>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Managed Services */}
+          <AnimatedDiv className="space-y-8">
+            <div className="space-y-6">
+              <div className="flex items-center space-x-3 mb-8">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
+                  <Shield className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground">Our Managed Services</h3>
+                  <p className="text-muted-foreground">Complete setup, monitoring & maintenance</p>
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-3">
+                {managedServices.map((service, index) => (
+                  <AnimatedDiv key={service} delay={index * 0.05}>
+                    <div className="flex items-start space-x-3 p-3 rounded-lg bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 border border-green-200/50 dark:border-green-800/50">
+                      <div className="flex-shrink-0 mt-0.5">
+                        <CheckCircle2 className="h-4 w-4 text-green-600" />
+                      </div>
+                      <span className="text-sm font-medium text-foreground leading-tight">{service}</span>
+                    </div>
+                  </AnimatedDiv>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 rounded-2xl border border-blue-200/50 dark:border-blue-800/50">
+              <div className="flex items-start space-x-3">
+                <Settings className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Why Choose Our Managed Model?</h4>
+                  <p className="text-blue-700 dark:text-blue-300 text-sm leading-relaxed">
+                    Most clients prefer not to manage these tools themselves due to time or technical limitations. 
+                    We provide licenses or access to these tools and take full responsibility for setup, monitoring, 
+                    and ongoing maintenance, so you can focus on your core business.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </AnimatedDiv>
+
+          {/* Partners Carousel */}
+          <AnimatedDiv delay={0.3} className="relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl blur-3xl"></div>
+            
+            <div className="relative bg-white dark:bg-gray-900/50 p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-xl font-bold text-foreground">Strategic Partners</h3>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => swiperInstance?.slidePrev()}
+                    className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors duration-200"
+                  >
+                    <ChevronLeft className="h-5 w-5 text-primary" />
+                  </button>
+                  <button
+                    onClick={() => swiperInstance?.slideNext()}
+                    className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors duration-200"
+                  >
+                    <ChevronRight className="h-5 w-5 text-primary" />
+                  </button>
+                </div>
+              </div>
+
+              <Swiper
+                onSwiper={setSwiperInstance}
+                modules={[Navigation, Pagination, Autoplay]}
+                spaceBetween={20}
+                slidesPerView={2}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                pagination={{
+                  clickable: true,
+                  bulletClass: 'swiper-pagination-bullet !bg-primary/30',
+                  bulletActiveClass: 'swiper-pagination-bullet-active !bg-primary',
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 3,
+                  },
+                  1024: {
+                    slidesPerView: 4,
+                  },
+                }}
+                className="partners-swiper"
+              >
+                {partners.map((partner) => (
+                  <SwiperSlide key={partner.id}>
+                    <div className="group h-24 w-full">
+                      <div className="h-full w-full bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-xl flex items-center justify-center group-hover:scale-105 transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 p-4">
+                        <Image
+                          src={partner.logo}
+                          alt={`${partner.name} logo`}
+                          width={80}
+                          height={60}
+                          className="object-contain max-w-full max-h-full opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                        />
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </AnimatedDiv>
+        </div>
+      </div>
+
+      <style jsx global>{`
+        .partners-swiper .swiper-pagination {
+          position: relative !important;
+          margin-top: 2rem !important;
+        }
+        .partners-swiper .swiper-pagination-bullet {
+          width: 8px !important;
+          height: 8px !important;
+          margin: 0 4px !important;
+        }
+      `}</style>
+    </section>
+  )
+} 
