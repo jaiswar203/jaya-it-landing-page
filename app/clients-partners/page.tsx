@@ -18,7 +18,8 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
-  ArrowRight
+  ArrowRight,
+  TrendingUp
 } from "lucide-react"
 import AnimatedDiv from "@/components/ui/animated-div"
 import type { Swiper as SwiperType } from 'swiper'
