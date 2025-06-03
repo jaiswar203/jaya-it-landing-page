@@ -1,62 +1,101 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { CheckCircle, Users, Target, Zap, ArrowRight, Building2, Award, Globe, Shield } from "lucide-react"
+import { CheckCircle, Users, Target, Zap, ArrowRight, Building2, Award, Globe, Shield, Sparkles } from "lucide-react"
 import Image from "next/image"
 import AnimatedDiv from "@/components/ui/animated-div"
 import Link from "next/link"
+import { 
+  TypographyH2, 
+  TypographyGradientSubtitle, 
+  TypographyLarge, 
+  TypographyH5, 
+  TypographyBadge,
+  TypographySmall 
+} from "@/components/ui/typography"
 
 export default function AboutPage() {
+  const achievements = [
+    {
+      value: "24/7/365",
+      label: "Real-Time Threat Monitoring",
+      colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary"
+    },
+    {
+      value: "50+",
+      label: "Enterprise Clients Protected", 
+      colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30 text-secondary dark:text-secondary"
+    },
+    {
+      value: "99.9%",
+      label: "Compliance-Driven Uptime SLA",
+      colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary"
+    }
+  ]
+
+  const features = [
+    "Vulnerability Assessment & Penetration Testing (VAPT)",
+    "Threat Intelligence & Breach Simulation", 
+    "Red Teaming & Attack Surface Management",
+    "Firewalls, DLP, and DRM Implementation"
+  ]
+
   return (
     <>
       {/* Main About Section */}
-      <section className="py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-gray-900 relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-background relative overflow-hidden">
         {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent"></div>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
         
         <div className="container mx-auto px-4 md:px-6 relative">
-          <AnimatedDiv className="grid md:grid-cols-2 gap-16 items-center">
+          <AnimatedDiv className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
-              <div className="space-y-6">
-                <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg border border-primary/20">
-                  <Building2 className="h-5 w-5 text-white" />
-                  <span className="text-sm font-semibold text-white uppercase tracking-wider">Premier IT Service Provider</span>
+              <div className="space-y-4">
+                <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg">
+                  <Building2 className="h-4 w-4 text-white" />
+                  <TypographyBadge className="text-white">
+                    Premier IT Service Provider
+                  </TypographyBadge>
                 </div>
-                <h2 className="text-4xl lg:text-6xl font-bold leading-tight">
+                <TypographyH2 className="mb-0">
                   Transforming Businesses
-                  <span className="block text-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text">
+                  <TypographyGradientSubtitle>
                     Through Innovation
-                  </span>
-                </h2>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  Jayaa IT Solution is a premier IT service provider, renowned for delivering innovative, cutting-edge
-                  technology solutions to businesses globally. With a strong focus on IT security, infrastructure
-                  management, consultancy, and support, we empower organizations to meet their operational and strategic
-                  goals with precision, efficiency, and innovation.
-                </p>
+                  </TypographyGradientSubtitle>
+                </TypographyH2>
               </div>
 
-              <div className="space-y-4">
+              <TypographyLarge muted className="text-gray-800 dark:text-gray-200">
+                Jayaa IT Solution is a premier IT service provider, renowned for delivering innovative, cutting-edge
+                technology solutions to businesses globally. With a strong focus on IT security, infrastructure
+                management, consultancy, and support, we empower organizations to meet their operational and strategic
+                goals with precision, efficiency, and innovation.
+              </TypographyLarge>
+
+              <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   "Commitment to excellence and innovation.",
                   "Partnerships with leading Original Equipment Manufacturers (OEMs).",
                   "Enabling businesses from start-ups to enterprises to thrive.",
+                  "ISO Certified & Industry Compliant solutions."
                 ].map((item, index) => (
                   <AnimatedDiv key={index} delay={index * 0.1}>
-                    <div className="flex items-center space-x-4 p-4 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 border border-green-200/50 dark:border-green-800/50 hover:shadow-lg transition-all duration-300">
-                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
-                      <span className="text-foreground font-medium">{item}</span>
+                    <div className="flex items-center space-x-3 p-4 rounded-xl bg-gradient-to-r from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-950/20 border border-secondary/20 dark:border-secondary/30">
+                      <div className="flex-shrink-0">
+                        <CheckCircle className="h-5 w-5 text-secondary" />
+                      </div>
+                      <TypographySmall className="font-medium">{item}</TypographySmall>
                     </div>
                   </AnimatedDiv>
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   asChild
                   size="lg"
-                  className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 text-lg"
+                  className="bg-primary shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <Link href="/contact">
                     Get Started Today <ArrowRight className="ml-2 h-5 w-5" />
@@ -66,7 +105,7 @@ export default function AboutPage() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 px-8 py-4 text-lg"
+                  className="border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10"
                 >
                   <Link href="/services">Explore Services</Link>
                 </Button>
@@ -75,36 +114,56 @@ export default function AboutPage() {
 
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
-              <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 hover:shadow-3xl transition-all duration-500">
-                <div className="aspect-video rounded-2xl overflow-hidden shadow-lg mb-6 group">
+              <div className="relative bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
+                <div className="aspect-video rounded-2xl overflow-hidden shadow-lg mb-6">
                   <Image
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
                     alt="Professional IT team collaborating on technology solutions"
                     width={600}
                     height={400}
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
                   />
                 </div>
 
-                {/* Company Stats */}
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { value: "250+", label: "Projects Delivered", color: "from-blue-500 to-cyan-500" },
-                    { value: "24/7", label: "Support Available", color: "from-green-500 to-emerald-500" },
-                    { value: "50+", label: "Happy Clients", color: "from-purple-500 to-violet-500" },
-                    { value: "99.9%", label: "Uptime SLA", color: "from-orange-500 to-red-500" }
-                  ].map((stat, index) => (
-                    <AnimatedDiv key={stat.label} delay={0.5 + index * 0.1}>
-                      <div className="text-center p-4 rounded-xl bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-800 dark:to-gray-800 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300">
-                        <div className={`text-2xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
-                          {stat.value}
-                        </div>
-                        <div className="text-sm text-muted-foreground font-medium">
-                          {stat.label}
-                        </div>
+                {/* Company Achievements */}
+                <div className="space-y-4">
+                  <TypographyH5 className="text-gray-900 dark:text-white">
+                    Trusted by Industry Leaders
+                  </TypographyH5>
+
+                  <div className="space-y-4">
+                    {/* First row: First two achievements side by side */}
+                    <div className="grid grid-cols-2 gap-4">
+                      {achievements.slice(0, 2).map((achievement) => (
+                        <AnimatedDiv key={achievement.label} delay={0.5}>
+                          <div className={`text-center p-3 bg-gradient-to-br ${achievement.colorClass.split(" ")[0]} ${achievement.colorClass.split(" ")[1]} ${achievement.colorClass.split(" ")[2]} ${achievement.colorClass.split(" ")[3]} rounded-lg`}>
+                            <div className={`text-2xl font-bold ${achievement.colorClass.split(" ")[4]} ${achievement.colorClass.split(" ")[5]}`}>
+                              {achievement.value}
+                            </div>
+                            <TypographySmall className={`${achievement.colorClass.split(" ")[6]} ${achievement.colorClass.split(" ")[7]} font-medium`}>
+                              {achievement.label}
+                            </TypographySmall>
+                          </div>
+                        </AnimatedDiv>
+                      ))}
+                    </div>
+                    
+                    {/* Second row: Third achievement spanning full width */}
+                    {achievements.length > 2 && (
+                      <div className="w-full">
+                        <AnimatedDiv delay={0.6}>
+                          <div className={`text-center p-3 bg-gradient-to-br ${achievements[2].colorClass.split(" ")[0]} ${achievements[2].colorClass.split(" ")[1]} ${achievements[2].colorClass.split(" ")[2]} ${achievements[2].colorClass.split(" ")[3]} rounded-lg`}>
+                            <div className={`text-2xl font-bold ${achievements[2].colorClass.split(" ")[4]} ${achievements[2].colorClass.split(" ")[5]}`}>
+                              {achievements[2].value}
+                            </div>
+                            <TypographySmall className={`${achievements[2].colorClass.split(" ")[6]} ${achievements[2].colorClass.split(" ")[7]} font-medium`}>
+                              {achievements[2].label}
+                            </TypographySmall>
+                          </div>
+                        </AnimatedDiv>
                       </div>
-                    </AnimatedDiv>
-                  ))}
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -121,19 +180,21 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="text-center mb-20">
             <AnimatedDiv>
-              <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-primary/20">
-                <Award className="h-5 w-5 text-white" />
-                <span className="text-sm font-semibold text-white uppercase tracking-wider">Our Core Values</span>
+              <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg mb-8">
+                <Award className="h-4 w-4 text-white" />
+                <TypographyBadge className="text-white">
+                  Our Core Values
+                </TypographyBadge>
               </div>
-              <h2 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
+              <TypographyH2 className="mb-4">
                 Guiding
-                <span className="block text-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text">
+                <TypographyGradientSubtitle>
                   Principles
-                </span>
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                </TypographyGradientSubtitle>
+              </TypographyH2>
+              <TypographyLarge muted className="max-w-3xl mx-auto">
                 Our core values shape every decision we make and guide us in delivering exceptional IT solutions that drive your business forward.
-              </p>
+              </TypographyLarge>
             </AnimatedDiv>
           </div>
 
@@ -143,39 +204,41 @@ export default function AboutPage() {
                 icon: <Users className="h-12 w-12" />,
                 title: "Client-Centricity",
                 description: "Understanding and exceeding client expectations is at the heart of everything we do.",
-                gradient: "from-blue-500 to-cyan-500"
+                iconColor: "text-secondary",
+                bgGradient: "from-secondary-50 to-secondary-100 dark:from-secondary-950/20 dark:to-secondary-900/20"
               },
               {
                 icon: <Zap className="h-12 w-12" />,
                 title: "Innovation",
                 description: "Continuously exploring and implementing cutting-edge technologies for optimal solutions.",
-                gradient: "from-purple-500 to-violet-500"
+                iconColor: "text-primary",
+                bgGradient: "from-primary-50 to-primary-100 dark:from-primary-950/20 dark:to-primary-900/20"
               },
               {
                 icon: <Target className="h-12 w-12" />,
                 title: "Integrity & Excellence",
                 description: "Upholding the highest standards of integrity and striving for excellence in all our endeavors.",
-                gradient: "from-green-500 to-emerald-500"
+                iconColor: "text-secondary",
+                bgGradient: "from-secondary-50 to-secondary-100 dark:from-secondary-950/20 dark:to-secondary-900/20"
               },
             ].map((value, index) => (
               <AnimatedDiv key={value.title} delay={0.3 + index * 0.1}>
-                <Card className="group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm hover:-translate-y-2 relative overflow-hidden">
-                  {/* Gradient Background on Hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                  
-                  <CardHeader className="relative z-10 text-center pt-8">
-                    <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-r ${value.gradient} text-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 mx-auto mb-6`}>
-                      {value.icon}
+                <Card className={`group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${value.bgGradient} hover:-translate-y-1 flex flex-col`}>
+                  <CardHeader className="relative z-10 text-center pt-8 pb-4 flex-shrink-0">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-white dark:bg-gray-900 shadow-lg group-hover:scale-110 transition-transform duration-300 mx-auto mb-6">
+                      <div className={value.iconColor}>
+                        {value.icon}
+                      </div>
                     </div>
-                    <CardTitle className="text-2xl font-bold text-primary group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text transition-all duration-300">
+                    <CardTitle className="text-2xl font-bold text-primary">
                       {value.title}
                     </CardTitle>
                   </CardHeader>
                   
-                  <CardContent className="relative z-10 text-center px-6 pb-8">
-                    <p className="text-muted-foreground leading-relaxed">
+                  <CardContent className="relative z-10 text-center px-6 pb-8 flex-grow">
+                    <TypographyLarge muted>
                       {value.description}
-                    </p>
+                    </TypographyLarge>
                   </CardContent>
                 </Card>
               </AnimatedDiv>
@@ -185,7 +248,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Identity Section */}
-      <section className="py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-gray-900 relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-background relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
@@ -197,31 +260,35 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
               
               <CardHeader className="relative z-10 text-center mb-8">
-                <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg mb-6 border border-primary/20">
-                  <Globe className="h-5 w-5 text-white" />
-                  <span className="text-sm font-semibold text-white uppercase tracking-wider">Our Identity</span>
+                <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg mb-6">
+                  <Globe className="h-4 w-4 text-white" />
+                  <TypographyBadge className="text-white">
+                    Our Identity
+                  </TypographyBadge>
                 </div>
-                <CardTitle className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                <TypographyH2>
                   Who We Are
-                </CardTitle>
+                </TypographyH2>
               </CardHeader>
               
               <CardContent className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
-                <p className="text-xl text-muted-foreground leading-relaxed">
+                <TypographyLarge muted>
                   At Jayaa IT Solution, we are a team of dedicated IT professionals driven by a passion for leveraging
                   technology to transform businesses. Our blend of deep technical expertise and a client-first approach
                   ensures that we deliver solutions tailored to the unique needs of our partners.
-                </p>
-                <p className="text-xl text-muted-foreground leading-relaxed">
+                </TypographyLarge>
+                <TypographyLarge muted>
                   We take pride in empowering organizations to stay ahead in an ever-evolving digital landscape by
                   providing innovative, secure, and scalable IT solutions. With a commitment to excellence, we strive to
                   be a trusted partner in your journey toward growth and technological advancement.
-                </p>
+                </TypographyLarge>
 
                 <div className="flex items-center justify-center pt-8">
-                  <div className="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg border border-primary/20">
-                    <Shield className="h-5 w-5 text-white" />
-                    <span className="font-semibold text-white">ISO Certified & Industry Compliant</span>
+                  <div className="inline-flex items-center space-x-2 bg-secondary text-white px-4 py-2 rounded-full shadow-lg">
+                    <Shield className="h-4 w-4 text-white" />
+                    <TypographyBadge className="text-white">
+                      ISO Certified & Industry Compliant
+                    </TypographyBadge>
                   </div>
                 </div>
 
@@ -229,7 +296,7 @@ export default function AboutPage() {
                   <Button
                     asChild
                     size="lg"
-                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 text-lg"
+                    className="bg-primary shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <Link href="/team">
                       Meet Our Team <ArrowRight className="ml-2 h-5 w-5" />

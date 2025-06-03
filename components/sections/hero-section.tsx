@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, Shield, Zap, Lock, Users, Award, AlertTriangle, Trophy } from "lucide-react"
+import { ChevronRight, Shield, Zap, Lock, Users, Award, AlertTriangle, Trophy, DatabaseZap, Search, Network } from "lucide-react"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 
@@ -17,18 +17,18 @@ const trustedCompanies = [
 const keyFeatures = [
   {
     icon: Shield,
-    title: "Advanced Threat Protection",
-    description: "Real-time protection against malware, ransomware, and zero-day attacks"
+    title: "Breach & Attack Simulation",
+    description: "Continuous security validation through simulated breach scenarios to test your defenses"
   },
   {
-    icon: Lock,
-    title: "Data Security & Privacy",
-    description: "End-to-end encryption and privacy controls for sensitive information"
+    icon: DatabaseZap,
+    title: "Data Classification & Protection",
+    description: "Automated identification and protection of sensitive data across your organization"
   },
   {
-    icon: Users,
-    title: "Multi-Device Management",
-    description: "Centralized security management across all your devices and platforms"
+    icon: Search,
+    title: "VA & Penetration Testing",
+    description: "Comprehensive vulnerability assessment and penetration testing services"
   }
 ]
 

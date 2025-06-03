@@ -164,9 +164,9 @@ export default function StrategicPartnersSection({
               <div className="grid sm:grid-cols-2 gap-3">
                 {managedServices.map((service, index) => (
                   <AnimatedDiv key={service} delay={index * 0.05}>
-                    <div className="flex items-start space-x-3 p-3 rounded-lg bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 border border-green-200/50 dark:border-green-800/50">
+                    <div className="flex items-start space-x-3 p-3 rounded-lg bg-gradient-to-r from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-950/20 border border-secondary/20 dark:border-secondary/30">
                       <div className="flex-shrink-0 mt-0.5">
-                        <CheckCircle2 className="h-4 w-4 text-green-600" />
+                        <CheckCircle2 className="h-4 w-4 text-secondary" />
                       </div>
                       <TypographySmall className="font-medium text-foreground leading-tight">{service}</TypographySmall>
                     </div>
@@ -175,12 +175,12 @@ export default function StrategicPartnersSection({
               </div>
             </div>
 
-            <div className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 rounded-2xl border border-blue-200/50 dark:border-blue-800/50">
+            <div className="p-6 bg-gradient-to-r from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-950/20 rounded-2xl border border-primary/20 dark:border-primary/30">
               <div className="flex items-start space-x-3">
-                <Settings className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+                <Settings className="h-6 w-6 text-secondary mt-1 flex-shrink-0" />
                 <div>
-                  <TypographyH4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Why Choose Our Managed Model?</TypographyH4>
-                  <TypographySmall className="text-blue-700 dark:text-blue-300 leading-relaxed">
+                  <TypographyH4 className="font-semibold text-primary dark:text-primary mb-2">Why Choose Our Managed Model?</TypographyH4>
+                  <TypographySmall className="text-primary/80 dark:text-primary/80 leading-relaxed">
                     Most clients prefer not to manage these tools themselves due to time or technical limitations. 
                     We provide licenses or access to these tools and take full responsibility for setup, monitoring, 
                     and ongoing maintenance, so you can focus on your core business.

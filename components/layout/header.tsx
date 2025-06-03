@@ -176,7 +176,7 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
         isScrolled 
           ? "bg-white/95 backdrop-blur-xl shadow-2xl border-b border-primary/20" 
-          : "bg-white/90 backdrop-blur-md shadow-lg"
+          : "bg-white/90 backdrop-blur-md "
       }`}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">

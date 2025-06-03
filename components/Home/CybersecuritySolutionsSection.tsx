@@ -60,144 +60,144 @@ const defaultCategories: Category[] = [
   {
     category: "Threat Detection & Response",
     icon: <Shield className="h-6 w-6" />,
-    iconColor: "text-red-600",
-    bgGradient: "from-red-50 to-red-100 dark:from-red-950/20 dark:to-red-900/20",
+    iconColor: "text-secondary",
+    bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20",
     solutions: [
       { 
         name: "Dark Web Monitoring", 
         description: "Detect compromised credentials and organizational exposure", 
         icon: <Eye className="h-6 w-6" />,
-        iconColor: "text-red-600",
-        bgGradient: "from-red-50 to-red-100 dark:from-red-950/20 dark:to-red-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
       },
       { 
         name: "SOC Monitoring 24/7", 
         description: "Round-the-clock security operations center monitoring", 
         icon: <Activity className="h-6 w-6" />,
-        iconColor: "text-red-700",
-        bgGradient: "from-red-50 to-red-100 dark:from-red-950/20 dark:to-red-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
       },
       { 
         name: "Cybersecurity Dashboard", 
         description: "Real-time visibility into security metrics and alerts", 
         icon: <Activity className="h-6 w-6" />,
-        iconColor: "text-red-500",
-        bgGradient: "from-red-50 to-red-100 dark:from-red-950/20 dark:to-red-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
       },
       { 
         name: "Breach & Attack Simulation", 
         description: "Test security controls against threats", 
         icon: <Shield className="h-6 w-6" />,
-        iconColor: "text-red-800",
-        bgGradient: "from-red-50 to-red-100 dark:from-red-950/20 dark:to-red-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
       },
     ]
   },
   {
     category: "Security Testing",
     icon: <SearchCheck className="h-6 w-6" />,
-    iconColor: "text-orange-600",
-    bgGradient: "from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20",
+    iconColor: "text-secondary",
+    bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20",
     solutions: [
       { 
         name: "Red Teaming", 
         description: "Simulated cyberattacks to test detection and response", 
         icon: <Shield className="h-6 w-6" />,
-        iconColor: "text-orange-600",
-        bgGradient: "from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
       },
       { 
         name: "DAST Testing", 
         description: "Dynamic application security testing for running apps", 
         icon: <Code className="h-6 w-6" />,
-        iconColor: "text-orange-700",
-        bgGradient: "from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
       },
       { 
         name: "SAST Testing", 
         description: "Static code analysis for early vulnerability detection", 
         icon: <Code className="h-6 w-6" />,
-        iconColor: "text-orange-500",
-        bgGradient: "from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
       },
       { 
         name: "VA-PT Services", 
         description: "Comprehensive testing for infrastructure, apps, and APIs", 
         icon: <SearchCheck className="h-6 w-6" />,
-        iconColor: "text-orange-800",
-        bgGradient: "from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
       },
     ]
   },
   {
     category: "Data Protection & Access Control",
     icon: <Database className="h-6 w-6" />,
-    iconColor: "text-yellow-600",
-    bgGradient: "from-yellow-50 to-yellow-100 dark:from-yellow-950/20 dark:to-yellow-900/20",
+    iconColor: "text-secondary",
+    bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20",
     solutions: [
       { 
         name: "Auto Data Discovery & Classification", 
         description: "Automated identification and protection of sensitive data", 
         icon: <Database className="h-6 w-6" />,
-        iconColor: "text-yellow-600",
-        bgGradient: "from-yellow-50 to-yellow-100 dark:from-yellow-950/20 dark:to-yellow-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
       },
       { 
         name: "Privileged Access Management", 
         description: "Secure access to critical systems with role-based controls", 
         icon: <Lock className="h-6 w-6" />,
-        iconColor: "text-yellow-700",
-        bgGradient: "from-yellow-50 to-yellow-100 dark:from-yellow-950/20 dark:to-yellow-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
       },
       { 
         name: "Data Loss Prevention (DLP)", 
         description: "Prevent accidental or malicious data leaks", 
         icon: <ShieldCheck className="h-6 w-6" />,
-        iconColor: "text-yellow-500",
-        bgGradient: "from-yellow-50 to-yellow-100 dark:from-yellow-950/20 dark:to-yellow-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
       },
       { 
         name: "API Security", 
         description: "Secure APIs through encryption and threat monitoring", 
         icon: <Globe className="h-6 w-6" />,
-        iconColor: "text-yellow-800",
-        bgGradient: "from-yellow-50 to-yellow-100 dark:from-yellow-950/20 dark:to-yellow-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
       },
     ]
   },
   {
     category: "Security Awareness & Training",
     icon: <Users className="h-6 w-6" />,
-    iconColor: "text-amber-600",
-    bgGradient: "from-amber-50 to-amber-100 dark:from-amber-950/20 dark:to-amber-900/20",
+    iconColor: "text-secondary",
+    bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20",
     solutions: [
       { 
         name: "Phishing Drills & Simulations", 
         description: "Test and train user awareness with simulated attacks", 
         icon: <Mail className="h-6 w-6" />,
-        iconColor: "text-amber-600",
-        bgGradient: "from-amber-50 to-amber-100 dark:from-amber-950/20 dark:to-amber-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
       },
       { 
         name: "Security Awareness Training", 
         description: "Comprehensive cybersecurity education programs", 
         icon: <Users className="h-6 w-6" />,
-        iconColor: "text-amber-700",
-        bgGradient: "from-amber-50 to-amber-100 dark:from-amber-950/20 dark:to-amber-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
       },
       { 
         name: "Security Awareness Emailers", 
         description: "Regular educational content and best practices", 
         icon: <Mail className="h-6 w-6" />,
-        iconColor: "text-amber-500",
-        bgGradient: "from-amber-50 to-amber-100 dark:from-amber-950/20 dark:to-amber-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
       },
       { 
         name: "DMARC Implementation", 
         description: "Secure your domain from spoofing and phishing", 
         icon: <Shield className="h-6 w-6" />,
-        iconColor: "text-amber-800",
-        bgGradient: "from-amber-50 to-amber-100 dark:from-amber-950/20 dark:to-amber-900/20"
+        iconColor: "text-secondary",
+        bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
       },
     ]
   },

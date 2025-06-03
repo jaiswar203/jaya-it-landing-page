@@ -51,8 +51,8 @@ const defaultIndustries: Industry[] = [
     name: "BFSI",
     description: "We ensure regulatory compliance and secure data exchange for financial institutions with RBI-ready documentation, real-time VAPT, and 24/7 SOC monitoring for fraud detection.",
     icon: <Landmark className="h-8 w-8" />,
-    colorClass: "from-emerald-50 to-emerald-100 dark:from-emerald-950/20 dark:to-emerald-900/30 text-emerald-600 dark:text-emerald-400",
-    iconBg: "bg-emerald-500",
+    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30 text-secondary dark:text-secondary",
+    iconBg: "bg-secondary",
     features: [
       "RBI-ready documentation",
       "Real-time VAPT",
@@ -65,8 +65,8 @@ const defaultIndustries: Industry[] = [
     name: "Healthcare",
     description: "With the rise of digital patient records, we support HIPAA and NDHM security compliance, EMR/HIMS testing, and phishing training for medical staff.",
     icon: <Hospital className="h-8 w-8" />,
-    colorClass: "from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/30 text-blue-600 dark:text-blue-400",
-    iconBg: "bg-blue-500",
+    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary",
+    iconBg: "bg-primary",
     features: [
       "HIPAA compliance",
       "NDHM security compliance",
@@ -79,8 +79,8 @@ const defaultIndustries: Industry[] = [
     name: "Retail & SaaS",
     description: "We help fast-growing online businesses secure user data and transactions through PCI-DSS gap analysis, DevSecOps services, and bot mitigation strategies.",
     icon: <ShoppingCart className="h-8 w-8" />,
-    colorClass: "from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30 text-purple-600 dark:text-purple-400",
-    iconBg: "bg-purple-500",
+    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30 text-secondary dark:text-secondary",
+    iconBg: "bg-secondary",
     features: [
       "PCI-DSS gap analysis",
       "DevSecOps services",
@@ -93,8 +93,8 @@ const defaultIndustries: Industry[] = [
     name: "Government/Public Sector",
     description: "Our team has conducted portal and infrastructure testing for state and central projects, aligning with CERT-IN methodologies and SCADA security guidelines.",
     icon: <Building2 className="h-8 w-8" />,
-    colorClass: "from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/30 text-orange-600 dark:text-orange-400",
-    iconBg: "bg-orange-500",
+    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary",
+    iconBg: "bg-primary",
     features: [
       "Portal testing for government",
       "Infrastructure testing",
@@ -175,7 +175,7 @@ export default function IndustriesWeServeSection({
                       {industry.features.map((feature, featureIndex) => (
                         <div key={feature} className={`flex items-start space-x-4 p-4 rounded-xl bg-gradient-to-r ${industry.colorClass.split(' ')[0]} ${industry.colorClass.split(' ')[1]} ${industry.colorClass.split(' ')[2]} ${industry.colorClass.split(' ')[3]} border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300 hover:scale-[1.02]`}>
                           <div className="flex-shrink-0 mt-0.5">
-                            <CheckCircle className="h-5 w-5 text-green-600" />
+                            <CheckCircle className="h-5 w-5 text-secondary" />
                           </div>
                           <div className="text-base font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">
                             {feature}

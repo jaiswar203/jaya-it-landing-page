@@ -6,7 +6,6 @@ import {
 export default function SolutionsPage() {
   return (
     <>
-
       <MonitoringSolutionsSection />
       <ChallengesApproachSection />
     </>

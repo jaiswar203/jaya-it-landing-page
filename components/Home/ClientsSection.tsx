@@ -125,15 +125,15 @@ const stats = [
     icon: <Users className="h-8 w-8" />,
     value: "50+",
     label: "Satisfied Clients",
-    iconColor: "text-blue-500",
-    bgGradient: "from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20"
+    iconColor: "text-secondary",
+    bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
   },
   {
     icon: <Star className="h-8 w-8" />,
     value: "99.9%",
     label: "Client Satisfaction",
-    iconColor: "text-purple-500",
-    bgGradient: "from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/20"
+    iconColor: "text-secondary",
+    bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
   }
 ]
 
@@ -272,7 +272,7 @@ export default function ClientsSection({
             {/* Trust Indicators */}
             <div className="flex items-center justify-center space-x-6 mt-8 pt-6 border-t border-gray-200/50 dark:border-gray-700/50">
               <div className="flex items-center space-x-2 text-muted-foreground">
-                <Globe className="h-4 w-4 text-primary" />
+                <Globe className="h-4 w-4 text-secondary" />
                 <TypographySmall className="font-medium">Global Reach</TypographySmall>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
@@ -280,7 +280,7 @@ export default function ClientsSection({
                 <TypographySmall className="font-medium">Industry Leaders</TypographySmall>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
-                <Star className="h-4 w-4 text-primary" />
+                <Star className="h-4 w-4 text-secondary" />
                 <TypographySmall className="font-medium">Trusted Partners</TypographySmall>
               </div>
             </div>

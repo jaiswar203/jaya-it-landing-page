@@ -50,19 +50,19 @@ const defaultAchievements: Achievement[] = [
     value: "24/7/365",
     label: "Real-Time Threat Monitoring",
     colorClass:
-      "from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/30 text-green-600 dark:text-green-400",
+      "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary",
   },
   {
-    value: "60+",
+    value: "50+",
     label: "Enterprise Clients Protected",
     colorClass:
-      "from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/30 text-purple-600 dark:text-purple-400",
+      "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30 text-secondary dark:text-secondary",
   },
   {
     value: "99.9%",
     label: "Compliance-Driven Uptime SLA",
     colorClass:
-      "from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/30 text-orange-600 dark:text-orange-400",
+      "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary",
   },
 ];
 
@@ -111,9 +111,9 @@ export default function AboutSection({
             <div className="grid sm:grid-cols-2 gap-4">
               {features.map((feature, index) => (
                 <AnimatedDiv key={feature.text} delay={index * 0.1}>
-                  <div className="flex items-center space-x-3 p-4 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 border border-green-200/50 dark:border-green-800/50">
+                  <div className="flex items-center space-x-3 p-4 rounded-xl bg-gradient-to-r from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-950/20 border border-secondary/20 dark:border-secondary/30">
                     <div className="flex-shrink-0">
-                      <CheckCircle className="h-5 w-5 text-green-600" />
+                      <CheckCircle className="h-5 w-5 text-secondary" />
                     </div>
                     <TypographySmall className="font-medium">{feature.text}</TypographySmall>
                   </div>
