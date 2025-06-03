@@ -125,15 +125,15 @@ const stats = [
     icon: <Users className="h-8 w-8" />,
     value: "50+",
     label: "Satisfied Clients",
-    iconColor: "text-secondary",
-    bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
+    iconColor: "text-blue-500",
+    bgGradient: "from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20"
   },
   {
     icon: <Star className="h-8 w-8" />,
     value: "99.9%",
     label: "Client Satisfaction",
-    iconColor: "text-secondary",
-    bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
+    iconColor: "text-green-500",
+    bgGradient: "from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20"
   }
 ]
 

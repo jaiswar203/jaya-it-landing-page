@@ -63,7 +63,7 @@ export default function ServicePageLayout({
             {/* Content */}
             <AnimatedDiv className="space-y-8">
               <div className="space-y-6">
-                <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg border border-primary/20">
+                <div className={`inline-flex items-center space-x-2 bg-gradient-to-r ${gradient} text-white px-6 py-3 rounded-full shadow-lg border border-white/20`}>
                   <Star className="h-5 w-5 text-white" />
                   <span className="text-sm font-semibold text-white uppercase tracking-wider">Premium Service</span>
                 </div>
@@ -104,7 +104,7 @@ export default function ServicePageLayout({
                 <div className="text-white">
                   {serviceIcon}
                 </div>
-                <div className="absolute inset-0 bg-white/10 rounded-3xl backdrop-blur-sm"></div>
+                <div className="absolute inset-0 bg-white/10 rounded-3xl"></div>
               </div>
             </AnimatedDiv>
           </div>
@@ -119,7 +119,7 @@ export default function ServicePageLayout({
           {/* Section Header */}
           <div className="text-center mb-16">
             <AnimatedDiv>
-              <div className="inline-flex items-center space-x-2 bg-secondary text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-secondary/20">
+              <div className={`inline-flex items-center space-x-2 bg-gradient-to-r ${gradient} text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-white/20`}>
                 <Target className="h-5 w-5 text-white" />
                 <span className="text-sm font-semibold text-white uppercase tracking-wider">Key Services</span>
               </div>
@@ -185,10 +185,10 @@ export default function ServicePageLayout({
           <div className="text-center">
             <AnimatedDiv>
               <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-12 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 max-w-4xl mx-auto">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg mb-8">
-                  <Shield className="h-10 w-10" />
+                <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r ${gradient} shadow-lg mb-8`}>
+                  <Shield className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                <h3 className={`text-3xl font-bold mb-6 bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
                   Ready to Get Started with {serviceName}?
                 </h3>
                 <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">

@@ -7,10 +7,10 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 
 const trustedCompanies = [
+  { name: "Kotak Bank", logo: "/companies/kotak.webp", width: 150, height: 75 },
   { name: "Axis Bank", logo: "/companies/axis.png", width: 150, height: 75 },
   { name: "Bajaj", logo: "/companies/bajaj.webp", width: 150, height: 75 },
   { name: "HDFC Bank", logo: "/companies/hdfc.jpg", width: 150, height: 75 },
-  { name: "Kotak Bank", logo: "/companies/kotak.webp", width: 150, height: 75 },
   { name: "SBI", logo: "/companies/sbi.png", width: 150, height: 75 },
 ]
 
@@ -715,19 +715,21 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200"
+              className="pt-6 sm:pt-8 border-t border-gray-200"
             >
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">🟢 24/7/365</div>
-                <div className="text-sm text-gray-600">Real-Time Threat Monitoring</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">🟣 50+</div>
-                <div className="text-sm text-gray-600">Enterprise Clients Protected</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">🟠 99.9%</div>
-                <div className="text-sm text-gray-600">Compliance-Driven Uptime SLA</div>
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+                <div className="bg-primary/5 rounded-lg p-4 text-center border border-primary/10">
+                  <div className="text-lg sm:text-2xl font-bold text-primary mb-1">🟢 24/7/365</div>
+                  <div className="text-xs sm:text-sm text-gray-600 leading-tight">Real-Time Threat<br className="sm:hidden" /> Monitoring</div>
+                </div>
+                <div className="bg-primary/5 rounded-lg p-4 text-center border border-primary/10">
+                  <div className="text-lg sm:text-2xl font-bold text-primary mb-1">🟣 50+</div>
+                  <div className="text-xs sm:text-sm text-gray-600 leading-tight">Enterprise Clients<br className="sm:hidden" /> Protected</div>
+                </div>
+                <div className="bg-primary/5 rounded-lg p-4 text-center border border-primary/10 col-span-2 lg:col-span-1">
+                  <div className="text-lg sm:text-2xl font-bold text-primary mb-1">🟠 99.9%</div>
+                  <div className="text-xs sm:text-sm text-gray-600 leading-tight">Compliance-Driven<br className="sm:hidden" /> Uptime SLA</div>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -797,7 +799,7 @@ export default function HeroSection() {
                 </div>
               </motion.div>
               
-              <motion.div 
+              {/* <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
@@ -813,14 +815,14 @@ export default function HeroSection() {
                     2,847
                   </motion.div>
                 </div>
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
         </div>
       </div>
 
       {/* Key Features Section */}
-      <div className="bg-gray-50 py-16 relative">
+      {/* <div className="bg-gray-50 py-16 relative">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -868,7 +870,7 @@ export default function HeroSection() {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Trusted Companies Section */}
       <div className="bg-white py-16">

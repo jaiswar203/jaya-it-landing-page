@@ -37,69 +37,69 @@ interface ServiceSuitesSectionProps {
 
 const defaultServiceCategories: ServiceCategory[] = [
   {
-    name: "Peregrine",
-    title: "Managed Detection & Response",
+    name: "Zero Trust Security",
+    title: "Never Trust, Always Verify",
     icon: <ShieldCheck className="h-8 w-8" />,
-    description: "Proactive threat detection and response services to safeguard your digital assets with 24/7 monitoring and expert analysis.",
-    href: "/services/peregrine",
+    description: "Comprehensive identity verification and security architecture that secures every access point with continuous authentication and micro-segmentation.",
+    href: "/services/zero-trust-security",
     items: [
-      "Managed Detection & Response (MDR)",
-      "Threat Intelligence Services", 
-      "Digital Forensics Services",
-      "Brand Risk & Dark Web Monitoring",
-      "Security Orchestration & Response (SOAR)",
-      "Endpoint Detection & Response (EDR)"
+      "Identity & Access Management (IAM)",
+      "Continuous Risk-Based Authentication",
+      "Network Micro-Segmentation",
+      "Device Compliance Enforcement",
+      "Zero Trust Network Access (ZTNA)",
+      "Privileged Access Management (PAM)"
     ],
     gradient: "from-red-500 to-orange-500",
     iconBg: "from-red-500/10 to-orange-500/10"
   },
   {
-    name: "Pinpoint",
-    title: "Assessment & Simulation",
+    name: "Digital Transformation",
+    title: "Reimagining Business Through Intelligence",
     icon: <SearchCheck className="h-8 w-8" />,
-    description: "Comprehensive security assessments and simulations to identify vulnerabilities and strengthen your defenses.",
-    href: "/services/pinpoint",
+    description: "Transform your business with intelligent automation, cloud modernization, and digital-first strategies that drive efficiency and innovation.",
+    href: "/services/digital-transformation",
     items: [
-      "Vulnerability Assessment & Penetration Testing",
-      "Cloud Security Assessment",
-      "Phishing Simulation Services",
-      "Red Teaming Services",
-      "Breach and Attack Simulation (BAS)",
-      "Application Security Testing (SAST/DAST)"
+      "Legacy-to-Cloud Modernization",
+      "Robotic Process Automation (RPA)",
+      "Smart Workflow Engineering",
+      "API & System Integration",
+      "Digital Strategy Consulting",
+      "Business Process Optimization"
     ],
     gradient: "from-blue-500 to-cyan-500",
     iconBg: "from-blue-500/10 to-cyan-500/10"
   },
   {
-    name: "MSP247",
-    title: "Managed Cloud & Security",
+    name: "Advanced IT Solutions",
+    title: "Future-Ready Tech Solutions",
     icon: <CloudCog className="h-8 w-8" />,
-    description: "Round-the-clock managed services for cloud infrastructure and security, ensuring optimal performance and protection.",
-    href: "/services/msp247",
+    description: "Cutting-edge, customized IT infrastructure solutions built around your needs with secure architecture and intelligent monitoring.",
+    href: "/services/advanced-it-solutions",
     items: [
-      "24x7 Managed Cloud Services (AWS, Azure, GCP)",
-      "Cloud Security Implementation & Management",
-      "Disaster Recovery & Business Continuity",
-      "Security Patching & Vulnerability Management",
-      "Web Application Firewall (WAF) Services",
-      "DevOps & Infrastructure as Code (IaC)"
+      "Secure Network Architecture Design",
+      "Endpoint Protection & Patch Management",
+      "Virtualization & Cloud Services",
+      "AI-Powered IT Monitoring",
+      "Infrastructure Optimization",
+      "Hybrid Cloud Solutions"
     ],
     gradient: "from-green-500 to-emerald-500",
     iconBg: "from-green-500/10 to-emerald-500/10"
   },
   {
-    name: "nCompass",
-    title: "Consulting & Compliance",
+    name: "Professional Services",
+    title: "IT Expertise, Delivered On-Demand",
     icon: <ListChecks className="h-8 w-8" />,
-    description: "Expert consulting for IT governance, risk management, and regulatory compliance across multiple frameworks.",
-    href: "/services/ncompass",
+    description: "Deep technical expertise and project execution excellence with strategic consulting and comprehensive managed services support.",
+    href: "/services/professional-services",
     items: [
-      "Virtual CISO (vCISO) Services",
-      "DPDP Act Consulting & Compliance",
-      "ISO 27001 Consulting & Certification",
-      "RBI Master Direction Compliance (BFSI)",
-      "Security Awareness Training Programs",
-      "IT Governance, Risk & Compliance (GRC)"
+      "Strategic IT Consulting",
+      "Staff Augmentation & Project Support",
+      "System Integrations & Migrations",
+      "Managed Services & SLA-Based Support",
+      "Technical Training & Knowledge Transfer",
+      "IT Governance & Compliance"
     ],
     gradient: "from-purple-500 to-violet-500",
     iconBg: "from-purple-500/10 to-violet-500/10"
@@ -124,7 +124,7 @@ export default function ServiceSuitesSection({
         {/* Section Header */}
         <div className="text-center mb-20">
           <AnimatedDiv>
-            <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-primary/20">
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-white/20">
               <Star className="h-5 w-5 text-white" />
               <span className="text-sm font-semibold text-white uppercase tracking-wider">{badge}</span>
             </div>

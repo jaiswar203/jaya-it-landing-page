@@ -54,29 +54,29 @@ const featuredSecurityServices: SecurityService[] = [
     abbreviation: "ASM",
     description: "Continuously monitor your external-facing assets for vulnerabilities and misconfigurations.",
     icon: <Search className="h-8 w-8" />,
-    iconColor: "text-secondary",
-    bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
+    iconColor: "text-blue-500",
+    bgGradient: "from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20"
   },
   {
     name: "Security Dashboard & SIEM Integration",
     description: "Aggregate alerts, logs, and threat intel into a centralized, actionable dashboard.",
     icon: <Monitor className="h-8 w-8" />,
-    iconColor: "text-secondary",
-    bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
+    iconColor: "text-green-500",
+    bgGradient: "from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20"
   },
   {
     name: "Threat Intelligence & Correlation",
     description: "Automated correlation of logs, IOCs, and user behavior for advanced threat detection.",
     icon: <Activity className="h-8 w-8" />,
-    iconColor: "text-secondary",
-    bgGradient: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/20"
+    iconColor: "text-purple-500",
+    bgGradient: "from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/20"
   },
   {
     name: "Real-Time Alerting & Incident Response",
     description: "Streamline detection-to-response timelines through automated playbooks and alert prioritization.",
     icon: <Clock className="h-8 w-8" />,
-    iconColor: "text-secondary",
-    bgGradient: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20"
+    iconColor: "text-orange-500",
+    bgGradient: "from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20"
   }
 ]
 
@@ -174,11 +174,11 @@ export default function InformationSecurityDashboardSection({
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
               >
-                <Card className="group border border-gray-200 dark:border-gray-700 hover:border-primary/60 bg-gradient-to-br from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/20 hover:shadow-xl transition-all duration-500 cursor-pointer hover:-translate-y-1">
+                <Card className="group border border-gray-200 dark:border-gray-700 hover:border-primary/60 bg-gradient-to-br from-cyan-50 to-cyan-100 dark:from-cyan-950/20 dark:to-cyan-900/20 hover:shadow-xl transition-all duration-500 cursor-pointer hover:-translate-y-1">
                   <Link href="/solutions" className="block p-6">
                     <div className="flex items-center space-x-4">
                       <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white dark:bg-gray-900 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <div className="text-secondary">
+                        <div className="text-cyan-500">
                           <Plus className="h-6 w-6" />
                         </div>
                       </div>

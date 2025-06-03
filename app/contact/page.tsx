@@ -308,10 +308,10 @@ export default function ContactPage() {
                       <div>
                         <h4 className="font-semibold text-lg text-foreground mb-2">Email Support</h4>
                         <a
-                          href="mailto:sanjayj@jayaaitsolution.com"
+                          href="mailto:info@jayaaitsolution.com"
                           className="text-muted-foreground hover:text-primary transition-colors"
                         >
-                          sanjayj@jayaaitsolution.com
+                          info@jayaaitsolution.com
                         </a>
                         <p className="text-sm text-muted-foreground mt-1">Response within 24 hours</p>
                       </div>

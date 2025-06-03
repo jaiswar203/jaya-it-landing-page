@@ -26,7 +26,8 @@ import {
   Database,
   Users,
   Monitor,
-  CloudCog
+  CloudCog,
+  ShieldCheck
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -39,42 +40,42 @@ export default function Footer() {
   
   const coreServices = [
     { 
-      name: "Peregrine", 
-      description: "Threat Detection & Response",
-      href: "/services/peregrine", 
-      icon: <Shield className="h-5 w-5" />,
+      name: "Zero Trust Security", 
+      description: "Never Trust, Always Verify — Secure Every Access Point",
+      href: "/services/zero-trust-security", 
+      icon: <ShieldCheck className="h-5 w-5" />,
       gradient: "from-red-500 to-orange-500"
     },
     { 
-      name: "Pinpoint", 
-      description: "Security Testing & Assessment",
-      href: "/services/pinpoint", 
+      name: "Digital Transformation", 
+      description: "Intelligent Automation & Digital-First Strategies",
+      href: "/services/digital-transformation", 
       icon: <SearchCheck className="h-5 w-5" />,
       gradient: "from-blue-500 to-cyan-500"
     },
     { 
-      name: "MSP247", 
-      description: "Managed Security Services",
-      href: "/services/msp247", 
+      name: "Advanced IT Solutions", 
+      description: "Future-Ready Tech Solutions Built Around You",
+      href: "/services/advanced-it-solutions", 
       icon: <CloudCog className="h-5 w-5" />,
       gradient: "from-green-500 to-emerald-500"
     },
     { 
-      name: "nCompass", 
-      description: "Security Consulting & Training",
-      href: "/services/ncompass", 
+      name: "Professional Services", 
+      description: "IT Expertise, Delivered On-Demand",
+      href: "/services/professional-services", 
       icon: <Users className="h-5 w-5" />,
       gradient: "from-purple-500 to-violet-500"
     },
   ]
 
   const keyFeatures = [
-    { name: "Dark Web Monitoring", href: "/services/peregrine#dark-web" },
-    { name: "Red Teaming Services", href: "/services/pinpoint#redteam" },
-    { name: "SOC Monitoring 24/7", href: "/services/peregrine#soc" },
-    { name: "Privileged Access Management", href: "/solutions#pam" },
-    { name: "Security Awareness Training", href: "/services/ncompass#training" },
-    { name: "API Security Testing", href: "/services/pinpoint#api" },
+    { name: "Identity & Access Management (IAM)", href: "/services/zero-trust-security#iam" },
+    { name: "Legacy-to-Cloud Modernization", href: "/services/digital-transformation#modernization" },
+    { name: "Secure Network Architecture Design", href: "/services/advanced-it-solutions#network" },
+    { name: "Strategic IT Consulting", href: "/services/professional-services#consulting" },
+    { name: "Continuous Risk-Based Authentication", href: "/services/zero-trust-security#auth" },
+    { name: "API & System Integration", href: "/services/digital-transformation#integration" },
   ]
 
   const quickLinks = [
@@ -150,7 +151,7 @@ export default function Footer() {
                   </div>
                   <div>
                     <p className="text-gray-900 font-semibold mb-1">Email</p>
-                    <a href="mailto:sanjayj@jayaaitsolution.com" className="text-gray-600 hover:text-primary transition-colors text-sm">
+                    <a href="mailto:info@jayaaitsolution.com" className="text-gray-600 hover:text-primary transition-colors text-sm">
                       info@jayaaitsolution.com
                     </a>
                   </div>

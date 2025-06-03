@@ -325,38 +325,38 @@ export default function Header() {
                 )}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="w-[650px] p-6 bg-white/98 backdrop-blur-xl border border-gray-200/80 shadow-2xl rounded-2xl">
+                <div className="w-[650px] p-6 bg-white border border-gray-200 shadow-xl rounded-xl">
                   <div className="grid grid-cols-2 gap-4">
                     {company.map((item, index) => (
                       <Link
                         key={item.name}
                         href={item.href}
                         className={cn(
-                          "flex items-start space-x-4 p-5 rounded-2xl transition-all duration-500 border border-transparent hover:shadow-xl group transform hover:scale-105",
+                          "flex items-start space-x-4 p-4 rounded-lg transition-all duration-300 border group",
                           isActivePath(item.href)
-                            ? "bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/30 shadow-lg"
-                            : "hover:bg-gradient-to-br hover:from-gray-50 hover:to-primary/5 hover:border-primary/20"
+                            ? "bg-primary/5 border-primary/20 shadow-sm"
+                            : "border-transparent hover:bg-gray-50 hover:border-gray-200 hover:shadow-sm"
                         )}
-                        style={{ animationDelay: `${index * 100}ms` }}
+                        style={{ animationDelay: `${index * 50}ms` }}
                       >
                         <div className={cn(
-                          "p-3 rounded-xl transition-all duration-500",
+                          "p-2.5 rounded-lg transition-all duration-300",
                           isActivePath(item.href)
-                            ? "bg-gradient-to-br from-primary to-secondary text-white shadow-lg"
-                            : "bg-primary/10 text-primary group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary group-hover:text-white group-hover:shadow-lg"
+                            ? "bg-primary text-white shadow-sm"
+                            : "bg-gray-100 text-primary group-hover:bg-primary group-hover:text-white"
                         )}>
-                          {item.icon}
+                          {React.cloneElement(item.icon, { className: "h-4 w-4" })}
                         </div>
-                        <div>
+                        <div className="flex-1">
                           <h4 className={cn(
-                            "font-bold transition-all duration-500",
+                            "font-semibold transition-colors duration-300",
                             isActivePath(item.href)
-                              ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-                              : "text-gray-900 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text group-hover:text-transparent"
+                              ? "text-primary"
+                              : "text-gray-900 group-hover:text-primary"
                           )}>
                             {item.name}
                           </h4>
-                          <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+                          <p className="text-sm text-gray-600 mt-1 leading-relaxed">
                             {item.description}
                           </p>
                         </div>

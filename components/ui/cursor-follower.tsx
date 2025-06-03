@@ -120,7 +120,7 @@ export default function CursorFollower() {
     <>
       {/* Cursor follower circle */}
       <div
-        className={`fixed pointer-events-none z-50 w-6 h-6 rounded-full bg-primary transition-opacity duration-200 ${
+        className={`fixed pointer-events-none z-50 w-6 h-6 rounded-full  transition-opacity duration-200 ${
           isVisible ? 'opacity-80' : 'opacity-0'
         }`}
         style={{
