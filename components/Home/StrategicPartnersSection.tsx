@@ -152,7 +152,7 @@ export default function StrategicPartnersSection({
           <AnimatedDiv className="space-y-8">
             <div className="space-y-6">
               <div className="flex items-center space-x-3 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <div>

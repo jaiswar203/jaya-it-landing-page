@@ -722,7 +722,7 @@ export default function HeroSection() {
                 <div className="text-sm text-gray-600">Real-Time Threat Monitoring</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">🟣 60+</div>
+                <div className="text-2xl font-bold text-primary">🟣 50+</div>
                 <div className="text-sm text-gray-600">Enterprise Clients Protected</div>
               </div>
               <div className="text-center">

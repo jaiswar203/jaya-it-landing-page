@@ -34,36 +34,36 @@ interface CoreServicesSectionProps {
 
 const defaultServices: ServiceHighlight[] = [
   {
-    name: "Peregrine",
-    description: "Managed Detection & Response",
-    href: "/services/peregrine",
-    icon: <ShieldCheck className="h-8 w-8" />,
-    gradient: "from-red-500 to-orange-500",
-    iconBg: "from-red-500/10 to-orange-500/10",
+    name: "Zero Trust Security Services",
+    description: "Comprehensive Security Framework",
+    href: "/services/zero-trust-security",
+    icon: <ShieldCheck className="h-6 w-6" />,
+    gradient: "text-red-500",
+    iconBg: "from-red-50 to-red-100 dark:from-red-950/20 dark:to-red-900/20",
   },
   {
-    name: "Pinpoint",
-    description: "Assessment & Simulation",
-    href: "/services/pinpoint",
-    icon: <SearchCheck className="h-8 w-8" />,
-    gradient: "from-blue-500 to-cyan-500",
-    iconBg: "from-blue-500/10 to-cyan-500/10",
+    name: "Digital Transformation & Automation",
+    description: "Modernize & Streamline Operations",
+    href: "/services/digital-transformation",
+    icon: <SearchCheck className="h-6 w-6" />,
+    gradient: "text-blue-500",
+    iconBg: "from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20",
   },
   {
-    name: "MSP247",
-    description: "Managed Cloud & Security",
-    href: "/services/msp247",
-    icon: <CloudCog className="h-8 w-8" />,
-    gradient: "from-green-500 to-emerald-500",
-    iconBg: "from-green-500/10 to-emerald-500/10",
+    name: "Advance IT Solutions",
+    description: "Cutting-Edge Technology Solutions",
+    href: "/services/advance-it-solutions",
+    icon: <CloudCog className="h-6 w-6" />,
+    gradient: "text-green-500",
+    iconBg: "from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20",
   },
   {
-    name: "nCompass",
-    description: "Consulting & Compliance",
-    href: "/services/ncompass",
-    icon: <ListChecks className="h-8 w-8" />,
-    gradient: "from-purple-500 to-violet-500",
-    iconBg: "from-purple-500/10 to-violet-500/10",
+    name: "Professional Services",
+    description: "Expert Consulting & Support",
+    href: "/services/professional-services",
+    icon: <ListChecks className="h-6 w-6" />,
+    gradient: "text-purple-500",
+    iconBg: "from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/20",
   },
 ]
 
@@ -102,32 +102,34 @@ export default function CoreServicesSection({
         <AnimatedDiv className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <AnimatedDiv key={service.name} delay={index * 0.15}>
-              <Card className="group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm hover:-translate-y-2 flex flex-col justify-center">
+              <Card className={`group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${service.iconBg} hover:-translate-y-1 flex flex-col`}>
                 <CardHeader className="text-center space-y-4 pb-4 flex flex-col items-center justify-center flex-1">
-                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-r ${service.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    {service.icon}
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-white dark:bg-gray-900 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className={service.gradient}>
+                      {service.icon}
+                    </div>
                   </div>
-                  <div>
-                    <CardTitle className="text-2xl mb-2 group-hover:text-primary transition-colors duration-300">
-                      <TypographyH4 className="mb-2 group-hover:text-primary transition-colors duration-300">
+                  <div className="space-y-2">
+                    <CardTitle className="group-hover:text-primary transition-colors duration-300">
+                      <TypographyH4 className="text-lg leading-tight group-hover:text-primary transition-colors duration-300">
                         {service.name}
                       </TypographyH4>
                     </CardTitle>
                     <CardDescription>
-                      <TypographyP muted className="font-medium">
+                      <TypographyP muted className="text-sm font-medium">
                         {service.description}
                       </TypographyP>
                     </CardDescription>
                   </div>
                 </CardHeader>
-                <CardContent className="pt-0 pb-8 flex items-center justify-center">
+                <CardContent className="pt-0 pb-6 flex items-center justify-center">
                   <Button 
                     asChild 
                     variant="ghost" 
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 text-sm"
                   >
                     <Link href={service.href} className="flex items-center justify-center">
-                      Explore {service.name} 
+                      Explore Service
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </Link>
                   </Button>
@@ -139,7 +141,7 @@ export default function CoreServicesSection({
         
         <div className="text-center mt-16">
           <AnimatedDiv delay={0.6}>
-            <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg hover:shadow-xl transition-all duration-300 px-8">
+            <Button asChild size="lg" className="bg-primary shadow-lg hover:shadow-xl transition-all duration-300 px-8">
               <Link href={viewAllHref}>
                 {viewAllText} <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

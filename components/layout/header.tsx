@@ -49,55 +49,55 @@ import { cn } from "@/lib/utils"
 
 const serviceCategories = [
   {
-    name: "Peregrine",
-    href: "/services/peregrine",
-    description: "Advanced threat detection and response services with 24/7 monitoring.",
+    name: "Zero Trust Security Services",
+    href: "/services/zero-trust-security",
+    description: "Never Trust, Always Verify — Secure Every Access Point with comprehensive identity verification.",
     icon: <ShieldCheck className="h-6 w-6" />,
     gradient: "from-red-500 to-orange-500",
     services: [
-      { name: "Managed Detection & Response", href: "/services/peregrine#mdr", icon: <Shield className="h-4 w-4" /> },
-      { name: "SOC Monitoring 24/7", href: "/services/peregrine#soc", icon: <Activity className="h-4 w-4" /> },
-      { name: "Dark Web Monitoring", href: "/services/peregrine#dark-web", icon: <Eye className="h-4 w-4" /> },
-      { name: "Cybersecurity Dashboard", href: "/services/peregrine#dashboard", icon: <Monitor className="h-4 w-4" /> }
+      { name: "Identity & Access Management (IAM)", href: "/services/zero-trust-security#iam", icon: <Shield className="h-4 w-4" /> },
+      { name: "Continuous Risk-Based Authentication", href: "/services/zero-trust-security#auth", icon: <Lock className="h-4 w-4" /> },
+      { name: "Network Micro-Segmentation", href: "/services/zero-trust-security#segmentation", icon: <Activity className="h-4 w-4" /> },
+      { name: "Device Compliance Enforcement", href: "/services/zero-trust-security#compliance", icon: <Monitor className="h-4 w-4" /> }
     ]
   },
   {
-    name: "Pinpoint",
-    href: "/services/pinpoint",
-    description: "Comprehensive security assessments and vulnerability testing.",
+    name: "Digital Transformation & Automation",
+    href: "/services/digital-transformation",
+    description: "Reimagining Business Through Intelligent Automation and digital-first strategies.",
     icon: <SearchCheck className="h-6 w-6" />,
     gradient: "from-blue-500 to-cyan-500",
     services: [
-      { name: "VA-PT (Infrastructure & Apps)", href: "/services/pinpoint#vapt", icon: <SearchCheck className="h-4 w-4" /> },
-      { name: "Red Teaming Services", href: "/services/pinpoint#redteam", icon: <AlertTriangle className="h-4 w-4" /> },
-      { name: "DAST & SAST Testing", href: "/services/pinpoint#ast", icon: <Code className="h-4 w-4" /> },
-      { name: "API Security Testing", href: "/services/pinpoint#api", icon: <Globe className="h-4 w-4" /> }
+      { name: "Legacy-to-Cloud Modernization", href: "/services/digital-transformation#modernization", icon: <CloudCog className="h-4 w-4" /> },
+      { name: "Robotic Process Automation (RPA)", href: "/services/digital-transformation#rpa", icon: <Code className="h-4 w-4" /> },
+      { name: "Smart Workflow Engineering", href: "/services/digital-transformation#workflow", icon: <TrendingUp className="h-4 w-4" /> },
+      { name: "API & System Integration", href: "/services/digital-transformation#integration", icon: <Globe className="h-4 w-4" /> }
     ]
   },
   {
-    name: "MSP247",
-    href: "/services/msp247",
-    description: "Round-the-clock managed services for cloud and security infrastructure.",
+    name: "Advanced IT Solutions",
+    href: "/services/advanced-it-solutions",
+    description: "Future-Ready Tech Solutions Built Around You with cutting-edge, customized IT infrastructure.",
     icon: <CloudCog className="h-6 w-6" />,
     gradient: "from-green-500 to-emerald-500",
     services: [
-      { name: "InfoSec Monitoring", href: "/services/msp247#infosec", icon: <Eye className="h-4 w-4" /> },
-      { name: "Cloud Security Management", href: "/services/msp247#cloud", icon: <CloudCog className="h-4 w-4" /> },
-      { name: "Privileged Access Management", href: "/services/msp247#pam", icon: <Lock className="h-4 w-4" /> },
-      { name: "DLP & Data Protection", href: "/services/msp247#dlp", icon: <ShieldCheck className="h-4 w-4" /> }
+      { name: "Secure Network Architecture Design", href: "/services/advanced-it-solutions#network", icon: <Globe className="h-4 w-4" /> },
+      { name: "Endpoint Protection & Patch Management", href: "/services/advanced-it-solutions#endpoint", icon: <ShieldCheck className="h-4 w-4" /> },
+      { name: "Virtualization & Cloud Services", href: "/services/advanced-it-solutions#cloud", icon: <CloudCog className="h-4 w-4" /> },
+      { name: "AI-Powered IT Monitoring", href: "/services/advanced-it-solutions#monitoring", icon: <Activity className="h-4 w-4" /> }
     ]
   },
   {
-    name: "nCompass",
-    href: "/services/ncompass",
-    description: "Expert consulting for governance, risk management, and compliance.",
+    name: "Professional Services",
+    href: "/services/professional-services",
+    description: "IT Expertise, Delivered On-Demand — deep technical expertise and project execution excellence.",
     icon: <ListChecks className="h-6 w-6" />,
     gradient: "from-purple-500 to-violet-500",
     services: [
-      { name: "Security Awareness Training", href: "/services/ncompass#training", icon: <Users className="h-4 w-4" /> },
-      { name: "Phishing Drills & Simulations", href: "/services/ncompass#phishing", icon: <Mail className="h-4 w-4" /> },
-      { name: "DMARC Implementation", href: "/services/ncompass#dmarc", icon: <Shield className="h-4 w-4" /> },
-      { name: "Virtual CISO Services", href: "/services/ncompass#vciso", icon: <Award className="h-4 w-4" /> }
+      { name: "Strategic IT Consulting", href: "/services/professional-services#consulting", icon: <Users className="h-4 w-4" /> },
+      { name: "Staff Augmentation & Project Support", href: "/services/professional-services#staffing", icon: <Award className="h-4 w-4" /> },
+      { name: "System Integrations & Migrations", href: "/services/professional-services#integration", icon: <Database className="h-4 w-4" /> },
+      { name: "Managed Services & SLA-Based Support", href: "/services/professional-services#managed", icon: <CheckCircle className="h-4 w-4" /> }
     ]
   },
 ]
@@ -233,9 +233,9 @@ export default function Header() {
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="w-[920px] p-6 bg-white/98 backdrop-blur-xl border border-gray-200/80 shadow-2xl rounded-2xl">
-                  <div className="grid grid-cols-3 gap-6">
-                    {/* Main Services - spans 2 columns */}
-                    <div className="col-span-2 space-y-4">
+                  <div className="grid grid-cols-1 gap-6">
+                    {/* Main Services - full width */}
+                    <div className="space-y-4">
                       <div className="flex items-center justify-between mb-6">
                         <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent flex items-center">
                           <Sparkles className="h-6 w-6 mr-2 text-primary animate-pulse" />
@@ -277,49 +277,6 @@ export default function Header() {
                             </Link>
                           </div>
                         ))}
-                      </div>
-                    </div>
-
-                    {/* Solutions & Quick Links */}
-                    <div className="space-y-6">
-                      <div>
-                        <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6 flex items-center">
-                          <Target className="h-6 w-6 mr-2 text-primary animate-pulse" />
-                          Key Solutions
-                        </h3>
-                        <div className="grid gap-2">
-                          {solutions.slice(0, 6).map((solution, index) => (
-                            <Link
-                              key={solution.name}
-                              href={solution.href}
-                              className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 group transform hover:scale-105"
-                              style={{ animationDelay: `${index * 50}ms` }}
-                            >
-                              <div className="text-primary group-hover:scale-125 transition-transform duration-300">
-                                {solution.icon}
-                              </div>
-                              <span className="text-sm font-semibold group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                                {solution.name}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="p-5 bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 rounded-2xl border border-primary/20 shadow-lg">
-                        <div className="flex items-center mb-3">
-                          <HelpCircle className="h-5 w-5 text-primary mr-2" />
-                          <h4 className="font-bold text-primary">Need Expert Consultation?</h4>
-                        </div>
-                        <p className="text-sm text-gray-700 mb-4 leading-relaxed">
-                          Get personalized cybersecurity recommendations tailored to your business needs.
-                        </p>
-                        <Button asChild size="sm" className="w-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                          <Link href="/contact">
-                            <Phone className="h-4 w-4 mr-2" />
-                            Contact Our Experts
-                          </Link>
-                        </Button>
                       </div>
                     </div>
                   </div>
