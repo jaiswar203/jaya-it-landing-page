@@ -1,6 +1,15 @@
 import AnimatedDiv from "@/components/ui/animated-div"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { 
+  TypographyH2, 
+  TypographyGradientSubtitle, 
+  TypographyLead, 
+  TypographyH4, 
+  TypographyBadge,
+  TypographyP,
+  TypographySmall 
+} from "@/components/ui/typography"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Quote, Star } from "lucide-react"
@@ -99,19 +108,19 @@ export default function TestimonialsSection({
       <div className="container mx-auto px-4 md:px-6 relative">
         <div className="text-center mb-16">
           <AnimatedDiv>
-            <div className="inline-flex items-center space-x-2 bg-secondary text-white px-4 py-2 rounded-full shadow-lg mb-6">
+            <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg mb-6">
               <Quote className="h-4 w-4 text-white" />
-              <span className="text-sm font-semibold text-white uppercase tracking-wider">{badge}</span>
+              <TypographyBadge className="text-white">{badge}</TypographyBadge>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            <TypographyH2 className="mb-6">
               {title}
-              <span className="block text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
+              <TypographyGradientSubtitle>
                 {subtitle}
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              </TypographyGradientSubtitle>
+            </TypographyH2>
+            <TypographyLead muted>
               {description}
-            </p>
+            </TypographyLead>
           </AnimatedDiv>
         </div>
         
@@ -124,7 +133,7 @@ export default function TestimonialsSection({
                   <Quote className="h-12 w-12 text-primary" />
                 </div>
                 
-                <CardContent className="p-8">
+                <CardContent className="p-8 h-full flex flex-col">
                   {/* Star Rating */}
                   <div className="flex items-center mb-6">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -133,12 +142,16 @@ export default function TestimonialsSection({
                   </div>
                   
                   {/* Testimonial Content */}
-                  <blockquote className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8 italic">
-                    "{testimonial.content}"
-                  </blockquote>
+                  <div className="flex-grow mb-8">
+                    <blockquote className="italic">
+                      <TypographyP className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        "{testimonial.content}"
+                      </TypographyP>
+                    </blockquote>
+                  </div>
                   
                   {/* Client Info */}
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-4 mt-auto">
                     <div className="relative flex-shrink-0">
                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center border-2 border-primary/10 overflow-hidden">
                         <Image
@@ -150,16 +163,16 @@ export default function TestimonialsSection({
                         />
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors duration-300">
+                    <div className="flex-1 space-y-1">
+                      <TypographyH4 className="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors duration-300 block">
                         {testimonial.name}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
+                      </TypographyH4>
+                      <TypographySmall className="block text-gray-600 dark:text-gray-400">
                         {testimonial.position}
-                      </p>
-                      <p className="text-xs text-primary font-medium">
+                      </TypographySmall>
+                      <TypographySmall className="text-primary font-medium block">
                         {testimonial.company}
-                      </p>
+                      </TypographySmall>
                     </div>
                   </div>
                 </CardContent>
@@ -172,7 +185,7 @@ export default function TestimonialsSection({
         <div className="text-center mt-16">
           <AnimatedDiv delay={0.8}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 px-8 text-white">
+              <Button asChild size="lg" className="bg-primary shadow-lg hover:shadow-xl transition-all duration-300 px-8 text-white">
                 <Link href={primaryButtonHref}>
                   {primaryButtonText} <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>

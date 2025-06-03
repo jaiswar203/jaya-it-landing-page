@@ -1,6 +1,14 @@
 import AnimatedDiv from "@/components/ui/animated-div"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { 
+  TypographyH2, 
+  TypographyGradientSubtitle, 
+  TypographyLead, 
+  TypographyH4, 
+  TypographyBadge,
+  TypographyP 
+} from "@/components/ui/typography"
 import Link from "next/link"
 import { ArrowRight, Star, ShieldCheck, SearchCheck, CloudCog, ListChecks } from "lucide-react"
 
@@ -77,17 +85,17 @@ export default function CoreServicesSection({
           <AnimatedDiv>
             <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg mb-6">
               <Star className="h-4 w-4 text-white" />
-              <span className="text-sm font-semibold text-white uppercase tracking-wider">{badge}</span>
+              <TypographyBadge className="text-white">{badge}</TypographyBadge>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            <TypographyH2 className="mb-6">
               {title}
-              <span className="block text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
+              <TypographyGradientSubtitle>
                 {subtitle}
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              </TypographyGradientSubtitle>
+            </TypographyH2>
+            <TypographyLead muted>
               {description}
-            </p>
+            </TypographyLead>
           </AnimatedDiv>
         </div>
         
@@ -101,10 +109,14 @@ export default function CoreServicesSection({
                   </div>
                   <div>
                     <CardTitle className="text-2xl mb-2 group-hover:text-primary transition-colors duration-300">
-                      {service.name}
+                      <TypographyH4 className="mb-2 group-hover:text-primary transition-colors duration-300">
+                        {service.name}
+                      </TypographyH4>
                     </CardTitle>
-                    <CardDescription className="text-base font-medium">
-                      {service.description}
+                    <CardDescription>
+                      <TypographyP muted className="font-medium">
+                        {service.description}
+                      </TypographyP>
                     </CardDescription>
                   </div>
                 </CardHeader>

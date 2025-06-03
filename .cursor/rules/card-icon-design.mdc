@@ -1,0 +1,96 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Card and Icon Design Standards
+
+## Card Design Pattern
+
+All cards should follow this consistent design pattern:
+
+### Background Colors
+- Use light gradient backgrounds that match the icon color theme
+- Pattern: `bg-gradient-to-br from-{color}-50 to-{color}-100 dark:from-{color}-950/20 dark:to-{color}-900/20`
+- Examples:
+  - Blue theme: `from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20`
+  - Green theme: `from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20`
+  - Purple theme: `from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/20`
+
+### Card Structure
+```tsx
+<Card className={`group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${bgGradient} hover:-translate-y-1 flex flex-col`}>
+  <CardHeader className="pb-4 flex-shrink-0">
+    {/* Icon and content */}
+  </CardHeader>
+</Card>
+```
+
+## Icon Design Pattern
+
+### Icon Container
+- Always use white background with shadow: `bg-white dark:bg-gray-900 shadow-lg`
+- Standard size: `w-12 h-12` for solution cards, `w-16 h-16` for larger cards
+- Rounded corners: `rounded-xl`
+- Hover effect: `group-hover:scale-110 transition-transform duration-300`
+
+### Icon Colors
+Use static color classes instead of gradients:
+- Primary colors: `text-blue-500`, `text-green-500`, `text-purple-500`, `text-red-500`
+- Secondary colors: `text-orange-500`, `text-cyan-500`, `text-indigo-500`, `text-teal-500`
+- Extended colors: `text-emerald-500`, `text-yellow-500`, `text-pink-500`, `text-violet-500`
+- Darker variants: `text-blue-600`, `text-green-600`, `text-purple-600` for variety
+
+### Icon Structure
+```tsx
+<div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white dark:bg-gray-900 shadow-lg group-hover:scale-110 transition-transform duration-300">
+  <div className={iconColor}>
+    {icon}
+  </div>
+</div>
+```
+
+## Interface Standards
+
+### Solution/Item Interface
+```tsx
+interface Solution {
+  name: string
+  description: string
+  icon: React.ReactNode
+  iconColor: string
+  bgGradient: string
+}
+```
+
+### Category Interface
+```tsx
+interface Category {
+  category: string
+  icon: React.ReactNode
+  iconColor: string
+  bgGradient: string
+  solutions: Solution[]
+}
+```
+
+## Color Coordination
+
+Each section should have a cohesive color scheme:
+- Category headers and their solutions can share similar color families
+- Ensure sufficient color variety within each category
+- Use the same color pattern for both `iconColor` and `bgGradient` properties
+
+## Examples
+
+Reference implementations:
+- [IndustriesWeServeSection.tsx](mdc:components/Home/IndustriesWeServeSection.tsx) - Industry cards with features
+- [CybersecuritySolutionsSection.tsx](mdc:components/Home/CybersecuritySolutionsSection.tsx) - Solution cards with categories
+- [WhyChooseUsSection.tsx](mdc:components/Home/WhyChooseUsSection.tsx) - Benefit cards pattern
+
+## Avoid
+
+- Gradient backgrounds on icons (use solid colors)
+- Complex gradient text effects on headers
+- Overly bright or saturated colors
+- Inconsistent icon container sizes within the same component

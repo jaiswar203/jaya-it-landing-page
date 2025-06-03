@@ -1,10 +1,10 @@
 import HeroSection from "@/components/sections/hero-section"
 import {
-  StatsSection,
   AboutSection,
   CoreServicesSection,
   CybersecuritySolutionsSection,
   InformationSecurityDashboardSection,
+  IndustriesWeServeSection,
   TestimonialsSection,
   WhyChooseUsSection,
   StrategicPartnersSection,
@@ -16,11 +16,12 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <StatsSection />
+      {/* <StatsSection /> */}
       <AboutSection />
       <CoreServicesSection />
       <CybersecuritySolutionsSection />
       <InformationSecurityDashboardSection />
+      <IndustriesWeServeSection />
       <StrategicPartnersSection />
       <TestimonialsSection />
       <ClientsSection />

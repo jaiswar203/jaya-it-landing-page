@@ -5,6 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/layout/header" // Import new Header
 import Footer from "@/components/layout/footer" // Import new Footer
+import CursorFollower from "@/components/ui/cursor-follower" // Import CursorFollower
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" }) // Add variable
 
@@ -37,6 +38,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <CursorFollower />
         </ThemeProvider>
       </body>
     </html>

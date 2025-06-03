@@ -1,6 +1,14 @@
 import AnimatedDiv from "@/components/ui/animated-div"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { 
+  TypographyH2, 
+  TypographyGradientSubtitle, 
+  TypographyH4, 
+  TypographyBadge,
+  TypographyP 
+} from "@/components/ui/typography"
 import { Zap, Users, BarChart3, ShieldCheck } from "lucide-react"
+import Image from "next/image"
 
 interface Benefit {
   title: string
@@ -59,16 +67,16 @@ export default function WhyChooseUsSection({
       <div className="container mx-auto px-4 md:px-6 relative">
         <div className="text-center mb-16">
           <AnimatedDiv>
-            <div className="inline-flex items-center space-x-2 bg-secondary text-white px-4 py-2 rounded-full shadow-lg mb-6">
+            <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg mb-6">
               <Zap className="h-4 w-4 text-white" />
-              <span className="text-sm font-semibold text-white uppercase tracking-wider">{badge}</span>
+              <TypographyBadge className="text-white">{badge}</TypographyBadge>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            <TypographyH2 className="mb-6">
               {title}
-              <span className="block text-transparent bg-gradient-to-r from-secondary to-accent bg-clip-text">
-                {subtitle}
-              </span>
-            </h2>
+              <div className="flex w-full justify-center items-center space-x-2">
+                <Image src="/logo-jayaa.png" alt="JAYAA IT" width={200} height={200} />
+              </div>
+            </TypographyH2>
           </AnimatedDiv>
         </div>
         
@@ -84,12 +92,14 @@ export default function WhyChooseUsSection({
                       </div>
                     </div>
                   </div>
-                  <CardTitle className="text-xl mb-4 group-hover:text-primary transition-colors duration-300">
-                    {benefit.title}
+                  <CardTitle className="group-hover:text-primary transition-colors duration-300">
+                    <TypographyH4 className="mb-4 group-hover:text-primary transition-colors duration-300">
+                      {benefit.title}
+                    </TypographyH4>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center flex-grow flex items-center justify-center">
-                  <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+                  <TypographyP muted className="leading-relaxed">{benefit.description}</TypographyP>
                 </CardContent>
               </Card>
             </AnimatedDiv>

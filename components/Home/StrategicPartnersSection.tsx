@@ -2,9 +2,19 @@
 import { useState } from "react"
 import AnimatedDiv from "@/components/ui/animated-div"
 import { Card, CardContent } from "@/components/ui/card"
+import { 
+  TypographyH2, 
+  TypographyGradientSubtitle, 
+  TypographyLead, 
+  TypographyH3, 
+  TypographyH4,
+  TypographyBadge,
+  TypographyP,
+  TypographySmall 
+} from "@/components/ui/typography"
 import Image from "next/image"
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Autoplay } from 'swiper/modules'
 import { ChevronLeft, ChevronRight, CheckCircle2, Handshake, Shield, Settings, Zap } from "lucide-react"
 import type { Swiper as SwiperType } from 'swiper'
 
@@ -92,15 +102,15 @@ const defaultPartners: Partner[] = [
 ]
 
 const managedServices = [
-  "License Procurement & Management",
-  "Tool Setup & Configuration", 
-  "24/7 Monitoring & Maintenance",
-  "User Training & Support",
-  "Performance Optimization",
-  "Security & Compliance Monitoring",
-  "Regular Updates & Patches",
-  "Technical Issue Resolution",
-  "Custom Integration Services"
+  "License Management & Renewals",
+  "Tool Setup & Technical Configuration",
+  "24/7 Monitoring & Incident Handling", 
+  "Performance & Uptime Optimization",
+  "Regular Security Patches & Feature Updates",
+  "User Enablement & Technical Support",
+  "Custom Integration & Interoperability",
+  "Security & Compliance Reporting",
+  "Fast-track Issue Resolution"
 ]
 
 export default function StrategicPartnersSection({
@@ -123,17 +133,17 @@ export default function StrategicPartnersSection({
           <AnimatedDiv>
             <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg mb-6">
               <Zap className="h-4 w-4 text-white" />
-              <span className="text-sm font-semibold text-white uppercase tracking-wider">{badge}</span>
+              <TypographyBadge className="text-white">{badge}</TypographyBadge>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            <TypographyH2 className="mb-6">
               {title}
-              <span className="block text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
+              <TypographyGradientSubtitle>
                 {subtitle}
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              </TypographyGradientSubtitle>
+            </TypographyH2>
+            <TypographyLead muted>
               {description}
-            </p>
+            </TypographyLead>
           </AnimatedDiv>
         </div>
 
@@ -146,8 +156,8 @@ export default function StrategicPartnersSection({
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground">Our Managed Services</h3>
-                  <p className="text-muted-foreground">Complete setup, monitoring & maintenance</p>
+                  <TypographyH4 className="text-foreground">Our Managed Services</TypographyH4>
+                  <TypographyP muted>Complete setup, monitoring & maintenance</TypographyP>
                 </div>
               </div>
 
@@ -158,7 +168,7 @@ export default function StrategicPartnersSection({
                       <div className="flex-shrink-0 mt-0.5">
                         <CheckCircle2 className="h-4 w-4 text-green-600" />
                       </div>
-                      <span className="text-sm font-medium text-foreground leading-tight">{service}</span>
+                      <TypographySmall className="font-medium text-foreground leading-tight">{service}</TypographySmall>
                     </div>
                   </AnimatedDiv>
                 ))}
@@ -169,12 +179,12 @@ export default function StrategicPartnersSection({
               <div className="flex items-start space-x-3">
                 <Settings className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Why Choose Our Managed Model?</h4>
-                  <p className="text-blue-700 dark:text-blue-300 text-sm leading-relaxed">
+                  <TypographyH4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Why Choose Our Managed Model?</TypographyH4>
+                  <TypographySmall className="text-blue-700 dark:text-blue-300 leading-relaxed">
                     Most clients prefer not to manage these tools themselves due to time or technical limitations. 
                     We provide licenses or access to these tools and take full responsibility for setup, monitoring, 
                     and ongoing maintenance, so you can focus on your core business.
-                  </p>
+                  </TypographySmall>
                 </div>
               </div>
             </div>
@@ -186,58 +196,46 @@ export default function StrategicPartnersSection({
             
             <div className="relative bg-white dark:bg-gray-900/50 p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-xl font-bold text-foreground">Strategic Partners</h3>
-                <div className="flex space-x-2">
-                  <button
-                    onClick={() => swiperInstance?.slidePrev()}
-                    className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors duration-200"
-                  >
-                    <ChevronLeft className="h-5 w-5 text-primary" />
-                  </button>
-                  <button
-                    onClick={() => swiperInstance?.slideNext()}
-                    className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors duration-200"
-                  >
-                    <ChevronRight className="h-5 w-5 text-primary" />
-                  </button>
-                </div>
+                <TypographyH3 className="text-foreground">Strategic Partners</TypographyH3>
               </div>
 
               <Swiper
                 onSwiper={setSwiperInstance}
-                modules={[Navigation, Pagination, Autoplay]}
-                spaceBetween={20}
+                modules={[Autoplay]}
+                spaceBetween={30}
                 slidesPerView={2}
                 autoplay={{
-                  delay: 3000,
+                  delay: 1,
                   disableOnInteraction: false,
+                  pauseOnMouseEnter: false,
+                  waitForTransition: false,
                 }}
-                pagination={{
-                  clickable: true,
-                  bulletClass: 'swiper-pagination-bullet !bg-primary/30',
-                  bulletActiveClass: 'swiper-pagination-bullet-active !bg-primary',
-                }}
+                speed={5000}
                 breakpoints={{
                   640: {
-                    slidesPerView: 3,
+                    slidesPerView: 2,
+                    spaceBetween: 40,
                   },
                   1024: {
-                    slidesPerView: 4,
+                    slidesPerView: 3,
+                    spaceBetween: 50,
                   },
                 }}
-                loop
+                loop={true}
+                allowTouchMove={false}
+                watchSlidesProgress={true}
                 className="partners-swiper"
               >
-                {partners.map((partner) => (
-                  <SwiperSlide key={partner.id}>
-                    <div className="group h-24 w-full">
-                      <div className="h-full w-full bg-white dark:bg-gray-900 rounded-2xl shadow-md hover:shadow-xl flex items-center justify-center group-hover:scale-105 transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50 p-4">
+                {[...partners, ...partners, ...partners].map((partner, index) => (
+                  <SwiperSlide key={`${partner.id}-${index}`}>
+                    <div className="group h-28 w-full">
+                      <div className="h-full w-full bg-white dark:bg-gray-900 rounded-2xl  hover:shadow-xl flex items-center justify-center group-hover:scale-105 transition-all duration-300  p-6">
                         <Image
                           src={partner.logo}
                           alt={`${partner.name} logo`}
-                          width={80}
-                          height={60}
-                          className="object-contain max-w-full max-h-full opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                          width={120}
+                          height={80}
+                          className="object-contain max-w-full max-h-full transition-opacity duration-300"
                         />
                       </div>
                     </div>
@@ -250,14 +248,11 @@ export default function StrategicPartnersSection({
       </div>
 
       <style jsx global>{`
-        .partners-swiper .swiper-pagination {
-          position: relative !important;
-          margin-top: 2rem !important;
+        .partners-swiper .swiper-wrapper {
+          transition-timing-function: linear !important;
         }
-        .partners-swiper .swiper-pagination-bullet {
-          width: 8px !important;
-          height: 8px !important;
-          margin: 0 4px !important;
+        .partners-swiper .swiper-slide {
+          height: auto !important;
         }
       `}</style>
     </section>

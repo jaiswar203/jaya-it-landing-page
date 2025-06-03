@@ -1,4 +1,8 @@
 import AnimatedDiv from "@/components/ui/animated-div"
+import { 
+  TypographyStats,
+  TypographyP 
+} from "@/components/ui/typography"
 import { Award, Users, Clock, TrendingUp } from "lucide-react"
 
 interface StatItem {
@@ -31,10 +35,13 @@ export default function StatsSection({ stats = defaultStats, className = "" }: S
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 mb-4 group-hover:scale-110 transition-transform duration-300">
                   <div className="text-primary">{stat.icon}</div>
                 </div>
-                <div className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
+                <TypographyStats 
+                  gradient 
+                  className="mb-2"
+                >
                   {stat.number}
-                </div>
-                <div className="text-muted-foreground font-medium">{stat.label}</div>
+                </TypographyStats>
+                <TypographyP muted className="font-medium">{stat.label}</TypographyP>
               </div>
             </AnimatedDiv>
           ))}

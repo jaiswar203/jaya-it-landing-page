@@ -2,10 +2,21 @@
 import { useState } from "react"
 import AnimatedDiv from "@/components/ui/animated-div"
 import { Card, CardContent } from "@/components/ui/card"
+import { 
+  TypographyH1, 
+  TypographyH2, 
+  TypographyGradientSubtitle, 
+  TypographyLead, 
+  TypographyH3, 
+  TypographyH5,
+  TypographyBadge,
+  TypographySmall,
+  TypographyStats 
+} from "@/components/ui/typography"
 import Image from "next/image"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
-import { Users, TrendingUp, Building2, Award, Globe, Star } from "lucide-react"
+import { Users, Building2, Award, Globe, Star } from "lucide-react"
 import type { Swiper as SwiperType } from 'swiper'
 
 // Import Swiper styles
@@ -114,29 +125,15 @@ const stats = [
     icon: <Users className="h-8 w-8" />,
     value: "50+",
     label: "Satisfied Clients",
-    color: "from-blue-500 to-cyan-500",
-    bgColor: "from-blue-50 to-cyan-50 dark:from-blue-950/20 dark:to-cyan-950/20"
-  },
-  {
-    icon: <Building2 className="h-8 w-8" />,
-    value: "15+",
-    label: "Industries Served",
-    color: "from-green-500 to-emerald-500",
-    bgColor: "from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20"
+    iconColor: "text-blue-500",
+    bgGradient: "from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20"
   },
   {
     icon: <Star className="h-8 w-8" />,
     value: "99.9%",
     label: "Client Satisfaction",
-    color: "from-purple-500 to-violet-500",
-    bgColor: "from-purple-50 to-violet-50 dark:from-purple-950/20 dark:to-violet-950/20"
-  },
-  {
-    icon: <Award className="h-8 w-8" />,
-    value: "500+",
-    label: "Projects Completed",
-    color: "from-orange-500 to-red-500",
-    bgColor: "from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20"
+    iconColor: "text-purple-500",
+    bgGradient: "from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/20"
   }
 ]
 
@@ -161,42 +158,54 @@ export default function ClientsSection({
         {/* Section Header */}
         <div className="text-center mb-20">
           <AnimatedDiv>
-            <div className="inline-flex items-center space-x-2 bg-secondary text-white px-4 py-2 rounded-full shadow-lg mb-6">
+            <div className="inline-flex items-center space-x-2 bg-primary text-white px-4 py-2 rounded-full shadow-lg mb-6">
               <Building2 className="h-4 w-4 text-white" />
-              <span className="text-sm font-semibold text-white uppercase tracking-wider">{badge}</span>
+              <TypographyBadge className="text-white">{badge}</TypographyBadge>
             </div>
-            <h2 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
+            <TypographyH1 className="mb-8 leading-tight">
               {title}
-              <span className="block text-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text animate-pulse">
+              <TypographyGradientSubtitle className="animate-pulse">
                 {subtitle}
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              </TypographyGradientSubtitle>
+            </TypographyH1>
+            <TypographyLead muted>
               {description}
-            </p>
+            </TypographyLead>
           </AnimatedDiv>
         </div>
 
         {/* Enhanced Stats Grid */}
-        <AnimatedDiv className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {stats.map((stat, index) => (
-            <AnimatedDiv key={stat.label} delay={index * 0.1}>
-              <Card className={`group h-full border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${stat.bgColor} backdrop-blur-sm hover:-translate-y-2 hover:rotate-1 overflow-hidden relative`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <CardContent className="p-8 text-center relative z-10">
-                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-gradient-to-r ${stat.color} mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg`}>
-                    <div className="text-white">
-                      {stat.icon}
+        <AnimatedDiv className="flex justify-center mb-20">
+          <div className="grid sm:grid-cols-2 gap-8 max-w-4xl w-full">
+            {stats.map((stat, index) => (
+              <AnimatedDiv key={stat.label} delay={index * 0.2}>
+                <Card className={`group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${stat.bgGradient} hover:-translate-y-1 flex flex-col`}>
+                  <CardContent className="p-8 text-center flex-1 flex flex-col justify-center">
+                    {/* Icon Container */}
+                    <div className="mb-6">
+                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-white dark:bg-gray-900 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <div className={stat.iconColor}>
+                          {stat.icon}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="text-4xl lg:text-5xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-500">
-                    {stat.value}
-                  </div>
-                  <p className="text-muted-foreground font-semibold text-lg">{stat.label}</p>
-                </CardContent>
-              </Card>
-            </AnimatedDiv>
-          ))}
+                    
+                    {/* Value */}
+                    <div className="mb-3">
+                      <TypographyStats className="text-foreground group-hover:scale-105 transition-transform duration-300">
+                        {stat.value}
+                      </TypographyStats>
+                    </div>
+                    
+                    {/* Label */}
+                    <TypographyH5 className="text-foreground/80 group-hover:text-foreground transition-colors duration-300">
+                      {stat.label}
+                    </TypographyH5>
+                  </CardContent>
+                </Card>
+              </AnimatedDiv>
+            ))}
+          </div>
         </AnimatedDiv>
 
         {/* Enhanced Clients Carousel */}
@@ -204,9 +213,9 @@ export default function ClientsSection({
           <div className="relative bg-white/95 dark:bg-gray-900/95 p-8 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
             {/* Header with gradient text */}
             <div className="text-center mb-8">
-              <h3 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-3">
+              <TypographyH3 gradient className="mb-3">
                 Trusted by Leading Organizations
-              </h3>
+              </TypographyH3>
               <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
             </div>
             
@@ -264,15 +273,15 @@ export default function ClientsSection({
             <div className="flex items-center justify-center space-x-6 mt-8 pt-6 border-t border-gray-200/50 dark:border-gray-700/50">
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Globe className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium">Global Reach</span>
+                <TypographySmall className="font-medium">Global Reach</TypographySmall>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Award className="h-4 w-4 text-secondary" />
-                <span className="text-sm font-medium">Industry Leaders</span>
+                <TypographySmall className="font-medium">Industry Leaders</TypographySmall>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Star className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium">Trusted Partners</span>
+                <TypographySmall className="font-medium">Trusted Partners</TypographySmall>
               </div>
             </div>
           </div>

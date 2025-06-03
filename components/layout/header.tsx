@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import {
@@ -40,7 +41,8 @@ import {
   FileText,
   TrendingUp,
   CheckCircle,
-  HelpCircle
+  HelpCircle,
+  Sparkles
 } from "lucide-react"
 import React, { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
@@ -121,6 +123,7 @@ const company = [
 export default function Header() {
   const [mounted, setMounted] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => setMounted(true), [])
 
@@ -132,14 +135,48 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Helper function to check if a path is active
+  const isActivePath = (path: string) => {
+    if (path === "/" && pathname === "/") return true
+    if (path !== "/" && pathname.startsWith(path)) return true
+    return false
+  }
+
+  // Helper function to get navigation link classes
+  const getNavLinkClasses = (path: string) => {
+    const baseClasses = "relative font-medium transition-all duration-300 hover:scale-105"
+    const isActive = isActivePath(path)
+    
+    return cn(
+      navigationMenuTriggerStyle(),
+      baseClasses,
+      isActive 
+        ? "text-primary font-semibold" 
+        : ""
+    )
+  }
+
+  // Helper function to get navigation trigger classes
+  const getNavTriggerClasses = (basePath: string) => {
+    const baseClasses = "relative font-medium transition-all duration-300 hover:scale-105"
+    const isActive = pathname.startsWith(basePath)
+    
+    return cn(
+      baseClasses,
+      isActive 
+        ? "text-primary font-semibold" 
+        : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
+    )
+  }
+
   if (!mounted) return <div className="h-20" />
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
         isScrolled 
-          ? "bg-white/95 backdrop-blur-xl shadow-xl border-b border-primary/10" 
-          : "bg-white/90 backdrop-blur-md"
+          ? "bg-white/95 backdrop-blur-xl shadow-2xl border-b border-primary/20" 
+          : "bg-white/90 backdrop-blur-md shadow-lg"
       }`}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
@@ -152,20 +189,24 @@ export default function Header() {
               width={180}
               height={45}
             priority
-              className="h-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-auto transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
           />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-lg"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 -z-10 blur-xl scale-110"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 -z-10"></div>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden lg:flex">
-          <NavigationMenuList className="space-x-2">
+          <NavigationMenuList className="space-x-1">
             {/* Home */}
             <NavigationMenuItem>
               <Link href="/" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "hover:bg-primary/10 hover:text-primary transition-all duration-300 font-medium")}>
+                <NavigationMenuLink className={getNavLinkClasses("/")}>
                   Home
+                  {isActivePath("/") && (
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                  )}
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
@@ -173,56 +214,66 @@ export default function Header() {
             {/* About */}
             <NavigationMenuItem>
               <Link href="/about" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "hover:bg-primary/10 hover:text-primary transition-all duration-300 font-medium")}>
+                <NavigationMenuLink className={getNavLinkClasses("/about")}>
                   About
+                  {isActivePath("/about") && (
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                  )}
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
 
             {/* Services Mega Menu */}
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="hover:bg-primary/10 hover:text-primary transition-all duration-300 font-medium">
+              <NavigationMenuTrigger className={getNavTriggerClasses("/services")}>
                 Services
+                {pathname.startsWith("/services") && (
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                )}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="w-[900px] p-6 bg-white/98 backdrop-blur-xl border border-gray-200/50 shadow-2xl rounded-lg">
+                <div className="w-[920px] p-6 bg-white/98 backdrop-blur-xl border border-gray-200/80 shadow-2xl rounded-2xl">
                   <div className="grid grid-cols-3 gap-6">
                     {/* Main Services - spans 2 columns */}
                     <div className="col-span-2 space-y-4">
-                      <h3 className="text-lg font-semibold text-primary mb-4 flex items-center">
-                        <Zap className="h-5 w-5 mr-2" />
-                        Core Service Suites
-                      </h3>
+                      <div className="flex items-center justify-between mb-6">
+                        <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent flex items-center">
+                          <Sparkles className="h-6 w-6 mr-2 text-primary animate-pulse" />
+                          Core Service Suites
+                        </h3>
+                        <div className="h-px bg-gradient-to-r from-primary/20 to-secondary/20 flex-1 ml-4"></div>
+                      </div>
                       <div className="grid grid-cols-2 gap-4">
-                        {serviceCategories.map((service) => (
-                          <div key={service.name} className="group relative">
+                        {serviceCategories.map((service, index) => (
+                          <div key={service.name} className="group relative" style={{ animationDelay: `${index * 100}ms` }}>
                             <Link 
                               href={service.href}
-                              className="block p-4 rounded-xl hover:bg-gradient-to-r hover:from-gray-50 hover:to-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20 hover:shadow-lg"
+                              className="block p-5 rounded-2xl hover:bg-gradient-to-br hover:from-gray-50 hover:to-primary/5 transition-all duration-500 border border-transparent hover:border-primary/30 hover:shadow-xl transform hover:-translate-y-1"
                             >
-                              <div className="flex items-start space-x-3 mb-3">
-                                <div className={`p-2 rounded-lg bg-gradient-to-r ${service.gradient} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                              <div className="flex items-start space-x-4 mb-4">
+                                <div className={`p-3 rounded-xl bg-gradient-to-br ${service.gradient} text-white shadow-lg group-hover:shadow-2xl group-hover:scale-110 transition-all duration-500`}>
                                   {service.icon}
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <h4 className="font-semibold text-gray-900 group-hover:text-primary transition-colors duration-300">
+                                  <h4 className="font-bold text-gray-900 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 text-lg">
                                     {service.name}
                                   </h4>
-                                  <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                                  <p className="text-sm text-gray-600 mt-2 leading-relaxed">
                                     {service.description}
                                   </p>
                                 </div>
                               </div>
-                              <div className="space-y-2">
-                                {service.services.slice(0, 3).map((subService) => (
-                                  <div key={subService.name} className="flex items-center space-x-2 text-xs text-gray-600">
-                                    <div className="text-primary">
+                              <div className="space-y-3">
+                                {service.services.slice(0, 3).map((subService, subIndex) => (
+                                  <div key={subService.name} className="flex items-center space-x-3 text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                                    <div className="text-primary group-hover:scale-110 transition-transform duration-300">
                                       {subService.icon}
                                     </div>
-                                    <span>{subService.name}</span>
+                                    <span className="font-medium">{subService.name}</span>
                                   </div>
                                 ))}
                               </div>
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
                             </Link>
                           </div>
                         ))}
@@ -232,21 +283,22 @@ export default function Header() {
                     {/* Solutions & Quick Links */}
                     <div className="space-y-6">
                       <div>
-                        <h3 className="text-lg font-semibold text-primary mb-4 flex items-center">
-                          <Target className="h-5 w-5 mr-2" />
+                        <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6 flex items-center">
+                          <Target className="h-6 w-6 mr-2 text-primary animate-pulse" />
                           Key Solutions
                         </h3>
                         <div className="grid gap-2">
-                          {solutions.slice(0, 6).map((solution) => (
+                          {solutions.slice(0, 6).map((solution, index) => (
                             <Link
                               key={solution.name}
                               href={solution.href}
-                              className="flex items-center space-x-3 p-3 rounded-lg hover:bg-primary/5 transition-all duration-300 group"
+                              className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 group transform hover:scale-105"
+                              style={{ animationDelay: `${index * 50}ms` }}
                             >
-                              <div className="text-primary group-hover:scale-110 transition-transform duration-300">
+                              <div className="text-primary group-hover:scale-125 transition-transform duration-300">
                                 {solution.icon}
                               </div>
-                              <span className="text-sm font-medium group-hover:text-primary transition-colors duration-300">
+                              <span className="text-sm font-semibold group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                                 {solution.name}
                               </span>
                             </Link>
@@ -254,15 +306,18 @@ export default function Header() {
                         </div>
                       </div>
 
-                      <div className="p-4 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl border border-primary/10">
-                        <h4 className="font-semibold text-primary mb-2">Need Expert Consultation?</h4>
-                        <p className="text-sm text-gray-600 mb-3">
-                          Get personalized cybersecurity recommendations.
+                      <div className="p-5 bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 rounded-2xl border border-primary/20 shadow-lg">
+                        <div className="flex items-center mb-3">
+                          <HelpCircle className="h-5 w-5 text-primary mr-2" />
+                          <h4 className="font-bold text-primary">Need Expert Consultation?</h4>
+                        </div>
+                        <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                          Get personalized cybersecurity recommendations tailored to your business needs.
                         </p>
-                        <Button asChild size="sm" className="w-full bg-primary text-white">
+                        <Button asChild size="sm" className="w-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                           <Link href="/contact">
                             <Phone className="h-4 w-4 mr-2" />
-                            Contact Us
+                            Contact Our Experts
                           </Link>
                         </Button>
                       </div>
@@ -270,20 +325,20 @@ export default function Header() {
                   </div>
 
                   {/* Bottom CTA */}
-                  <div className="mt-6 pt-6 border-t border-gray-200/50">
+                  <div className="mt-8 pt-6 border-t border-gradient-to-r from-gray-200/50 to-primary/20">
                     <div className="grid grid-cols-2 gap-4">
                       <Link 
                         href="/services"
-                        className="flex items-center justify-center space-x-2 p-3 bg-gradient-to-r from-primary to-secondary text-white rounded-xl hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 group"
+                        className="flex items-center justify-center space-x-2 p-4 bg-gradient-to-r from-primary to-secondary text-white rounded-2xl hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 group shadow-lg hover:shadow-2xl transform hover:scale-105"
                       >
-                        <span className="font-medium">View All Services</span>
+                        <span className="font-semibold">View All Services</span>
                         <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                       </Link>
                       <Link 
                         href="/solutions"
-                        className="flex items-center justify-center space-x-2 p-3 border border-primary text-primary rounded-xl hover:bg-primary/5 transition-all duration-300 group"
+                        className="flex items-center justify-center space-x-2 p-4 border-2 border-primary text-primary rounded-2xl hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300 group shadow-lg hover:shadow-2xl transform hover:scale-105"
                       >
-                        <span className="font-medium">Explore Solutions</span>
+                        <span className="font-semibold">Explore Solutions</span>
                         <Target className="h-4 w-4 group-hover:scale-110 transition-transform duration-300" />
                       </Link>
                     </div>
@@ -295,34 +350,56 @@ export default function Header() {
             {/* Solutions */}
             <NavigationMenuItem>
               <Link href="/solutions" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "hover:bg-primary/10 hover:text-primary transition-all duration-300 font-medium")}>
+                <NavigationMenuLink className={getNavLinkClasses("/solutions")}>
                   Solutions
+                  {isActivePath("/solutions") && (
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                  )}
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
 
             {/* Company Dropdown */}
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="hover:bg-primary/10 hover:text-primary transition-all duration-300 font-medium">
+              <NavigationMenuTrigger className={getNavTriggerClasses("/team")}>
                 Company
+                {(pathname.startsWith("/team") || pathname.startsWith("/clients-partners") || pathname.startsWith("/contact") || pathname.startsWith("/privacy-policy") || pathname.startsWith("/terms-of-service")) && (
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                )}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="w-[600px] p-6 bg-white/98 backdrop-blur-xl border border-gray-200/50 shadow-2xl rounded-lg">
-                  <div className="grid grid-cols-2 gap-3">
-                    {company.map((item) => (
+                <div className="w-[650px] p-6 bg-white/98 backdrop-blur-xl border border-gray-200/80 shadow-2xl rounded-2xl">
+                  <div className="grid grid-cols-2 gap-4">
+                    {company.map((item, index) => (
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="flex items-start space-x-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-gray-50 hover:to-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20 hover:shadow-lg group"
+                        className={cn(
+                          "flex items-start space-x-4 p-5 rounded-2xl transition-all duration-500 border border-transparent hover:shadow-xl group transform hover:scale-105",
+                          isActivePath(item.href)
+                            ? "bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/30 shadow-lg"
+                            : "hover:bg-gradient-to-br hover:from-gray-50 hover:to-primary/5 hover:border-primary/20"
+                        )}
+                        style={{ animationDelay: `${index * 100}ms` }}
                       >
-                        <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <div className={cn(
+                          "p-3 rounded-xl transition-all duration-500",
+                          isActivePath(item.href)
+                            ? "bg-gradient-to-br from-primary to-secondary text-white shadow-lg"
+                            : "bg-primary/10 text-primary group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary group-hover:text-white group-hover:shadow-lg"
+                        )}>
                           {item.icon}
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900 group-hover:text-primary transition-colors duration-300">
+                          <h4 className={cn(
+                            "font-bold transition-all duration-500",
+                            isActivePath(item.href)
+                              ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+                              : "text-gray-900 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text group-hover:text-transparent"
+                          )}>
                             {item.name}
                           </h4>
-                          <p className="text-sm text-gray-600 mt-1">
+                          <p className="text-sm text-gray-600 mt-2 leading-relaxed">
                             {item.description}
                           </p>
                         </div>
@@ -338,8 +415,9 @@ export default function Header() {
         {/* Right Side Actions */}
         <div className="flex items-center gap-3">
           {/* CTA Button */}
-          <Button asChild className="bg-primary shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-white">
+          <Button asChild className="bg-primary shadow-lg hover:shadow-2xl transition-all duration-300 font-semibold text-white transform hover:scale-105 hover:from-primary/90 hover:to-secondary/90">
             <Link href="/contact">
+              <Sparkles className="h-4 w-4 mr-2" />
               Consult with us
             </Link>
           </Button>
@@ -347,12 +425,12 @@ export default function Header() {
           {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="lg:hidden hover:bg-primary/10 hover:text-primary transition-all duration-300 border-primary/20">
+              <Button variant="outline" size="icon" className="lg:hidden hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary transition-all duration-300 border-primary/30 shadow-md hover:shadow-lg transform hover:scale-105">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-sm bg-white border-l border-gray-200">
+            <SheetContent side="right" className="w-full max-w-sm bg-white/95 backdrop-blur-xl border-l border-gray-200/80">
               <SheetHeader className="mb-6">
                 <SheetTitle>
                   <Link href="/">
@@ -367,54 +445,115 @@ export default function Header() {
                 </SheetTitle>
               </SheetHeader>
               
-              <div className="flex flex-col space-y-1">
-                <Link href="/" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors duration-300">
-                  <span className="text-lg font-medium">Home</span>
+              <div className="flex flex-col space-y-2">
+                <Link 
+                  href="/" 
+                  className={cn(
+                    "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium relative",
+                    isActivePath("/")
+                      ? "text-primary font-semibold"
+                      : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
+                  )}
+                >
+                  <span className="text-lg">Home</span>
+                  {isActivePath("/") && (
+                    <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                  )}
                 </Link>
                 
-                <Link href="/about" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors duration-300">
-                  <span className="text-lg font-medium">About</span>
+                <Link 
+                  href="/about" 
+                  className={cn(
+                    "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium relative",
+                    isActivePath("/about")
+                      ? "text-primary font-semibold"
+                      : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
+                  )}
+                >
+                  <span className="text-lg">About</span>
+                  {isActivePath("/about") && (
+                    <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                  )}
                 </Link>
                 
-                <div className="space-y-1">
-                  <p className="px-4 py-2 text-lg font-semibold text-primary">Services</p>
+                <div className="space-y-2">
+                  <p className="px-4 py-2 text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent flex items-center">
+                    <Sparkles className="h-5 w-5 mr-2 text-primary" />
+                    Services
+                  </p>
                   {serviceCategories.map((service) => (
                     <Link
                       key={service.name}
                       href={service.href}
-                      className="flex items-center space-x-3 px-6 py-2 rounded-lg hover:bg-primary/10 transition-colors duration-300"
+                      className={cn(
+                        "flex items-center space-x-3 px-6 py-3 rounded-xl transition-all duration-300 font-medium relative",
+                        isActivePath(service.href)
+                          ? "text-primary font-semibold"
+                          : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
+                      )}
                     >
-                      <div className={`p-1 rounded bg-gradient-to-r ${service.gradient} text-white`}>
+                      <div className={`p-1 rounded-lg bg-gradient-to-r ${service.gradient} text-white shadow-md`}>
                         {React.cloneElement(service.icon, { className: "h-4 w-4" })}
                       </div>
-                      <span className="text-md font-medium">{service.name}</span>
+                      <span className="text-md">{service.name}</span>
+                      {isActivePath(service.href) && (
+                        <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                      )}
                     </Link>
                   ))}
                 </div>
                 
-                <Link href="/solutions" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors duration-300">
-                  <span className="text-lg font-medium">Solutions</span>
+                <Link 
+                  href="/solutions" 
+                  className={cn(
+                    "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium relative",
+                    isActivePath("/solutions")
+                      ? "text-primary font-semibold"
+                      : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
+                  )}
+                >
+                  <span className="text-lg">Solutions</span>
+                  {isActivePath("/solutions") && (
+                    <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                  )}
                 </Link>
                 
-                <div className="space-y-1">
-                  <p className="px-4 py-2 text-lg font-semibold text-primary">Company</p>
+                <div className="space-y-2">
+                  <p className="px-4 py-2 text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent flex items-center">
+                    <Award className="h-5 w-5 mr-2 text-primary" />
+                    Company
+                  </p>
                   {company.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="flex items-center space-x-3 px-6 py-2 rounded-lg hover:bg-primary/10 transition-colors duration-300"
+                      className={cn(
+                        "flex items-center space-x-3 px-6 py-3 rounded-xl transition-all duration-300 font-medium relative",
+                        isActivePath(item.href)
+                          ? "text-primary font-semibold"
+                          : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
+                      )}
                     >
-                      <div className="text-primary">
+                      <div className={cn(
+                        "transition-all duration-300",
+                        isActivePath(item.href) ? "text-primary" : "text-primary"
+                      )}>
                         {React.cloneElement(item.icon, { className: "h-4 w-4" })}
                       </div>
-                      <span className="text-md font-medium">{item.name}</span>
+                      <span className="text-md">{item.name}</span>
+                      {isActivePath(item.href) && (
+                        <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                      )}
                     </Link>
                   ))}
                 </div>
 
                 <div className="pt-6">
-                  <Button asChild className="w-full bg-primary text-white">
-                    <Link href="/contact">Consult with us</Link>
+                  <Button asChild className="w-full bg-primary text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <Link href="/contact">
+                      <Sparkles className="h-4 w-4 mr-2" />
+                      Consult with us
+                    </Link>
                   </Button>
                 </div>
               </div>

@@ -2,9 +2,9 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, Sparkles, Zap, Shield } from "lucide-react"
-import { motion, useMotionValue, useTransform } from "framer-motion"
-import { useEffect, useState } from "react"
+import { ChevronRight, Shield, Zap, Lock, Users, Award, AlertTriangle, Trophy } from "lucide-react"
+import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
 
 const trustedCompanies = [
   { name: "Axis Bank", logo: "/companies/axis.png", width: 150, height: 75 },
@@ -14,367 +14,444 @@ const trustedCompanies = [
   { name: "SBI", logo: "/companies/sbi.png", width: 150, height: 75 },
 ]
 
-// Enhanced Animated Circuit Board
-const AnimatedCircuit = () => (
-  <svg className="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 1200 800" fill="none">
+const keyFeatures = [
+  {
+    icon: Shield,
+    title: "Advanced Threat Protection",
+    description: "Real-time protection against malware, ransomware, and zero-day attacks"
+  },
+  {
+    icon: Lock,
+    title: "Data Security & Privacy",
+    description: "End-to-end encryption and privacy controls for sensitive information"
+  },
+  {
+    icon: Users,
+    title: "Multi-Device Management",
+    description: "Centralized security management across all your devices and platforms"
+  }
+]
+
+// Crawling bugs/threats
+const CrawlingBugs = () => {
+  const [bugs, setBugs] = useState<Array<{
+    id: number;
+    duration: number;
+    delay: number;
+    path: string;
+  }>>([])
+
+  useEffect(() => {
+    const generatedBugs = Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      duration: 15 + Math.random() * 10,
+      delay: Math.random() * 5,
+      path: `M${50 + i * 150} 100 Q${200 + i * 100} ${200 + Math.random() * 100} ${400 + i * 150} ${300 + Math.random() * 200}`,
+    }))
+    setBugs(generatedBugs)
+  }, [])
+
+  if (bugs.length === 0) {
+    return null
+  }
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {bugs.map((bug) => (
+        <motion.div key={bug.id}>
+          <svg className="absolute inset-0 w-full h-full opacity-0">
     <motion.path
-      d="M100 100 L300 100 L300 200 L500 200 L500 300 L700 300 L700 400 L900 400 L900 500 L1100 500"
-      stroke="url(#circuit-gradient)"
+              d={bug.path}
+              stroke="transparent"
       strokeWidth="2"
       fill="none"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-    />
-    <motion.path
-      d="M800 150 L1000 150 L1000 250 L1100 250 L1100 350 L900 350 L900 450 L700 450"
-      stroke="url(#circuit-gradient-2)"
-      strokeWidth="2"
-      fill="none"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-    />
-    <motion.path
-      d="M200 600 L400 600 L400 500 L600 500 L600 400 L800 400"
-      stroke="url(#circuit-gradient-3)"
-      strokeWidth="2"
-      fill="none"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-    />
+              id={`bug-path-${bug.id}`}
+            />
+          </svg>
+          <motion.div
+            className="absolute w-1.5 h-1.5 bg-red-500 rounded-full opacity-30"
+            initial={{ offsetDistance: "0%" }}
+            animate={{ offsetDistance: "100%" }}
+            transition={{
+              duration: bug.duration,
+              repeat: Infinity,
+              ease: "linear",
+              delay: bug.delay,
+            }}
+            style={{
+              offsetPath: `path('${bug.path}')`,
+              offsetRotate: "auto",
+            }}
+          />
+        </motion.div>
+      ))}
+    </div>
+  )
+}
 
-    <motion.circle
-      cx="300"
-      cy="100"
-      r="6"
-      fill="#00ff87"
-      initial={{ scale: 0 }}
-      animate={{ 
-        scale: [0, 1.5, 1, 1.5, 0],
-        opacity: [0, 1, 0.7, 1, 0]
+// Subtle scanning lines
+const ScanningLines = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    {/* Horizontal scanning lines */}
+    <motion.div
+      className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+      initial={{ y: 0 }}
+      animate={{ y: "100vh" }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 2,
       }}
-      transition={{ duration: 3, repeat: Infinity, delay: 1 }}
     />
-    <motion.circle
-      cx="700"
-      cy="300"
-      r="6"
-      fill="#3b82f6"
-      initial={{ scale: 0 }}
-      animate={{ 
-        scale: [0, 1.5, 1, 1.5, 0],
-        opacity: [0, 1, 0.7, 1, 0]
+    <motion.div
+      className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-green-500/15 to-transparent"
+      initial={{ y: 0 }}
+      animate={{ y: "100vh" }}
+      transition={{
+        duration: 12,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 6,
       }}
-      transition={{ duration: 3, repeat: Infinity, delay: 2 }}
     />
-    <motion.circle
-      cx="1000"
-      cy="150"
-      r="6"
-      fill="#8b5cf6"
-      initial={{ scale: 0 }}
-      animate={{ 
-        scale: [0, 1.5, 1, 1.5, 0],
-        opacity: [0, 1, 0.7, 1, 0]
+    <motion.div
+      className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent"
+      initial={{ y: 0 }}
+      animate={{ y: "100vh" }}
+      transition={{
+        duration: 15,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 10,
       }}
-      transition={{ duration: 3, repeat: Infinity, delay: 2.5 }}
     />
-
-    {/* Circuit Components */}
-    <motion.rect
-      x="295"
-      y="95"
-      width="10"
-      height="10"
-      fill="none"
-      stroke="#00ff87"
-      strokeWidth="1"
-      animate={{ rotate: 360 }}
-      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-      style={{ transformOrigin: "300px 100px" }}
+    
+    {/* Vertical scanning lines */}
+    <motion.div
+      className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-transparent via-primary/15 to-transparent"
+      initial={{ x: 0 }}
+      animate={{ x: "-100vw" }}
+      transition={{
+        duration: 12,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 5,
+      }}
     />
-    <motion.rect
-      x="695"
-      y="295"
-      width="10"
-      height="10"
-      fill="none"
-      stroke="#3b82f6"
-      strokeWidth="1"
-      animate={{ rotate: -360 }}
-      transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-      style={{ transformOrigin: "700px 300px" }}
+    <motion.div
+      className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-transparent via-red-500/10 to-transparent"
+      initial={{ x: 0 }}
+      animate={{ x: "-100vw" }}
+      transition={{
+        duration: 18,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 8,
+      }}
     />
-
-    <defs>
-      <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.6" />
-        <stop offset="50%" stopColor="#00ff87" stopOpacity="1" />
-        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.6" />
-      </linearGradient>
-      <linearGradient id="circuit-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.6" />
-        <stop offset="50%" stopColor="#3b82f6" stopOpacity="1" />
-        <stop offset="100%" stopColor="#00ff87" stopOpacity="0.6" />
-      </linearGradient>
-      <linearGradient id="circuit-gradient-3" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#00ff87" stopOpacity="0.6" />
-        <stop offset="50%" stopColor="#8b5cf6" stopOpacity="1" />
-        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.6" />
-      </linearGradient>
-    </defs>
-  </svg>
+    <motion.div
+      className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-transparent via-primary/12 to-transparent"
+      initial={{ x: 0 }}
+      animate={{ x: "100vw" }}
+      transition={{
+        duration: 14,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 3,
+      }}
+    />
+  </div>
 )
 
-// Fixed position floating tech icons
-const FloatingTechIcons = () => {
-  const icons = [
-    { emoji: "🔒", x: 15, y: 20, delay: 0 },
-    { emoji: "⚡", x: 25, y: 60, delay: 0.5 },
-    { emoji: "🛡️", x: 75, y: 25, delay: 1 },
-    { emoji: "🔧", x: 85, y: 70, delay: 1.5 },
-    { emoji: "💾", x: 35, y: 80, delay: 2 },
-    { emoji: "🌐", x: 65, y: 15, delay: 2.5 },
-    { emoji: "⚙️", x: 55, y: 85, delay: 3 },
-    { emoji: "🔗", x: 10, y: 75, delay: 3.5 },
+// Security alerts in corners
+const SecurityAlerts = () => {
+  const alerts = [
+    { x: 95, y: 5, type: "threat", delay: 0 },
+    { x: 5, y: 95, type: "scan", delay: 3 },
+    { x: 90, y: 85, type: "block", delay: 6 },
+    { x: 10, y: 15, type: "secure", delay: 9 },
   ]
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {icons.map((icon, index) => (
+      {alerts.map((alert, index) => (
         <motion.div
           key={index}
-          className="absolute text-3xl opacity-20"
-          style={{
-            left: `${icon.x}%`,
-            top: `${icon.y}%`,
-            filter: "drop-shadow(0 0 10px rgba(0, 255, 135, 0.5))",
-          }}
+          className="absolute"
+          style={{ left: `${alert.x}%`, top: `${alert.y}%` }}
+          initial={{ opacity: 0, scale: 0 }}
           animate={{
-            y: [-20, 20, -20],
-            x: [-10, 10, -10],
-            rotate: [0, 360],
-            scale: [0.8, 1.2, 0.8],
+            opacity: [0, 0.6, 0],
+            scale: [0, 1, 0],
           }}
           transition={{
-            duration: 8 + index,
+            duration: 2,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: icon.delay,
+            delay: alert.delay,
+            repeatDelay: 10,
           }}
         >
-          {icon.emoji}
+          <div className="w-2 h-2 bg-primary rounded-full shadow-lg" />
+          <div className="absolute inset-0 w-2 h-2 bg-primary rounded-full animate-ping" />
         </motion.div>
       ))}
     </div>
   )
 }
 
-// Fixed position particle system
-const FixedParticleSystem = () => {
-  const particles = Array.from({ length: 60 }, (_, i) => ({
-    id: i,
-    x: (i * 17) % 100, // Fixed positions based on index
-    y: (i * 23) % 100,
-    delay: (i * 0.5) % 5,
-  }))
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((particle) => (
+// Minimal data flow
+const DataFlow = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+    {/* Top section flows */}
+    <motion.div
+      className="absolute top-1/4 left-0 w-8 h-0.5 bg-primary"
+      initial={{ x: "-2rem" }}
+      animate={{ x: "100vw" }}
+      transition={{
+        duration: 6,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 1,
+      }}
+    />
+    <motion.div
+      className="absolute top-1/6 left-0 w-12 h-0.5 bg-green-500"
+      initial={{ x: "-3rem" }}
+      animate={{ x: "100vw" }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 3,
+      }}
+    />
+    <motion.div
+      className="absolute top-1/3 left-0 w-6 h-0.5 bg-blue-500"
+      initial={{ x: "-1.5rem" }}
+      animate={{ x: "100vw" }}
+      transition={{
+        duration: 10,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 5,
+      }}
+    />
+    
+    {/* Bottom section flows */}
         <motion.div
-          key={particle.id}
-          className="absolute w-1 h-1 bg-secondary rounded-full"
-          style={{
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            boxShadow: "0 0 6px currentColor",
-          }}
-          animate={{
-            opacity: [0, 1, 0],
-            scale: [0, 1.5, 0],
-            y: [-50, 50],
-          }}
+      className="absolute top-3/4 right-0 w-6 h-0.5 bg-secondary"
+      initial={{ x: "2rem" }}
+      animate={{ x: "-100vw" }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 4,
+      }}
+    />
+    <motion.div
+      className="absolute top-5/6 right-0 w-10 h-0.5 bg-primary"
+      initial={{ x: "2.5rem" }}
+      animate={{ x: "-100vw" }}
+      transition={{
+        duration: 7,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 2,
+      }}
+    />
+    <motion.div
+      className="absolute top-2/3 right-0 w-4 h-0.5 bg-red-500"
+      initial={{ x: "1rem" }}
+      animate={{ x: "-100vw" }}
           transition={{
-            duration: 5,
+        duration: 9,
             repeat: Infinity,
-            ease: "easeInOut",
-            delay: particle.delay,
-          }}
-        />
-      ))}
-    </div>
-  )
-}
-
-// Data stream effect
-const DataStream = () => {
-  const streams = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    left: 5 + i * 12,
-    delay: i * 0.8,
-    data: "1010110110010110100101101001011010010110100101101001011010010110",
-  }))
-
-  return (
-    <div className="absolute left-0 top-0 w-full h-full overflow-hidden pointer-events-none">
-      {streams.map((stream) => (
+        ease: "linear",
+        delay: 6,
+      }}
+    />
+    
+    {/* Middle section diagonal flows */}
+    <motion.div
+      className="absolute top-1/2 left-0 w-5 h-0.5 bg-primary rotate-12"
+      initial={{ x: "-1.5rem", y: 0 }}
+      animate={{ x: "100vw", y: "-50px" }}
+      transition={{
+        duration: 11,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 7,
+      }}
+    />
+    <motion.div
+      className="absolute top-1/2 right-0 w-7 h-0.5 bg-green-500 -rotate-12"
+      initial={{ x: "2rem", y: 0 }}
+      animate={{ x: "-100vw", y: "50px" }}
+      transition={{
+        duration: 13,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 9,
+      }}
+    />
+    
+    {/* Additional multi-directional flows */}
         <motion.div
-          key={stream.id}
-          className="absolute text-xs text-secondary/20 font-mono whitespace-nowrap"
-          style={{
-            left: `${stream.left}%`,
-            top: "-10%",
-          }}
-          animate={{
-            y: ["0vh", "110vh"],
-          }}
+      className="absolute top-1/8 left-0 w-4 h-0.5 bg-yellow-500"
+      initial={{ x: "-1rem" }}
+      animate={{ x: "100vw" }}
+      transition={{
+        duration: 12,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 8,
+      }}
+    />
+    <motion.div
+      className="absolute top-7/8 right-0 w-8 h-0.5 bg-purple-500"
+      initial={{ x: "2rem" }}
+      animate={{ x: "-100vw" }}
           transition={{
-            duration: 15,
+        duration: 9,
             repeat: Infinity,
             ease: "linear",
-            delay: stream.delay,
+        delay: 5,
           }}
-        >
-          {stream.data}
-        </motion.div>
-      ))}
+    />
     </div>
   )
-}
 
-const GeometricBackground = () => (
-  <div className="absolute inset-0 overflow-hidden">
-    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800">
-      <motion.polygon
-        points="100,100 200,50 300,100 250,200 150,200"
-        fill="rgba(59, 130, 246, 0.1)"
-        stroke="rgba(0, 255, 135, 0.3)"
-        strokeWidth="1"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        style={{ transformOrigin: "200px 125px" }}
-      />
-      <motion.polygon
-        points="800,200 900,150 1000,200 950,300 850,300"
-        fill="rgba(139, 92, 246, 0.1)"
-        stroke="rgba(0, 255, 135, 0.3)"
-        strokeWidth="1"
-        animate={{ rotate: -360 }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        style={{ transformOrigin: "900px 225px" }}
-      />
-      <motion.circle
-        cx="600"
-        cy="150"
-        r="50"
-        fill="none"
-        stroke="rgba(0, 255, 135, 0.2)"
-        strokeWidth="2"
-        strokeDasharray="5,5"
-        animate={{ rotate: 360, strokeDashoffset: [0, -10] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        style={{ transformOrigin: "600px 150px" }}
-      />
-      <motion.polygon
-        points="300,600 400,550 500,600 450,700 350,700"
-        fill="rgba(0, 255, 135, 0.08)"
-        stroke="rgba(59, 130, 246, 0.3)"
-        strokeWidth="1"
-        animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-        style={{ transformOrigin: "400px 625px" }}
-      />
-    </svg>
+// Network pulse lines
+const NetworkPulse = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
+    
   </div>
 )
 
-const MorphingShape = () => (
-  <svg className="absolute top-10 right-10 w-96 h-96 opacity-15" viewBox="0 0 200 200">
-    <motion.path
-      d="M50 50 Q150 50 150 150 Q50 150 50 50"
-      fill="url(#morphing-gradient)"
+// Threat detection lines
+const ThreatDetection = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-12">
+    {/* Radar-like scanning */}
+    <motion.div
+      className="absolute top-1/4 left-1/4 w-20 h-0.5 bg-red-500 origin-left"
+      animate={{ rotate: [0, 360] }}
+      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+    />
+    <motion.div
+      className="absolute top-3/4 right-1/4 w-16 h-0.5 bg-orange-500 origin-left"
+      animate={{ rotate: [360, 0] }}
+      transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+    />
+    
+    {/* Detection pulses */}
+    <motion.div
+      className="absolute top-1/3 left-1/2 w-0.5 h-8 bg-red-500"
+      initial={{ y: 0 }}
+      animate={{ y: ["0px", "200px", "0px"] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    />
+    <motion.div
+      className="absolute top-2/3 right-1/3 w-0.5 h-6 bg-yellow-500"
+      initial={{ y: 0 }}
+      animate={{ y: ["0px", "-150px", "0px"] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+    />
+  </div>
+)
+
+// Data encryption streams
+const EncryptionStreams = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
+    {/* Encrypted data blocks */}
+    {Array.from({ length: 8 }, (_, i) => (
+      <motion.div
+        key={i}
+        className="absolute w-2 h-2 bg-green-500 rounded-sm"
+        style={{
+          left: `${10 + i * 10}%`,
+          top: `${20 + (i % 3) * 20}%`,
+        }}
       animate={{
-        d: [
-          "M50 50 Q150 50 150 150 Q50 150 50 50",
-          "M30 70 Q170 30 170 170 Q30 170 30 70",
-          "M70 30 Q170 70 130 170 Q70 130 70 30",
-          "M50 50 Q150 50 150 150 Q50 150 50 50",
-        ],
+          x: ["0px", "100vw"],
+          opacity: [0, 1, 1, 0],
+        }}
+        transition={{
+          duration: 8 + i,
+          repeat: Infinity,
+          ease: "linear",
+          delay: i * 1.5,
+        }}
+      />
+    ))}
+    
+    {/* Encryption trails */}
+    <motion.div
+      className="absolute top-1/5 left-0 w-16 h-0.5 bg-gradient-to-r from-green-500 to-transparent"
+      initial={{ x: "-4rem" }}
+      animate={{ x: "100vw" }}
+      transition={{
+        duration: 7,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 2,
+      }}
+    />
+    <motion.div
+      className="absolute bottom-1/5 right-0 w-12 h-0.5 bg-gradient-to-l from-blue-500 to-transparent"
+      initial={{ x: "3rem" }}
+      animate={{ x: "-100vw" }}
+      transition={{ 
+        duration: 9,
+        repeat: Infinity, 
+        ease: "linear",
+        delay: 4,
+      }}
+    />
+  </div>
+)
+
+// Firewall barriers
+const FirewallBarriers = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-6">
+    {/* Vertical barriers */}
+    <motion.div
+      className="absolute left-1/4 top-0 w-0.5 h-full bg-gradient-to-b from-transparent via-red-500 to-transparent"
+      animate={{
+        opacity: [0.3, 0.8, 0.3],
+        scaleY: [0.5, 1, 0.5],
       }}
       transition={{
-        duration: 12,
+        duration: 3,
         repeat: Infinity,
         ease: "easeInOut",
       }}
     />
-    <motion.circle
-      cx="100"
-      cy="100"
-      r="60"
-      fill="none"
-      stroke="url(#morphing-gradient)"
-      strokeWidth="2"
-      strokeDasharray="10,5"
-      animate={{ 
-        rotate: 360,
-        strokeDashoffset: [0, -15] 
-      }}
-      transition={{ 
-        duration: 8, 
-        repeat: Infinity, 
-        ease: "linear" 
-      }}
-      style={{ transformOrigin: "100px 100px" }}
-    />
-    <defs>
-      <radialGradient id="morphing-gradient">
-        <stop offset="0%" stopColor="#00ff87" stopOpacity="0.8" />
-        <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.6" />
-        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.4" />
-      </radialGradient>
-    </defs>
-  </svg>
-)
-
-// Pulsing rings
-const PulsingRings = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
     <motion.div
-      className="absolute top-1/4 left-1/4 w-32 h-32 border border-secondary/20 rounded-full"
+      className="absolute right-1/3 top-0 w-0.5 h-full bg-gradient-to-b from-transparent via-orange-500 to-transparent"
       animate={{
-        scale: [1, 2, 1],
-        opacity: [0.3, 0.1, 0.3],
+        opacity: [0.3, 0.8, 0.3],
+        scaleY: [0.5, 1, 0.5],
       }}
       transition={{
         duration: 4,
         repeat: Infinity,
         ease: "easeInOut",
+        delay: 1.5,
       }}
     />
+    
+    {/* Horizontal barriers */}
     <motion.div
-      className="absolute top-3/4 right-1/4 w-24 h-24 border border-accent/20 rounded-full"
+      className="absolute top-1/3 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent"
       animate={{
-        scale: [1, 2.5, 1],
-        opacity: [0.4, 0.1, 0.4],
+        opacity: [0.2, 0.6, 0.2],
+        scaleX: [0.3, 1, 0.3],
       }}
       transition={{
         duration: 5,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 1,
-      }}
-    />
-    <motion.div
-      className="absolute top-1/2 right-1/3 w-16 h-16 border border-blue-400/20 rounded-full"
-      animate={{
-        scale: [1, 3, 1],
-        opacity: [0.5, 0.1, 0.5],
-      }}
-      transition={{
-        duration: 6,
         repeat: Infinity,
         ease: "easeInOut",
         delay: 2,
@@ -383,158 +460,240 @@ const PulsingRings = () => (
   </div>
 )
 
-export default function HeroSection() {
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const rotateX = useTransform(mouseY, [-300, 300], [2, -2])
-  const rotateY = useTransform(mouseX, [-300, 300], [-2, 2])
+// Security monitoring waves
+const MonitoringWaves = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+    {/* Sine wave patterns */}
+    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800">
+      <motion.path
+        d="M0 400 Q300 300 600 400 T1200 400"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+        className="text-primary"
+        strokeDasharray="10,5"
+        animate={{ strokeDashoffset: [0, -15] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.path
+        d="M0 200 Q300 100 600 200 T1200 200"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+        className="text-green-500"
+        strokeDasharray="8,7"
+        animate={{ strokeDashoffset: [0, -15] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "linear", delay: 1 }}
+      />
+      <motion.path
+        d="M0 600 Q300 500 600 600 T1200 600"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+        className="text-blue-500"
+        strokeDasharray="6,9"
+        animate={{ strokeDashoffset: [0, -15] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: 2 }}
+      />
+    </svg>
+  </div>
+)
 
-  const handleMouseMove = (event: React.MouseEvent) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    mouseX.set(event.clientX - centerX)
-    mouseY.set(event.clientY - centerY)
-  }
-
-  return (
-    <section 
-      className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-secondary"
-      onMouseMove={handleMouseMove}
-    >
-      {/* Enhanced Background Animations */}
-      <GeometricBackground />
-      <AnimatedCircuit />
-      <FloatingTechIcons />
-      <FixedParticleSystem />
-      <DataStream />
-      <MorphingShape />
-      <PulsingRings />
-      
-      {/* Animated Grid Pattern */}
+// Additional moving security elements
+const SecurityPatrols = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
+    {/* Security patrol lines */}
       <motion.div 
-        className="absolute inset-0 opacity-5"
-        animate={{
-          backgroundPosition: ["0% 0%", "100% 100%"],
-        }}
+      className="absolute top-0 left-1/2 w-0.5 h-4 bg-primary"
+      initial={{ y: 0 }}
+      animate={{ y: "100vh" }}
         transition={{
-          duration: 30,
+        duration: 6,
           repeat: Infinity,
           ease: "linear",
-        }}
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(0,255,135,0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,255,135,0.3) 1px, transparent 1px)
-          `,
-          backgroundSize: "50px 50px",
-        }}
-      />
-
-      {/* Enhanced Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+        delay: 0,
+      }}
+    />
         <motion.div
-          className="absolute top-20 left-10 w-20 h-20 bg-secondary/20 rounded-full blur-xl"
-          animate={{ 
-            y: [-20, 20, -20], 
-            x: [-10, 10, -10],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute top-0 left-1/3 w-0.5 h-6 bg-green-500"
+      initial={{ y: 0 }}
+      animate={{ y: "100vh" }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 2,
+      }}
         />
         <motion.div
-          className="absolute top-40 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl"
-          animate={{ 
-            y: [20, -20, 20], 
-            x: [10, -10, 10],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute top-0 right-1/4 w-0.5 h-3 bg-blue-500"
+      initial={{ y: 0 }}
+      animate={{ y: "100vh" }}
+      transition={{
+        duration: 7,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 4,
+      }}
+    />
+    
+    {/* Horizontal patrols */}
+        <motion.div
+      className="absolute left-0 top-1/5 w-5 h-0.5 bg-red-500"
+      initial={{ x: "-1.25rem" }}
+      animate={{ x: "100vw" }}
+      transition={{
+        duration: 5,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 1,
+      }}
         />
         <motion.div
-          className="absolute bottom-20 left-1/4 w-16 h-16 bg-secondary/30 rounded-full blur-lg"
-          animate={{ 
-            y: [-15, 15, -15],
-            rotate: [0, 360],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-1/3 left-3/4 w-24 h-24 bg-blue-500/15 rounded-full blur-xl"
-          animate={{ 
-            y: [15, -15, 15],
-            x: [-8, 8, -8],
-            scale: [1, 1.4, 1],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 right-1/3 w-20 h-20 bg-purple-500/15 rounded-full blur-lg"
-          animate={{ 
-            y: [-12, 12, -12],
-            x: [12, -12, 12],
-            scale: [1, 1.5, 1],
-          }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute right-0 bottom-1/4 w-7 h-0.5 bg-yellow-500"
+      initial={{ x: "1.75rem" }}
+      animate={{ x: "-100vw" }}
+      transition={{
+        duration: 6,
+        repeat: Infinity,
+        ease: "linear",
+        delay: 3,
+      }}
         />
       </div>
+)
 
-      {/* Main Content - Static Text */}
+// Corner security indicators
+const CornerIndicators = () => (
+  <div className="absolute inset-0 pointer-events-none">
+    {/* Top right */}
+    <motion.div
+      className="absolute top-8 right-8 text-xs text-primary/40 font-mono"
+      animate={{ opacity: [0.3, 0.7, 0.3] }}
+      transition={{ duration: 3, repeat: Infinity }}
+    >
+      SECURE
+    </motion.div>
+    
+    {/* Bottom left */}
+    <motion.div
+      className="absolute bottom-8 left-8 text-xs text-green-500/40 font-mono"
+      animate={{ opacity: [0.3, 0.7, 0.3] }}
+      transition={{ duration: 4, repeat: Infinity, delay: 1.5 }}
+    >
+      PROTECTED
+    </motion.div>
+    
+    {/* Scanning indicator */}
       <motion.div 
-        className="container mx-auto px-4 md:px-6 relative z-10"
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      >
-        <div className="text-center space-y-8">
-          {/* Simple Badge */}
+      className="absolute top-1/2 right-4 text-xs text-primary/30 font-mono rotate-90"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: [0, 0.6, 0] }}
+      transition={{ duration: 2, repeat: Infinity, delay: 3 }}
+    >
+      SCANNING...
+    </motion.div>
+  </div>
+)
+
+export default function HeroSection() {
+  return (
+    <section className="relative bg-white overflow-hidden">
+      {/* Subtle Background Effects */}
+      <CrawlingBugs />
+      <ScanningLines />
+      <SecurityAlerts />
+      <DataFlow />
+      
+      {/* <ThreatDetection /> */}
+      <EncryptionStreams />
+      {/* <FirewallBarriers /> */}
+      <MonitoringWaves />
+      <SecurityPatrols />
+      <CornerIndicators />
+      
+      {/* Hero Content */}
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)] py-16">
+          {/* Left Content */}
+          <div className="space-y-8">
+            {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 rounded-full"
-          >
-            <Sparkles className="h-5 w-5 text-secondary" />
-            <span className="text-white/90 font-medium">Trusted by 250+ Companies Worldwide</span>
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full"
+            >
+              <Award className="h-4 w-4 text-primary" />
+              <span className="text-primary font-medium text-sm">
+                Trusted by enterprises in BFSI, Healthcare, Government, and Technology.
+              </span>
           </motion.div>
 
-          {/* Static Main Heading - No Animations */}
+          {/* Main Heading */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="space-y-6"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-4"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-none">
-              <span className="block">Innovative</span>
-              <span className="block bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
-                IT Solutions
-              </span>
-              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl mt-2">
-                for a Cyber World
-              </span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+              <div className="flex flex-col gap-3 lg:gap-4">
+                <div className="flex items-center gap-3 text-primary">
+                <span className="flex items-center gap-3 text-primary">
+                  <Shield className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0" />
+                  <span>Protect.</span>
+                </span>
+                <span className="flex items-center gap-3 text-primary">
+                  <AlertTriangle className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0" />
+                  <span>Prevent.</span>
+                </span>
+                </div>
+                <span className="flex items-center gap-3 text-primary">
+                  <Trophy className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0" />
+                  <span>Prevail.</span>
+                </span>
+              </div>
             </h1>
-            
-            <p className="text-xl sm:text-2xl lg:text-3xl text-white/90 max-w-4xl mx-auto leading-relaxed font-light">
-              Empowering businesses with <span className="font-semibold text-secondary">cutting-edge technology</span>, 
-              robust security, and dedicated support to achieve operational excellence.
+            <p className="text-xl text-gray-600 leading-relaxed">
+              At JAYAA IT Solution, we empower businesses to stay ahead of evolving cyber threats through 
+              intelligent, proactive, and compliance-driven security solutions.
             </p>
           </motion.div>
 
-          {/* Fixed Action Buttons */}
+          {/* Description */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="space-y-4"
+          >
+            <p className="text-lg text-gray-700">
+              From endpoint protection to red teaming, our cybersecurity suite is designed to ensure 
+              resilience, business continuity, and regulatory peace of mind.
+            </p>
+            <p className="text-lg font-semibold text-primary">
+              Safeguard your digital future with industry-grade cybersecurity, today.
+            </p>
+            
+          </motion.div>
+
+          {/* Action Buttons */}
+          <motion.div
+              initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 pt-4"
           >
             <Button
               asChild
               size="lg"
-              className="bg-secondary hover:bg-secondary/90 text-primary font-bold text-lg px-8 py-4 shadow-2xl transition-all duration-300 hover:scale-105"
+                className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 transition-all duration-300 hover:scale-105"
             >
-              <Link href="/services" className="flex items-center">
-                <Zap className="mr-2 h-6 w-6" />
-                Discover Our Solutions 
-                <ChevronRight className="ml-2 h-6 w-6" />
+                <Link href="/services" className="flex items-center justify-center">
+                <Zap className="mr-2 h-5 w-5" />
+                  Explore Solutions
+                <ChevronRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             
@@ -542,35 +701,200 @@ export default function HeroSection() {
               asChild
               size="lg"
               variant="outline"
-              className="border-2 border-white/50 text-primary hover:text-primary hover:bg-white hover:border-white backdrop-blur-sm font-semibold text-lg px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105"
+                className="border-2 border-primary text-primary hover:bg-primary/80 font-semibold px-8 py-3 transition-all duration-300 hover:scale-105"
             >
-              <Link href="/contact" className="flex items-center">
-                <Shield className="mr-2 h-5 w-5" />
-                Get Expert Consultation
+                <Link href="/contact" className="flex items-center justify-center">
+                <Shield className="mr-2 h-4 w-4" />
+                  Get Free Assessment
               </Link>
             </Button>
           </motion.div>
 
-          {/* Static Trust Indicators */}
+            {/* Stats */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200"
+            >
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">🟢 24/7/365</div>
+                <div className="text-sm text-gray-600">Real-Time Threat Monitoring</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">🟣 60+</div>
+                <div className="text-sm text-gray-600">Enterprise Clients Protected</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">🟠 99.9%</div>
+                <div className="text-sm text-gray-600">Compliance-Driven Uptime SLA</div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Content - Hero Image */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative"
+          >
+            <div className="relative bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-8 shadow-xl">
+              {/* Placeholder for main hero image */}
+              <div className="aspect-square bg-white rounded-xl shadow-lg flex items-center justify-center">
+                <div className="text-center space-y-4">
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.05, 1],
+                      opacity: [0.8, 1, 0.8],
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity, 
+                      ease: "easeInOut" 
+                    }}
+                    className="relative"
+                  >
+                    <motion.div
+                      className="absolute inset-0 rounded-full bg-primary/20 blur-xl"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.3, 0.6, 0.3],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                    <Shield className="h-24 w-24 text-primary mx-auto relative z-10" />
+                  </motion.div>
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      Enterprise Security Platform
+                    </h3>
+                    <p className="text-gray-600">
+                      Advanced threat protection for modern businesses
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating cards */}
+              <motion.div 
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1 }}
+                className="absolute -top-4 -right-4 bg-white rounded-lg shadow-lg p-4 border-l-4 border-green-500"
+              >
+                <div className="flex items-center space-x-2">
+                  <motion.div 
+                    className="w-3 h-3 bg-green-500 rounded-full"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <span className="text-sm font-medium text-gray-700">System Protected</span>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+                className="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-lg p-4 border-l-4 border-primary"
+              >
+                <div className="space-y-1">
+                  <div className="text-xs text-gray-500">Threats Blocked Today</div>
+                  <motion.div 
+                    className="text-lg font-bold text-primary"
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    2,847
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Key Features Section */}
+      <div className="bg-gray-50 py-16 relative">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Why Choose Our Cybersecurity Solutions?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Industry-leading protection with advanced AI-powered threat detection 
+              and comprehensive security management.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {keyFeatures.map((feature, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100 transition-all duration-300"
+              >
+                <div className="mb-6">
+                  <motion.div 
+                    className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <feature.icon className="h-8 w-8 text-primary" />
+                  </motion.div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Trusted Companies Section */}
+      <div className="bg-white py-16">
+        <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="pt-12"
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
           >
-            <p className="text-white/70 text-sm uppercase tracking-wider font-medium mb-8">
-              Trusted Partners
+            <p className="text-gray-500 text-sm uppercase tracking-wider font-medium mb-8">
+              Trusted by Leading Organizations
             </p>
-            <div className="flex items-center justify-center space-x-8 sm:space-x-12">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
               {trustedCompanies.map((company, index) => (
                 <motion.div
                   key={company.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05 }}
                   className="group"
                 >
-                  <div className="w-40 h-24 bg-white/90 rounded-lg backdrop-blur-sm border border-white/50 shadow-lg flex items-center justify-center p-4 group-hover:bg-white transition-all duration-300 group-hover:scale-105">
+                   <div className="w-40 h-24 bg-white/90 rounded-lg backdrop-blur-sm border border-white/50 shadow-lg flex items-center justify-center p-4 group-hover:bg-white transition-all duration-300 group-hover:scale-105">
                     <Image
                       src={company.logo}
                       alt={`${company.name} logo`}
@@ -585,10 +909,7 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </div>
-      </motion.div>
-
-      {/* Bottom Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background/50 to-transparent pointer-events-none"></div>
+      </div>
     </section>
   )
 }
