@@ -205,10 +205,10 @@ export default function StrategicPartnersSection({
                 spaceBetween={30}
                 slidesPerView={2}
                 autoplay={{
-                  delay: 1,
-                  disableOnInteraction: false,
-                  pauseOnMouseEnter: false,
-                  waitForTransition: false,
+                  // delay: 1,
+                  // disableOnInteraction: false,
+                  // pauseOnMouseEnter: false,
+                  // waitForTransition: false,
                 }}
                 speed={5000}
                 breakpoints={{

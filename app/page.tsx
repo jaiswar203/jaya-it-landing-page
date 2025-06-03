@@ -23,7 +23,7 @@ export default function HomePage() {
       <InformationSecurityDashboardSection />
       <IndustriesWeServeSection />
       <StrategicPartnersSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <ClientsSection />
       <WhyChooseUsSection />
       <CallToActionSection />
