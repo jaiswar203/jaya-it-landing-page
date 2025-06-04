@@ -73,7 +73,7 @@ export default function TermsOfServicePage() {
                 </span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                Please read these terms and conditions carefully before using our services. These terms govern your use of JAYAA IT Solution's services and establish the legal framework for our professional relationship.
+                Please read these terms and conditions carefully before using our services. These terms govern your use of JAYAA IT Solution&apos;s services and establish the legal framework for our professional relationship.
               </p>
             </AnimatedDiv>
           </div>
@@ -160,7 +160,7 @@ export default function TermsOfServicePage() {
                   Questions About Our Terms?
                 </h3>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  If you have any questions about these Terms of Service, please don't hesitate to contact us. Our legal team is here to help clarify any concerns you may have.
+                  If you have any questions about these Terms of Service, please don&apos;t hesitate to contact us. Our legal team is here to help clarify any concerns you may have.
                 </p>
                 
                 <div className="space-y-4">

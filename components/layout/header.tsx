@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import {
   Menu,
-  ChevronDown,
   ShieldCheck,
   SearchCheck,
   CloudCog,
@@ -30,24 +29,19 @@ import {
   ArrowRight,
   Phone,
   Star,
-  Zap,
   Target,
   Users,
   Database,
   Monitor,
   Globe,
   Award,
-  Eye,
   Shield,
   Code,
   Activity,
   Lock,
-  AlertTriangle,
-  Mail,
   FileText,
   TrendingUp,
   CheckCircle,
-  HelpCircle,
   Sparkles,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
@@ -173,39 +167,6 @@ const serviceCategories = [
         icon: <CheckCircle className="h-4 w-4" />,
       },
     ],
-  },
-];
-
-const solutions = [
-  {
-    name: "Auto Data Discovery & Classification",
-    icon: <Database className="h-5 w-5" />,
-    href: "/solutions#data-classification",
-  },
-  {
-    name: "Privileged Access Management",
-    icon: <Lock className="h-5 w-5" />,
-    href: "/solutions#pam",
-  },
-  {
-    name: "Dark Web Monitoring",
-    icon: <Eye className="h-5 w-5" />,
-    href: "/solutions#dark-web",
-  },
-  {
-    name: "API Security Solutions",
-    icon: <Globe className="h-5 w-5" />,
-    href: "/solutions#api",
-  },
-  {
-    name: "Data Loss Prevention (DLP)",
-    icon: <ShieldCheck className="h-5 w-5" />,
-    href: "/solutions#dlp",
-  },
-  {
-    name: "Security Awareness Programs",
-    icon: <Users className="h-5 w-5" />,
-    href: "/solutions#awareness",
   },
 ];
 
@@ -396,7 +357,7 @@ export default function Header() {
                               <div className="space-y-3">
                                 {service.services
                                   .slice(0, 3)
-                                  .map((subService, subIndex) => (
+                                  .map((subService) => (
                                     <div
                                       key={subService.name}
                                       className="flex items-center space-x-3 text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300"

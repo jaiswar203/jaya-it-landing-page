@@ -8,7 +8,6 @@ import {
   Star,
   Target,
   Shield,
-  Zap
 } from "lucide-react"
 
 interface ServicePageLayoutProps {
@@ -192,7 +191,7 @@ export default function ServicePageLayout({
                   Ready to Get Started with {serviceName}?
                 </h3>
                 <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                  Contact our experts today to learn how {serviceName} can transform your organization's security and operational capabilities.
+                  Contact our experts today to learn how {serviceName} can transform your organization&apos;s security and operational capabilities.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                   <Button asChild size="lg" className={`bg-gradient-to-r ${gradient} hover:opacity-90 shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 text-lg`}>

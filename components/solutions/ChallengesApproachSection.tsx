@@ -10,7 +10,6 @@ import {
   Users,
   ShieldQuestion,
   Shield,
-  Monitor,
   ArrowRight,
   Target,
   TrendingUp

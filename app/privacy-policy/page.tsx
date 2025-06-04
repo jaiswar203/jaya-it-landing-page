@@ -80,7 +80,7 @@ export default function PrivacyPolicyPage() {
                 </span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                Understanding how we collect, use, and protect your personal information. Your privacy is fundamental to our relationship, and we're committed to maintaining the highest standards of data protection.
+                Understanding how we collect, use, and protect your personal information. Your privacy is fundamental to our relationship, and we&apos;re committed to maintaining the highest standards of data protection.
               </p>
             </AnimatedDiv>
           </div>
@@ -182,7 +182,7 @@ export default function PrivacyPolicyPage() {
                   Questions About Your Privacy?
                 </h3>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  If you have questions or comments about this privacy notice, or need clarification about our data practices, we're here to help. Your privacy concerns are our priority.
+                  If you have questions or comments about this privacy notice, or need clarification about our data practices, we&apos;re here to help. Your privacy concerns are our priority.
                 </p>
                 
                 <div className="space-y-4">

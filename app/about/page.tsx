@@ -8,9 +8,7 @@ import {
   ArrowRight,
   Building2,
   Award,
-  Globe,
   Shield,
-  Sparkles,
 } from "lucide-react";
 import Image from "next/image";
 import AnimatedDiv from "@/components/ui/animated-div";
@@ -44,13 +42,6 @@ export default function AboutPage() {
       colorClass:
         "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary",
     },
-  ];
-
-  const features = [
-    "Vulnerability Assessment & Penetration Testing (VAPT)",
-    "Threat Intelligence & Breach Simulation",
-    "Red Teaming & Attack Surface Management",
-    "Firewalls, DLP, and DRM Implementation",
   ];
 
   return (

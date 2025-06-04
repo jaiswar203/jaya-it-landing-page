@@ -10,7 +10,6 @@ import {
   BarChart2,
   CheckCircle,
   ArrowRight,
-  Zap,
   Target,
   Globe
 } from "lucide-react"

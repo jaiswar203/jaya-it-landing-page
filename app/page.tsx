@@ -1,4 +1,4 @@
-import HeroSection from "@/components/sections/hero-section"
+import HeroSection from "@/components/sections/hero-section";
 import {
   AboutSection,
   CoreServicesSection,
@@ -6,12 +6,11 @@ import {
   InformationSecurityDashboardSection,
   IndustriesWeServeSection,
   RegulatoryComplianceSection,
-  TestimonialsSection,
   WhyChooseUsSection,
   StrategicPartnersSection,
   ClientsSection,
-  CallToActionSection
-} from "@/components/Home"
+  CallToActionSection,
+} from "@/components/Home";
 
 export default function HomePage() {
   return (
@@ -30,5 +29,5 @@ export default function HomePage() {
       <WhyChooseUsSection />
       <CallToActionSection />
     </>
-  )
+  );
 }

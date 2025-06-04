@@ -1,10 +1,8 @@
 "use client"
 import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
 import { 
   TypographyH2, 
   TypographyGradientSubtitle, 
-  TypographyLead, 
   TypographyH3, 
   TypographyH4,
   TypographyBadge,
@@ -224,7 +222,7 @@ export default function StrategicPartnersSectionMobile({
           </div>
 
           <div className="space-y-2">
-            {managedServices.map((service, index) => (
+            {managedServices.map((service) => (
               <div key={service} className="flex items-start space-x-3 p-3 rounded-lg bg-gradient-to-r from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-950/20 border border-secondary/20 dark:border-secondary/30">
                 <div className="flex-shrink-0 mt-0.5">
                   <CheckCircle2 className="h-3 w-3 text-secondary" />

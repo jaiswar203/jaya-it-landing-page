@@ -145,7 +145,7 @@ export default function TestimonialsSection({
                   <div className="flex-grow mb-8">
                     <blockquote className="italic">
                       <TypographyP className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                        "{testimonial.content}"
+                        &quot;{testimonial.content}&quot;
                       </TypographyP>
                     </blockquote>
                   </div>

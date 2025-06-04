@@ -123,7 +123,7 @@ export default function ContactPage() {
                 <span className="text-sm font-semibold text-white uppercase tracking-wider">Get in Touch</span>
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold mb-8 leading-tight">
-                Let's Start Your
+                Let&apos;s Start Your
                 <span className="block text-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text">
                   Digital Journey
                 </span>
@@ -364,7 +364,7 @@ export default function ContactPage() {
                   <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                     Send Us a Message
                   </CardTitle>
-                  <p className="text-muted-foreground mt-2">Fill out the form below and we'll get back to you soon</p>
+                  <p className="text-muted-foreground mt-2">Fill out the form below and we&apos;ll get back to you soon</p>
                 </CardHeader>
                 
                 <CardContent className="p-8">
@@ -481,7 +481,7 @@ export default function ContactPage() {
                   Ready to Transform Your Business?
                 </h3>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  Don't wait to start your digital transformation journey. Our expert team is ready to provide you with a free consultation and customized IT solutions that drive real results.
+                  Don&apos;t wait to start your digital transformation journey. Our expert team is ready to provide you with a free consultation and customized IT solutions that drive real results.
                 </p>
                 
                 {/* Single Primary CTA */}

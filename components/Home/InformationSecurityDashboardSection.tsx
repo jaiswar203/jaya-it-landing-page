@@ -1,100 +1,106 @@
-"use client"
-import AnimatedDiv from "@/components/ui/animated-div"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { 
-  TypographyH2, 
-  TypographyGradientSubtitle, 
-  TypographyLead, 
-  TypographyH3, 
+"use client";
+import AnimatedDiv from "@/components/ui/animated-div";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  TypographyH2,
+  TypographyGradientSubtitle,
+  TypographyLead,
   TypographyH5,
   TypographyBadge,
-  TypographySmall 
-} from "@/components/ui/typography"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { 
-  ArrowRight, 
-  Shield, 
-  Search, 
-  Users, 
-  Key, 
-  Activity, 
-  Settings,
+  TypographySmall,
+} from "@/components/ui/typography";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Search,
+  Activity,
   Monitor,
   Clock,
-  Plus
-} from "lucide-react"
+  Plus,
+} from "lucide-react";
 
 interface SecurityService {
-  name: string
-  abbreviation?: string
-  frequency?: string
-  description: string
-  icon: React.ReactNode
-  iconColor: string
-  bgGradient: string
+  name: string;
+  abbreviation?: string;
+  frequency?: string;
+  description: string;
+  icon: React.ReactNode;
+  iconColor: string;
+  bgGradient: string;
 }
 
 interface InformationSecurityDashboardSectionProps {
-  badge?: string
-  title?: string
-  subtitle?: string
-  description?: string
-  primaryButtonText?: string
-  primaryButtonHref?: string
-  secondaryButtonText?: string
-  secondaryButtonHref?: string
-  className?: string
+  badge?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  primaryButtonText?: string;
+  primaryButtonHref?: string;
+  secondaryButtonText?: string;
+  secondaryButtonHref?: string;
+  className?: string;
 }
 
 const featuredSecurityServices: SecurityService[] = [
   {
     name: "Attack Surface Management",
     abbreviation: "ASM",
-    description: "Continuously monitor your external-facing assets for vulnerabilities and misconfigurations.",
+    description:
+      "Continuously monitor your external-facing assets for vulnerabilities and misconfigurations.",
     icon: <Search className="h-8 w-8" />,
     iconColor: "text-blue-500",
-    bgGradient: "from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20"
+    bgGradient:
+      "from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20",
   },
   {
     name: "Security Dashboard & SIEM Integration",
-    description: "Aggregate alerts, logs, and threat intel into a centralized, actionable dashboard.",
+    description:
+      "Aggregate alerts, logs, and threat intel into a centralized, actionable dashboard.",
     icon: <Monitor className="h-8 w-8" />,
     iconColor: "text-green-500",
-    bgGradient: "from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20"
+    bgGradient:
+      "from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20",
   },
   {
     name: "Threat Intelligence & Correlation",
-    description: "Automated correlation of logs, IOCs, and user behavior for advanced threat detection.",
+    description:
+      "Automated correlation of logs, IOCs, and user behavior for advanced threat detection.",
     icon: <Activity className="h-8 w-8" />,
     iconColor: "text-purple-500",
-    bgGradient: "from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/20"
+    bgGradient:
+      "from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/20",
   },
   {
     name: "Real-Time Alerting & Incident Response",
-    description: "Streamline detection-to-response timelines through automated playbooks and alert prioritization.",
+    description:
+      "Streamline detection-to-response timelines through automated playbooks and alert prioritization.",
     icon: <Clock className="h-8 w-8" />,
     iconColor: "text-orange-500",
-    bgGradient: "from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20"
-  }
-]
+    bgGradient:
+      "from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20",
+  },
+];
 
 export default function InformationSecurityDashboardSection({
   badge = "Security Dashboard",
   title = "Information Security Dashboard",
   subtitle = "& Monitoring Solutions",
   description = "Comprehensive security monitoring and management solutions providing real-time visibility, threat detection, and automated response capabilities.",
-  primaryButtonText = "View Security Dashboard",
-  primaryButtonHref = "/solutions",
-  secondaryButtonText = "Schedule Assessment",
-  secondaryButtonHref = "/contact",
-  className = ""
+  className = "",
 }: InformationSecurityDashboardSectionProps) {
   return (
-    <section className={`py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-gray-900 relative overflow-hidden ${className}`}>
+    <section
+      className={`py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-gray-900 relative overflow-hidden ${className}`}
+    >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative">
         <div className="text-center mb-16">
           <AnimatedDiv>
@@ -108,9 +114,7 @@ export default function InformationSecurityDashboardSection({
                 {subtitle}
               </TypographyGradientSubtitle>
             </TypographyH2>
-            <TypographyLead muted>
-              {description}
-            </TypographyLead>
+            <TypographyLead muted>{description}</TypographyLead>
           </AnimatedDiv>
         </div>
 
@@ -123,9 +127,15 @@ export default function InformationSecurityDashboardSection({
                   key={service.name}
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.15, duration: 0.6, ease: "easeOut" }}
+                  transition={{
+                    delay: index * 0.15,
+                    duration: 0.6,
+                    ease: "easeOut",
+                  }}
                 >
-                  <Card className={`group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${service.bgGradient} hover:-translate-y-1 flex flex-col`}>
+                  <Card
+                    className={`group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br ${service.bgGradient} hover:-translate-y-1 flex flex-col`}
+                  >
                     <CardHeader className="pb-4 flex-shrink-0">
                       <div className="flex flex-col items-center text-center space-y-4">
                         <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white dark:bg-gray-900 shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -138,7 +148,10 @@ export default function InformationSecurityDashboardSection({
                             <TypographyH5 className="leading-tight group-hover:text-primary transition-colors duration-300">
                               {service.name}
                               {service.abbreviation && (
-                                <TypographySmall muted className="block font-normal mt-1">
+                                <TypographySmall
+                                  muted
+                                  className="block font-normal mt-1"
+                                >
                                   ({service.abbreviation})
                                 </TypographySmall>
                               )}
@@ -147,7 +160,9 @@ export default function InformationSecurityDashboardSection({
                           {service.frequency && (
                             <div className="flex items-center justify-center space-x-2 text-sm text-secondary mt-2">
                               <Clock className="h-4 w-4" />
-                              <TypographySmall className="font-medium">{service.frequency}</TypographySmall>
+                              <TypographySmall className="font-medium">
+                                {service.frequency}
+                              </TypographySmall>
                             </div>
                           )}
                         </div>
@@ -187,7 +202,9 @@ export default function InformationSecurityDashboardSection({
                           15+ Security Solutions
                         </TypographyH5>
                         <div className="flex items-center text-primary group-hover:text-secondary transition-colors duration-300">
-                          <TypographySmall className="font-medium">Explore More</TypographySmall>
+                          <TypographySmall className="font-medium">
+                            Explore More
+                          </TypographySmall>
                           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                         </div>
                       </div>
@@ -198,8 +215,7 @@ export default function InformationSecurityDashboardSection({
             </div>
           </AnimatedDiv>
         </div>
-
       </div>
     </section>
-  )
-} 
+  );
+}

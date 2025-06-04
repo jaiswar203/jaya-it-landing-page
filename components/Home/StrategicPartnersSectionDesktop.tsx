@@ -1,116 +1,113 @@
-"use client"
-import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { 
-  TypographyH2, 
-  TypographyGradientSubtitle, 
-  TypographyLead, 
-  TypographyH3, 
+"use client";
+import {
+  TypographyH2,
+  TypographyGradientSubtitle,
+  TypographyLead,
+  TypographyH3,
   TypographyH4,
   TypographyBadge,
   TypographyP,
-  TypographySmall 
-} from "@/components/ui/typography"
-import Image from "next/image"
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper/modules'
-import { ChevronLeft, ChevronRight, CheckCircle2, Handshake, Shield, Settings, Zap } from "lucide-react"
-import type { Swiper as SwiperType } from 'swiper'
+  TypographySmall,
+} from "@/components/ui/typography";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import { CheckCircle2, Shield, Settings, Zap } from "lucide-react";
 
 // Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface Partner {
-  id: number
-  name: string
-  logo: string
+  id: number;
+  name: string;
+  logo: string;
 }
 
 interface StrategicPartnersSectionDesktopProps {
-  badge?: string
-  title?: string
-  subtitle?: string
-  description?: string
-  partners?: Partner[]
-  className?: string
+  badge?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  partners?: Partner[];
+  className?: string;
 }
 
 const defaultPartners: Partner[] = [
   {
     id: 1,
     name: "Microsoft",
-    logo: "/partners/strategic/page10_img26.png"
+    logo: "/partners/strategic/page10_img26.png",
   },
   {
     id: 2,
     name: "Amazon Web Services",
-    logo: "/partners/strategic/page10_img25.png"
+    logo: "/partners/strategic/page10_img25.png",
   },
   {
     id: 3,
     name: "Google Cloud",
-    logo: "/partners/strategic/page10_img24.png"
+    logo: "/partners/strategic/page10_img24.png",
   },
   {
     id: 4,
     name: "Cisco",
-    logo: "/partners/strategic/page10_img23.png"
+    logo: "/partners/strategic/page10_img23.png",
   },
   {
     id: 5,
     name: "VMware",
-    logo: "/partners/strategic/page10_img22.png"
+    logo: "/partners/strategic/page10_img22.png",
   },
   {
     id: 6,
     name: "Oracle",
-    logo: "/partners/strategic/page10_img21.png"
+    logo: "/partners/strategic/page10_img21.png",
   },
   {
     id: 7,
     name: "IBM",
-    logo: "/partners/strategic/page10_img20.png"
+    logo: "/partners/strategic/page10_img20.png",
   },
   {
     id: 8,
     name: "Salesforce",
-    logo: "/partners/strategic/page10_img19.png"
+    logo: "/partners/strategic/page10_img19.png",
   },
   {
     id: 9,
     name: "ServiceNow",
-    logo: "/partners/strategic/page10_img18.jpeg"
+    logo: "/partners/strategic/page10_img18.jpeg",
   },
   {
     id: 10,
     name: "Atlassian",
-    logo: "/partners/strategic/page10_img16.jpeg"
+    logo: "/partners/strategic/page10_img16.jpeg",
   },
   {
     id: 11,
     name: "Adobe",
-    logo: "/partners/strategic/page10_img14.png"
+    logo: "/partners/strategic/page10_img14.png",
   },
   {
     id: 12,
     name: "Slack",
-    logo: "/partners/strategic/page10_img12.png"
-  }
-]
+    logo: "/partners/strategic/page10_img12.png",
+  },
+];
 
 const managedServices = [
   "License Management & Renewals",
   "Tool Setup & Technical Configuration",
-  "24/7 Monitoring & Incident Handling", 
+  "24/7 Monitoring & Incident Handling",
   "Performance & Uptime Optimization",
   "Regular Security Patches & Feature Updates",
   "User Enablement & Technical Support",
   "Custom Integration & Interoperability",
   "Security & Compliance Reporting",
-  "Fast-track Issue Resolution"
-]
+  "Fast-track Issue Resolution",
+];
 
 export default function StrategicPartnersSectionDesktop({
   badge = "Strategic Partnerships",
@@ -118,14 +115,14 @@ export default function StrategicPartnersSectionDesktop({
   subtitle = "Partners",
   description = "We collaborate with industry-leading third-party service and tool providers to enhance the value we offer to our clients. Instead of building everything from scratch, we partner with trusted platforms and technologies, providing licenses and managed services so you can focus on your core business.",
   partners = defaultPartners,
-  className = ""
+  className = "",
 }: StrategicPartnersSectionDesktopProps) {
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null)
-
   return (
-    <section className={`py-20 sm:py-28 bg-background relative overflow-hidden ${className}`}>
+    <section
+      className={`py-20 sm:py-28 bg-background relative overflow-hidden ${className}`}
+    >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -135,13 +132,9 @@ export default function StrategicPartnersSectionDesktop({
           </div>
           <TypographyH2 className="mb-6">
             {title}
-            <TypographyGradientSubtitle>
-              {subtitle}
-            </TypographyGradientSubtitle>
+            <TypographyGradientSubtitle>{subtitle}</TypographyGradientSubtitle>
           </TypographyH2>
-          <TypographyLead muted>
-            {description}
-          </TypographyLead>
+          <TypographyLead muted>{description}</TypographyLead>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -153,18 +146,27 @@ export default function StrategicPartnersSectionDesktop({
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <TypographyH4 className="text-foreground">Our Managed Services</TypographyH4>
-                  <TypographyP muted>Complete setup, monitoring & maintenance</TypographyP>
+                  <TypographyH4 className="text-foreground">
+                    Our Managed Services
+                  </TypographyH4>
+                  <TypographyP muted>
+                    Complete setup, monitoring & maintenance
+                  </TypographyP>
                 </div>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-3">
-                {managedServices.map((service, index) => (
-                  <div key={service} className="flex items-start space-x-3 p-3 rounded-lg bg-gradient-to-r from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-950/20 border border-secondary/20 dark:border-secondary/30">
+                {managedServices.map((service) => (
+                  <div
+                    key={service}
+                    className="flex items-start space-x-3 p-3 rounded-lg bg-gradient-to-r from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-950/20 border border-secondary/20 dark:border-secondary/30"
+                  >
                     <div className="flex-shrink-0 mt-0.5">
                       <CheckCircle2 className="h-4 w-4 text-secondary" />
                     </div>
-                    <TypographySmall className="font-medium text-foreground leading-tight">{service}</TypographySmall>
+                    <TypographySmall className="font-medium text-foreground leading-tight">
+                      {service}
+                    </TypographySmall>
                   </div>
                 ))}
               </div>
@@ -174,11 +176,15 @@ export default function StrategicPartnersSectionDesktop({
               <div className="flex items-start space-x-3">
                 <Settings className="h-6 w-6 text-secondary mt-1 flex-shrink-0" />
                 <div>
-                  <TypographyH4 className="font-semibold text-primary dark:text-primary mb-2">Why Choose Our Managed Model?</TypographyH4>
+                  <TypographyH4 className="font-semibold text-primary dark:text-primary mb-2">
+                    Why Choose Our Managed Model?
+                  </TypographyH4>
                   <TypographySmall className="text-primary/80 dark:text-primary/80 leading-relaxed">
-                    Most clients prefer not to manage these tools themselves due to time or technical limitations. 
-                    We provide licenses or access to these tools and take full responsibility for setup, monitoring, 
-                    and ongoing maintenance, so you can focus on your core business.
+                    Most clients prefer not to manage these tools themselves due
+                    to time or technical limitations. We provide licenses or
+                    access to these tools and take full responsibility for
+                    setup, monitoring, and ongoing maintenance, so you can focus
+                    on your core business.
                   </TypographySmall>
                 </div>
               </div>
@@ -188,14 +194,15 @@ export default function StrategicPartnersSectionDesktop({
           {/* Partners Carousel */}
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl blur-3xl"></div>
-            
+
             <div className="relative bg-white dark:bg-gray-900/50 p-8 rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
               <div className="flex items-center justify-between mb-8">
-                <TypographyH3 className="text-foreground">Strategic Partners</TypographyH3>
+                <TypographyH3 className="text-foreground">
+                  Strategic Partners
+                </TypographyH3>
               </div>
 
               <Swiper
-                onSwiper={setSwiperInstance}
                 modules={[Autoplay]}
                 spaceBetween={30}
                 slidesPerView={2}
@@ -250,5 +257,5 @@ export default function StrategicPartnersSectionDesktop({
         }
       `}</style>
     </section>
-  )
-} 
+  );
+}

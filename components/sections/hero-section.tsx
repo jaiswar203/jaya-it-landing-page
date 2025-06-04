@@ -1,40 +1,61 @@
-"use client"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import Image from "next/image"
-import { ChevronRight, Shield, Zap, Lock, Users, Award, AlertTriangle, Trophy, DatabaseZap, Search, Network } from "lucide-react"
-import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+"use client";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import Image from "next/image";
+import {
+  ChevronRight,
+  Shield,
+  Zap,
+  Award,
+  AlertTriangle,
+  Trophy,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const trustedCompanies = [
   { name: "HDFC Bank", logo: "/companies/hdfc.jpg", width: 250, height: 120 },
-  { name: "ICICI Lombard", logo: "/companies/page9_img14.png", width: 250, height: 120 },
-  { name: "Kotak Bank", logo: "/companies/kotak.webp", width: 250, height: 120 },
+  {
+    name: "ICICI Lombard",
+    logo: "/companies/page9_img14.png",
+    width: 250,
+    height: 120,
+  },
+  {
+    name: "Kotak Bank",
+    logo: "/companies/kotak.webp",
+    width: 250,
+    height: 120,
+  },
   { name: "Axis Bank", logo: "/companies/axis.png", width: 250, height: 150 },
   { name: "Bajaj", logo: "/companies/bajaj.webp", width: 250, height: 150 },
-]
+];
 
 // Crawling bugs/threats
 const CrawlingBugs = () => {
-  const [bugs, setBugs] = useState<Array<{
-    id: number;
-    duration: number;
-    delay: number;
-    path: string;
-  }>>([])
+  const [bugs, setBugs] = useState<
+    Array<{
+      id: number;
+      duration: number;
+      delay: number;
+      path: string;
+    }>
+  >([]);
 
   useEffect(() => {
     const generatedBugs = Array.from({ length: 8 }, (_, i) => ({
       id: i,
       duration: 15 + Math.random() * 10,
       delay: Math.random() * 5,
-      path: `M${50 + i * 150} 100 Q${200 + i * 100} ${200 + Math.random() * 100} ${400 + i * 150} ${300 + Math.random() * 200}`,
-    }))
-    setBugs(generatedBugs)
-  }, [])
+      path: `M${50 + i * 150} 100 Q${200 + i * 100} ${
+        200 + Math.random() * 100
+      } ${400 + i * 150} ${300 + Math.random() * 200}`,
+    }));
+    setBugs(generatedBugs);
+  }, []);
 
   if (bugs.length === 0) {
-    return null
+    return null;
   }
 
   return (
@@ -42,11 +63,11 @@ const CrawlingBugs = () => {
       {bugs.map((bug) => (
         <motion.div key={bug.id}>
           <svg className="absolute inset-0 w-full h-full opacity-0">
-    <motion.path
+            <motion.path
               d={bug.path}
               stroke="transparent"
-      strokeWidth="2"
-      fill="none"
+              strokeWidth="2"
+              fill="none"
               id={`bug-path-${bug.id}`}
             />
           </svg>
@@ -68,8 +89,8 @@ const CrawlingBugs = () => {
         </motion.div>
       ))}
     </div>
-  )
-}
+  );
+};
 
 // Subtle scanning lines
 const ScanningLines = () => (
@@ -108,7 +129,7 @@ const ScanningLines = () => (
         delay: 10,
       }}
     />
-    
+
     {/* Vertical scanning lines */}
     <motion.div
       className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-transparent via-primary/15 to-transparent"
@@ -144,7 +165,7 @@ const ScanningLines = () => (
       }}
     />
   </div>
-)
+);
 
 // Security alerts in corners
 const SecurityAlerts = () => {
@@ -153,7 +174,7 @@ const SecurityAlerts = () => {
     { x: 5, y: 95, type: "scan", delay: 3 },
     { x: 90, y: 85, type: "block", delay: 6 },
     { x: 10, y: 15, type: "secure", delay: 9 },
-  ]
+  ];
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -180,8 +201,8 @@ const SecurityAlerts = () => {
         </motion.div>
       ))}
     </div>
-  )
-}
+  );
+};
 
 // Minimal data flow
 const DataFlow = () => (
@@ -220,9 +241,9 @@ const DataFlow = () => (
         delay: 5,
       }}
     />
-    
+
     {/* Bottom section flows */}
-        <motion.div
+    <motion.div
       className="absolute top-3/4 right-0 w-6 h-0.5 bg-secondary"
       initial={{ x: "2rem" }}
       animate={{ x: "-100vw" }}
@@ -248,14 +269,14 @@ const DataFlow = () => (
       className="absolute top-2/3 right-0 w-4 h-0.5 bg-red-500"
       initial={{ x: "1rem" }}
       animate={{ x: "-100vw" }}
-          transition={{
+      transition={{
         duration: 9,
-            repeat: Infinity,
+        repeat: Infinity,
         ease: "linear",
         delay: 6,
       }}
     />
-    
+
     {/* Middle section diagonal flows */}
     <motion.div
       className="absolute top-1/2 left-0 w-5 h-0.5 bg-primary rotate-12"
@@ -279,9 +300,9 @@ const DataFlow = () => (
         delay: 9,
       }}
     />
-    
+
     {/* Additional multi-directional flows */}
-        <motion.div
+    <motion.div
       className="absolute top-1/8 left-0 w-4 h-0.5 bg-yellow-500"
       initial={{ x: "-1rem" }}
       animate={{ x: "100vw" }}
@@ -296,53 +317,16 @@ const DataFlow = () => (
       className="absolute top-7/8 right-0 w-8 h-0.5 bg-purple-500"
       initial={{ x: "2rem" }}
       animate={{ x: "-100vw" }}
-          transition={{
+      transition={{
         duration: 9,
-            repeat: Infinity,
-            ease: "linear",
+        repeat: Infinity,
+        ease: "linear",
         delay: 5,
-          }}
-    />
-    </div>
-  )
-
-// Network pulse lines
-const NetworkPulse = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
-    
-  </div>
-)
-
-// Threat detection lines
-const ThreatDetection = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-12">
-    {/* Radar-like scanning */}
-    <motion.div
-      className="absolute top-1/4 left-1/4 w-20 h-0.5 bg-red-500 origin-left"
-      animate={{ rotate: [0, 360] }}
-      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-    />
-    <motion.div
-      className="absolute top-3/4 right-1/4 w-16 h-0.5 bg-orange-500 origin-left"
-      animate={{ rotate: [360, 0] }}
-      transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-    />
-    
-    {/* Detection pulses */}
-    <motion.div
-      className="absolute top-1/3 left-1/2 w-0.5 h-8 bg-red-500"
-      initial={{ y: 0 }}
-      animate={{ y: ["0px", "200px", "0px"] }}
-      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-    />
-    <motion.div
-      className="absolute top-2/3 right-1/3 w-0.5 h-6 bg-yellow-500"
-      initial={{ y: 0 }}
-      animate={{ y: ["0px", "-150px", "0px"] }}
-      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      }}
     />
   </div>
-)
+);
+
 
 // Data encryption streams
 const EncryptionStreams = () => (
@@ -356,7 +340,7 @@ const EncryptionStreams = () => (
           left: `${10 + i * 10}%`,
           top: `${20 + (i % 3) * 20}%`,
         }}
-      animate={{
+        animate={{
           x: ["0px", "100vw"],
           opacity: [0, 1, 1, 0],
         }}
@@ -368,7 +352,7 @@ const EncryptionStreams = () => (
         }}
       />
     ))}
-    
+
     {/* Encryption trails */}
     <motion.div
       className="absolute top-1/5 left-0 w-16 h-0.5 bg-gradient-to-r from-green-500 to-transparent"
@@ -385,62 +369,17 @@ const EncryptionStreams = () => (
       className="absolute bottom-1/5 right-0 w-12 h-0.5 bg-gradient-to-l from-blue-500 to-transparent"
       initial={{ x: "3rem" }}
       animate={{ x: "-100vw" }}
-      transition={{ 
+      transition={{
         duration: 9,
-        repeat: Infinity, 
+        repeat: Infinity,
         ease: "linear",
         delay: 4,
       }}
     />
   </div>
-)
+);
 
-// Firewall barriers
-const FirewallBarriers = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-6">
-    {/* Vertical barriers */}
-    <motion.div
-      className="absolute left-1/4 top-0 w-0.5 h-full bg-gradient-to-b from-transparent via-red-500 to-transparent"
-      animate={{
-        opacity: [0.3, 0.8, 0.3],
-        scaleY: [0.5, 1, 0.5],
-      }}
-      transition={{
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-    <motion.div
-      className="absolute right-1/3 top-0 w-0.5 h-full bg-gradient-to-b from-transparent via-orange-500 to-transparent"
-      animate={{
-        opacity: [0.3, 0.8, 0.3],
-        scaleY: [0.5, 1, 0.5],
-      }}
-      transition={{
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 1.5,
-      }}
-    />
-    
-    {/* Horizontal barriers */}
-    <motion.div
-      className="absolute top-1/3 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent"
-      animate={{
-        opacity: [0.2, 0.6, 0.2],
-        scaleX: [0.3, 1, 0.3],
-      }}
-      transition={{
-        duration: 5,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 2,
-      }}
-    />
-  </div>
-)
+
 
 // Security monitoring waves
 const MonitoringWaves = () => (
@@ -479,24 +418,24 @@ const MonitoringWaves = () => (
       />
     </svg>
   </div>
-)
+);
 
 // Additional moving security elements
 const SecurityPatrols = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
     {/* Security patrol lines */}
-      <motion.div 
+    <motion.div
       className="absolute top-0 left-1/2 w-0.5 h-4 bg-primary"
       initial={{ y: 0 }}
       animate={{ y: "100vh" }}
-        transition={{
+      transition={{
         duration: 6,
-          repeat: Infinity,
-          ease: "linear",
+        repeat: Infinity,
+        ease: "linear",
         delay: 0,
       }}
     />
-        <motion.div
+    <motion.div
       className="absolute top-0 left-1/3 w-0.5 h-6 bg-green-500"
       initial={{ y: 0 }}
       animate={{ y: "100vh" }}
@@ -506,8 +445,8 @@ const SecurityPatrols = () => (
         ease: "linear",
         delay: 2,
       }}
-        />
-        <motion.div
+    />
+    <motion.div
       className="absolute top-0 right-1/4 w-0.5 h-3 bg-blue-500"
       initial={{ y: 0 }}
       animate={{ y: "100vh" }}
@@ -518,9 +457,9 @@ const SecurityPatrols = () => (
         delay: 4,
       }}
     />
-    
+
     {/* Horizontal patrols */}
-        <motion.div
+    <motion.div
       className="absolute left-0 top-1/5 w-5 h-0.5 bg-red-500"
       initial={{ x: "-1.25rem" }}
       animate={{ x: "100vw" }}
@@ -530,8 +469,8 @@ const SecurityPatrols = () => (
         ease: "linear",
         delay: 1,
       }}
-        />
-        <motion.div
+    />
+    <motion.div
       className="absolute right-0 bottom-1/4 w-7 h-0.5 bg-yellow-500"
       initial={{ x: "1.75rem" }}
       animate={{ x: "-100vw" }}
@@ -541,9 +480,9 @@ const SecurityPatrols = () => (
         ease: "linear",
         delay: 3,
       }}
-        />
-      </div>
-)
+    />
+  </div>
+);
 
 // Corner security indicators
 const CornerIndicators = () => (
@@ -556,7 +495,7 @@ const CornerIndicators = () => (
     >
       SECURE
     </motion.div>
-    
+
     {/* Bottom left */}
     <motion.div
       className="absolute bottom-8 left-8 text-xs text-green-500/40 font-mono"
@@ -565,9 +504,9 @@ const CornerIndicators = () => (
     >
       PROTECTED
     </motion.div>
-    
+
     {/* Scanning indicator */}
-      <motion.div 
+    <motion.div
       className="absolute top-1/2 right-4 text-xs text-primary/30 font-mono rotate-90"
       initial={{ opacity: 0 }}
       animate={{ opacity: [0, 0.6, 0] }}
@@ -576,7 +515,7 @@ const CornerIndicators = () => (
       SCANNING...
     </motion.div>
   </div>
-)
+);
 
 export default function HeroSection() {
   return (
@@ -586,114 +525,123 @@ export default function HeroSection() {
       <ScanningLines />
       <SecurityAlerts />
       <DataFlow />
-      
+
       {/* <ThreatDetection /> */}
       <EncryptionStreams />
       {/* <FirewallBarriers /> */}
       <MonitoringWaves />
       <SecurityPatrols />
       <CornerIndicators />
-      
+
       {/* Hero Content */}
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-5rem)] py-16">
           {/* Left Content */}
           <div className="space-y-8">
             {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full"
             >
               <Award className="h-4 w-4 text-primary" />
               <span className="text-primary font-medium text-sm">
-                Trusted by enterprises in BFSI, Healthcare, Government, and Technology.
+                Trusted by enterprises in BFSI, Healthcare, Government, and
+                Technology.
               </span>
-          </motion.div>
+            </motion.div>
 
-          {/* Main Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-4"
-          >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-              <div className="flex flex-col gap-3 lg:gap-4">
-                <div className="flex items-center gap-3 text-primary">
-                <span className="flex items-center gap-3 text-primary">
-                  <Shield className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0" />
-                  <span>Protect.</span>
-                </span>
-                <span className="flex items-center gap-3 text-primary">
-                  <AlertTriangle className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0" />
-                  <span>Prevent.</span>
-                </span>
+            {/* Main Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-4"
+            >
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                <div className="flex flex-col gap-3 lg:gap-4">
+                  <div className="flex items-center gap-3 text-primary">
+                    <span className="flex items-center gap-3 text-primary">
+                      <Shield className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0" />
+                      <span>Protect.</span>
+                    </span>
+                    <span className="flex items-center gap-3 text-primary">
+                      <AlertTriangle className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0" />
+                      <span>Prevent.</span>
+                    </span>
+                  </div>
+                  <span className="flex items-center gap-3 text-primary">
+                    <Trophy className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0" />
+                    <span>Prevail.</span>
+                  </span>
                 </div>
-                <span className="flex items-center gap-3 text-primary">
-                  <Trophy className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0" />
-                  <span>Prevail.</span>
-                </span>
-              </div>
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              At JAYAA IT Solution, we empower businesses to stay ahead of evolving cyber threats through 
-              intelligent, proactive, and compliance-driven security solutions.
-            </p>
-          </motion.div>
+              </h1>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                At JAYAA IT Solution, we empower businesses to stay ahead of
+                evolving cyber threats through intelligent, proactive, and
+                compliance-driven security solutions.
+              </p>
+            </motion.div>
 
-          {/* Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-4"
-          >
-            <p className="text-lg text-gray-700">
-              From endpoint protection to red teaming, our cybersecurity suite is designed to ensure 
-              resilience, business continuity, and regulatory peace of mind.
-            </p>
-            <p className="text-lg font-semibold text-primary">
-              Safeguard your digital future with industry-grade cybersecurity, today.
-            </p>
-            
-          </motion.div>
-
-          {/* Action Buttons */}
-          <motion.div
+            {/* Description */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="space-y-4"
+            >
+              <p className="text-lg text-gray-700">
+                From endpoint protection to red teaming, our cybersecurity suite
+                is designed to ensure resilience, business continuity, and
+                regulatory peace of mind.
+              </p>
+              <p className="text-lg font-semibold text-primary">
+                Safeguard your digital future with industry-grade cybersecurity,
+                today.
+              </p>
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
-          >
-            <Button
-              asChild
-              size="lg"
+            >
+              <Button
+                asChild
+                size="lg"
                 className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 transition-all duration-300 hover:scale-105"
-            >
-                <Link href="/services" className="flex items-center justify-center">
-                <Zap className="mr-2 h-5 w-5" />
+              >
+                <Link
+                  href="/services"
+                  className="flex items-center justify-center"
+                >
+                  <Zap className="mr-2 h-5 w-5" />
                   Explore Solutions
-                <ChevronRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
+                  <ChevronRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
                 className="border-2 border-primary text-primary hover:bg-primary/80 font-semibold px-8 py-3 transition-all duration-300 hover:scale-105"
-            >
-                <Link href="/contact" className="flex items-center justify-center">
-                <Shield className="mr-2 h-4 w-4" />
+              >
+                <Link
+                  href="/contact"
+                  className="flex items-center justify-center"
+                >
+                  <Shield className="mr-2 h-4 w-4" />
                   Get Free Assessment
-              </Link>
-            </Button>
-          </motion.div>
+                </Link>
+              </Button>
+            </motion.div>
 
             {/* Stats */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
@@ -701,23 +649,38 @@ export default function HeroSection() {
             >
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                 <div className="bg-primary/5 rounded-lg p-4 text-center border border-primary/10">
-                  <div className="text-lg sm:text-2xl font-bold text-primary mb-1">🟢 24/7/365</div>
-                  <div className="text-xs sm:text-sm text-gray-600 leading-tight">Real-Time Threat<br className="sm:hidden" /> Monitoring</div>
+                  <div className="text-lg sm:text-2xl font-bold text-primary mb-1">
+                    🟢 24/7/365
+                  </div>
+                  <div className="text-xs sm:text-sm text-gray-600 leading-tight">
+                    Real-Time Threat
+                    <br className="sm:hidden" /> Monitoring
+                  </div>
                 </div>
                 <div className="bg-primary/5 rounded-lg p-4 text-center border border-primary/10">
-                  <div className="text-lg sm:text-2xl font-bold text-primary mb-1">🟣 50+</div>
-                  <div className="text-xs sm:text-sm text-gray-600 leading-tight">Enterprise Clients<br className="sm:hidden" /> Protected</div>
+                  <div className="text-lg sm:text-2xl font-bold text-primary mb-1">
+                    🟣 50+
+                  </div>
+                  <div className="text-xs sm:text-sm text-gray-600 leading-tight">
+                    Enterprise Clients
+                    <br className="sm:hidden" /> Protected
+                  </div>
                 </div>
                 <div className="bg-primary/5 rounded-lg p-4 text-center border border-primary/10 col-span-2 lg:col-span-1">
-                  <div className="text-lg sm:text-2xl font-bold text-primary mb-1">🟠 99.9%</div>
-                  <div className="text-xs sm:text-sm text-gray-600 leading-tight">Compliance-Driven<br className="sm:hidden" /> Uptime SLA</div>
+                  <div className="text-lg sm:text-2xl font-bold text-primary mb-1">
+                    🟠 99.9%
+                  </div>
+                  <div className="text-xs sm:text-sm text-gray-600 leading-tight">
+                    Compliance-Driven
+                    <br className="sm:hidden" /> Uptime SLA
+                  </div>
                 </div>
               </div>
             </motion.div>
           </div>
 
           {/* Right Content - Hero Image */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -728,14 +691,14 @@ export default function HeroSection() {
               <div className="aspect-square bg-white rounded-xl shadow-lg flex items-center justify-center">
                 <div className="text-center space-y-4">
                   <motion.div
-                    animate={{ 
+                    animate={{
                       scale: [1, 1.05, 1],
                       opacity: [0.8, 1, 0.8],
                     }}
-                    transition={{ 
-                      duration: 3, 
-                      repeat: Infinity, 
-                      ease: "easeInOut" 
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
                     }}
                     className="relative"
                   >
@@ -763,24 +726,26 @@ export default function HeroSection() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Floating cards */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1 }}
                 className="absolute -top-4 -right-4 bg-white rounded-lg shadow-lg p-4 border-l-4 border-green-500"
               >
                 <div className="flex items-center space-x-2">
-                  <motion.div 
+                  <motion.div
                     className="w-3 h-3 bg-green-500 rounded-full"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
-                  <span className="text-sm font-medium text-gray-700">System Protected</span>
+                  <span className="text-sm font-medium text-gray-700">
+                    System Protected
+                  </span>
                 </div>
               </motion.div>
-              
+
               {/* <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -878,7 +843,7 @@ export default function HeroSection() {
                   whileHover={{ scale: 1.05 }}
                   className="group"
                 >
-                   <div className="w-40 h-24 bg-white/90 rounded-lg backdrop-blur-sm border border-white/50 shadow-lg flex items-center justify-center p-4 group-hover:bg-white transition-all duration-300 group-hover:scale-105">
+                  <div className="w-40 h-24 bg-white/90 rounded-lg backdrop-blur-sm border border-white/50 shadow-lg flex items-center justify-center p-4 group-hover:bg-white transition-all duration-300 group-hover:scale-105">
                     <Image
                       src={company.logo}
                       alt={`${company.name} logo`}
@@ -895,5 +860,5 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

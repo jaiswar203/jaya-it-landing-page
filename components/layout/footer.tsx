@@ -1,82 +1,86 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from "next/navigation"
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Linkedin, 
-  Twitter, 
-  Facebook, 
+import Link from "next/link";
+import Image from "next/image";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Linkedin,
+  Twitter,
+  Facebook,
   ArrowRight,
   Shield,
-  Award,
   Zap,
   Globe,
   CheckCircle,
-  Star,
-  Eye,
   Activity,
-  Code,
-  Lock,
   SearchCheck,
-  AlertTriangle,
-  Database,
   Users,
-  Monitor,
   CloudCog,
-  ShieldCheck
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
+  ShieldCheck,
+} from "lucide-react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
-  const pathname = usePathname()
-  
-  // Show CTA section only on specific pages
-  const showCTA = pathname === "/"
-  
+  const currentYear = new Date().getFullYear();
+
   const coreServices = [
-    { 
-      name: "Zero Trust Security", 
+    {
+      name: "Zero Trust Security",
       description: "Never Trust, Always Verify — Secure Every Access Point",
-      href: "/services/zero-trust-security", 
+      href: "/services/zero-trust-security",
       icon: <ShieldCheck className="h-5 w-5" />,
-      gradient: "from-red-500 to-orange-500"
+      gradient: "from-red-500 to-orange-500",
     },
-    { 
-      name: "Digital Transformation", 
+    {
+      name: "Digital Transformation",
       description: "Intelligent Automation & Digital-First Strategies",
-      href: "/services/digital-transformation", 
+      href: "/services/digital-transformation",
       icon: <SearchCheck className="h-5 w-5" />,
-      gradient: "from-blue-500 to-cyan-500"
+      gradient: "from-blue-500 to-cyan-500",
     },
-    { 
-      name: "Advanced IT Solutions", 
+    {
+      name: "Advanced IT Solutions",
       description: "Future-Ready Tech Solutions Built Around You",
-      href: "/services/advanced-it-solutions", 
+      href: "/services/advanced-it-solutions",
       icon: <CloudCog className="h-5 w-5" />,
-      gradient: "from-green-500 to-emerald-500"
+      gradient: "from-green-500 to-emerald-500",
     },
-    { 
-      name: "Professional Services", 
+    {
+      name: "Professional Services",
       description: "IT Expertise, Delivered On-Demand",
-      href: "/services/professional-services", 
+      href: "/services/professional-services",
       icon: <Users className="h-5 w-5" />,
-      gradient: "from-purple-500 to-violet-500"
+      gradient: "from-purple-500 to-violet-500",
     },
-  ]
+  ];
 
   const keyFeatures = [
-    { name: "Identity & Access Management (IAM)", href: "/services/zero-trust-security#iam" },
-    { name: "Legacy-to-Cloud Modernization", href: "/services/digital-transformation#modernization" },
-    { name: "Secure Network Architecture Design", href: "/services/advanced-it-solutions#network" },
-    { name: "Strategic IT Consulting", href: "/services/professional-services#consulting" },
-    { name: "Continuous Risk-Based Authentication", href: "/services/zero-trust-security#auth" },
-    { name: "API & System Integration", href: "/services/digital-transformation#integration" },
-  ]
+    {
+      name: "Identity & Access Management (IAM)",
+      href: "/services/zero-trust-security#iam",
+    },
+    {
+      name: "Legacy-to-Cloud Modernization",
+      href: "/services/digital-transformation#modernization",
+    },
+    {
+      name: "Secure Network Architecture Design",
+      href: "/services/advanced-it-solutions#network",
+    },
+    {
+      name: "Strategic IT Consulting",
+      href: "/services/professional-services#consulting",
+    },
+    {
+      name: "Continuous Risk-Based Authentication",
+      href: "/services/zero-trust-security#auth",
+    },
+    {
+      name: "API & System Integration",
+      href: "/services/digital-transformation#integration",
+    },
+  ];
 
   const quickLinks = [
     { name: "About Us", href: "/about" },
@@ -84,41 +88,40 @@ export default function Footer() {
     { name: "All Services", href: "/services" },
     { name: "Solutions", href: "/solutions" },
     { name: "Contact Us", href: "/contact" },
-  ]
+  ];
 
   return (
     <footer className="relative bg-gradient-to-br from-slate-50 via-white to-gray-50 border-t border-gray-200/50 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
-      
+
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary/3 via-transparent to-secondary/3"></div>
 
       {/* Main Footer Content */}
       <div className="relative">
-        
-
         {/* Main Footer Links */}
         <div className="container mx-auto px-4 md:px-6 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-8">
-            
             {/* Company Info */}
             <div className="lg:col-span-1 space-y-6">
               <Link href="/" className="inline-block group">
                 <div className="relative">
-                  <Image 
-                    src="/logo-jayaa.jpg" 
-                    alt="Jayaa IT Solution Logo" 
-                    width={200} 
-                    height={50} 
-                    className="h-auto transition-transform duration-300 group-hover:scale-105" 
+                  <Image
+                    src="/logo-jayaa.jpg"
+                    alt="Jayaa IT Solution Logo"
+                    width={200}
+                    height={50}
+                    className="h-auto transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-lg"></div>
                 </div>
               </Link>
-              
+
               <p className="text-gray-600 leading-relaxed">
-                Leading cybersecurity provider delivering comprehensive protection through advanced threat detection and security awareness.
+                Leading cybersecurity provider delivering comprehensive
+                protection through advanced threat detection and security
+                awareness.
               </p>
 
               {/* Contact Info */}
@@ -128,30 +131,42 @@ export default function Footer() {
                     <MapPin className="h-4 w-4" />
                   </div>
                   <div>
-                    <p className="text-gray-900 font-semibold mb-1">Our Office</p>
-                    <p className="text-gray-600 text-sm">803/8, Ekatva Onyx, Wagle Estate<br />Thane West-400604, India</p>
+                    <p className="text-gray-900 font-semibold mb-1">
+                      Our Office
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      803/8, Ekatva Onyx, Wagle Estate
+                      <br />
+                      Thane West-400604, India
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="p-2 bg-primary/10 rounded-lg text-primary">
                     <Phone className="h-4 w-4" />
                   </div>
                   <div>
                     <p className="text-gray-900 font-semibold mb-1">Phone</p>
-                    <a href="tel:+918268949507" className="text-gray-600 hover:text-primary transition-colors text-sm">
+                    <a
+                      href="tel:+918268949507"
+                      className="text-gray-600 hover:text-primary transition-colors text-sm"
+                    >
                       +91 8268949507
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="p-2 bg-primary/10 rounded-lg text-primary">
                     <Mail className="h-4 w-4" />
                   </div>
                   <div>
                     <p className="text-gray-900 font-semibold mb-1">Email</p>
-                    <a href="mailto:info@jayaaitsolution.com" className="text-gray-600 hover:text-primary transition-colors text-sm">
+                    <a
+                      href="mailto:info@jayaaitsolution.com"
+                      className="text-gray-600 hover:text-primary transition-colors text-sm"
+                    >
                       info@jayaaitsolution.com
                     </a>
                   </div>
@@ -163,9 +178,21 @@ export default function Footer() {
                 <p className="text-gray-900 font-semibold">Follow Us</p>
                 <div className="flex space-x-3">
                   {[
-                    { icon: Linkedin, href: "https://in.linkedin.com/company/jayaaitsolution", label: "LinkedIn" },
-                    { icon: Twitter, href: "https://x.com/jayaaitsolution", label: "Twitter" },
-                    { icon: Facebook, href: "https://www.facebook.com/jayaaitsolution", label: "Facebook" },
+                    {
+                      icon: Linkedin,
+                      href: "https://in.linkedin.com/company/jayaaitsolution",
+                      label: "LinkedIn",
+                    },
+                    {
+                      icon: Twitter,
+                      href: "https://x.com/jayaaitsolution",
+                      label: "Twitter",
+                    },
+                    {
+                      icon: Facebook,
+                      href: "https://www.facebook.com/jayaaitsolution",
+                      label: "Facebook",
+                    },
                   ].map((social) => (
                     <a
                       key={social.label}
@@ -196,7 +223,9 @@ export default function Footer() {
                     className="group block"
                   >
                     <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-primary/5 transition-all duration-300 border border-transparent hover:border-primary/20">
-                      <div className={`p-2 rounded-lg bg-gradient-to-r ${service.gradient} text-white group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                      <div
+                        className={`p-2 rounded-lg bg-gradient-to-r ${service.gradient} text-white group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                      >
                         {service.icon}
                       </div>
                       <div>
@@ -235,7 +264,7 @@ export default function Footer() {
                 ))}
               </ul>
               <div className="pt-2">
-                <Link 
+                <Link
                   href="/services"
                   className="inline-flex items-center text-primary hover:text-secondary font-semibold transition-colors duration-300 group text-sm"
                 >
@@ -266,17 +295,23 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-              
+
               <div className="space-y-3 pt-3">
                 <h4 className="font-semibold text-gray-900">Legal</h4>
                 <ul className="space-y-2">
                   <li>
-                    <Link href="/privacy-policy" className="text-gray-600 hover:text-primary transition-colors text-sm block py-1">
+                    <Link
+                      href="/privacy-policy"
+                      className="text-gray-600 hover:text-primary transition-colors text-sm block py-1"
+                    >
                       Privacy Policy
                     </Link>
                   </li>
                   <li>
-                    <Link href="/terms-of-service" className="text-gray-600 hover:text-primary transition-colors text-sm block py-1">
+                    <Link
+                      href="/terms-of-service"
+                      className="text-gray-600 hover:text-primary transition-colors text-sm block py-1"
+                    >
                       Terms of Service
                     </Link>
                   </li>
@@ -292,10 +327,11 @@ export default function Footer() {
             <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0">
               <div className="flex items-center space-x-6">
                 <p className="text-gray-500 text-sm">
-                  &copy; {currentYear} JAYAA IT SOLUTION PVT. LTD. All rights reserved.
+                  &copy; {currentYear} JAYAA IT SOLUTION PVT. LTD. All rights
+                  reserved.
                 </p>
               </div>
-              
+
               <div className="flex items-center space-x-6 text-xs text-gray-500">
                 <span className="flex items-center space-x-1">
                   <Shield className="h-3 w-3 text-primary" />
@@ -315,5 +351,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

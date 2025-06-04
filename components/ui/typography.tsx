@@ -6,7 +6,7 @@ interface TypographyProps {
   className?: string
   gradient?: boolean
   muted?: boolean
-  [key: string]: any
+  [key: string]: any // eslint-disable-line
 }
 
 // Main heading for page/section titles

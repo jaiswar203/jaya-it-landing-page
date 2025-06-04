@@ -1,16 +1,16 @@
 import AnimatedDiv from "@/components/ui/animated-div";
 import { Button } from "@/components/ui/button";
-import { 
-  TypographyH2, 
-  TypographyGradientSubtitle, 
-  TypographyLarge, 
-  TypographyH5, 
+import {
+  TypographyH2,
+  TypographyGradientSubtitle,
+  TypographyLarge,
+  TypographyH5,
   TypographyBadge,
-  TypographySmall 
+  TypographySmall,
 } from "@/components/ui/typography";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, CheckCircle, Sparkles, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle, Sparkles } from "lucide-react";
 
 interface FeatureItem {
   text: string;
@@ -115,7 +115,9 @@ export default function AboutSection({
                     <div className="flex-shrink-0">
                       <CheckCircle className="h-5 w-5 text-secondary" />
                     </div>
-                    <TypographySmall className="font-medium">{feature.text}</TypographySmall>
+                    <TypographySmall className="font-medium">
+                      {feature.text}
+                    </TypographySmall>
                   </div>
                 </AnimatedDiv>
               ))}
@@ -181,16 +183,16 @@ export default function AboutSection({
                           {achievement.value}
                         </div>
                         <TypographySmall
-                          className={`${
-                            achievement.colorClass.split(" ")[6]
-                          } ${achievement.colorClass.split(" ")[7]} font-medium`}
+                          className={`${achievement.colorClass.split(" ")[6]} ${
+                            achievement.colorClass.split(" ")[7]
+                          } font-medium`}
                         >
                           {achievement.label}
                         </TypographySmall>
                       </div>
                     ))}
                   </div>
-                  
+
                   {/* Second row: Third achievement spanning full width */}
                   {achievements.length > 2 && (
                     <div className="w-full">
@@ -199,7 +201,9 @@ export default function AboutSection({
                           achievements[2].colorClass.split(" ")[0]
                         } ${achievements[2].colorClass.split(" ")[1]} ${
                           achievements[2].colorClass.split(" ")[2]
-                        } ${achievements[2].colorClass.split(" ")[3]} rounded-lg`}
+                        } ${
+                          achievements[2].colorClass.split(" ")[3]
+                        } rounded-lg`}
                       >
                         <div
                           className={`text-2xl font-bold ${
@@ -211,7 +215,9 @@ export default function AboutSection({
                         <TypographySmall
                           className={`${
                             achievements[2].colorClass.split(" ")[6]
-                          } ${achievements[2].colorClass.split(" ")[7]} font-medium`}
+                          } ${
+                            achievements[2].colorClass.split(" ")[7]
+                          } font-medium`}
                         >
                           {achievements[2].label}
                         </TypographySmall>

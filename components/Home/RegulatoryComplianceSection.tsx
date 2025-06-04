@@ -2,7 +2,6 @@ import AnimatedDiv from "@/components/ui/animated-div"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { 
   TypographyH1, 
-  TypographyH2, 
   TypographyGradientSubtitle, 
   TypographyLead, 
   TypographyH4, 
