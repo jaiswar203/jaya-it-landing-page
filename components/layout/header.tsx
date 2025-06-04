@@ -10,6 +10,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetClose,
 } from "@/components/ui/sheet";
 import {
   NavigationMenu,
@@ -43,6 +44,9 @@ import {
   TrendingUp,
   CheckCircle,
   Sparkles,
+  Home,
+  Info,
+  X,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -482,7 +486,7 @@ export default function Header() {
           {/* CTA Button */}
           <Button
             asChild
-            className="bg-primary shadow-lg hover:shadow-2xl transition-all duration-300 font-semibold text-white transform hover:scale-105 hover:from-primary/90 hover:to-secondary/90"
+            className="hidden lg:flex bg-primary shadow-lg hover:shadow-2xl transition-all duration-300 font-semibold text-white transform hover:scale-105 hover:from-primary/90 hover:to-secondary/90"
           >
             <Link href="/contact">
               <Sparkles className="h-4 w-4 mr-2" />
@@ -504,145 +508,214 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-full max-w-sm bg-white/95 backdrop-blur-xl border-l border-gray-200/80"
+              className="w-full max-w-sm bg-white border-l border-gray-200 overflow-y-auto"
             >
-              <SheetHeader className="mb-6">
-                <SheetTitle>
-                  <Link href="/">
+              <SheetHeader className="pb-6 border-b border-gray-100">
+                <SheetTitle className="flex items-center">
+                  <Link href="/" className="group">
                     <Image
                       src="/logo-jayaa.png"
                       alt="Jayaa IT Solution Logo"
-                      width={200}
-                      height={50}
-                      className="h-auto max-h-12 w-auto"
+                      width={180}
+                      height={45}
+                      className="h-auto max-h-10 w-auto group-hover:scale-105 transition-transform duration-300"
                     />
                   </Link>
                 </SheetTitle>
               </SheetHeader>
 
-              <div className="flex flex-col space-y-2">
-                <Link
-                  href="/"
-                  className={cn(
-                    "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium relative",
-                    isActivePath("/")
-                      ? "text-primary font-semibold"
-                      : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
-                  )}
-                >
-                  <span className="text-lg">Home</span>
-                  {isActivePath("/") && (
-                    <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
-                  )}
-                </Link>
-
-                <Link
-                  href="/about"
-                  className={cn(
-                    "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium relative",
-                    isActivePath("/about")
-                      ? "text-primary font-semibold"
-                      : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
-                  )}
-                >
-                  <span className="text-lg">About</span>
-                  {isActivePath("/about") && (
-                    <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
-                  )}
-                </Link>
-
-                <div className="space-y-2">
-                  <p className="px-4 py-2 text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent flex items-center">
-                    <Sparkles className="h-5 w-5 mr-2 text-primary" />
-                    Services
-                  </p>
-                  {serviceCategories.map((service) => (
+              <div className="py-6 space-y-6">
+                {/* Main Navigation */}
+                <div className="space-y-1">
+                  <SheetClose asChild>
                     <Link
-                      key={service.name}
-                      href={service.href}
+                      href="/"
                       className={cn(
-                        "flex items-center space-x-3 px-6 py-3 rounded-xl transition-all duration-300 font-medium relative",
-                        isActivePath(service.href)
-                          ? "text-primary font-semibold"
-                          : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
+                        "flex items-center space-x-4 px-4 py-4 rounded-2xl transition-all duration-300 font-medium group relative overflow-hidden",
+                        isActivePath("/")
+                          ? "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary border border-primary/20 shadow-sm"
+                          : "hover:bg-gray-50 hover:translate-x-1"
                       )}
                     >
-                      <div
-                        className={`p-1 rounded-lg bg-gradient-to-r ${service.gradient} text-white shadow-md`}
-                      >
-                        {React.cloneElement(service.icon, {
-                          className: "h-4 w-4",
-                        })}
+                      <div className={cn(
+                        "p-2 rounded-xl transition-all duration-300",
+                        isActivePath("/")
+                          ? "bg-primary text-white shadow-md"
+                          : "bg-gray-100 text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110"
+                      )}>
+                        <Home className="h-4 w-4" />
                       </div>
-                      <span className="text-md">{service.name}</span>
-                      {isActivePath(service.href) && (
-                        <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                      <span className="text-lg font-semibold">Home</span>
+                      {isActivePath("/") && (
+                        <div className="absolute right-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                       )}
                     </Link>
-                  ))}
-                </div>
+                  </SheetClose>
 
-                <Link
-                  href="/solutions"
-                  className={cn(
-                    "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium relative",
-                    isActivePath("/solutions")
-                      ? "text-primary font-semibold"
-                      : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
-                  )}
-                >
-                  <span className="text-lg">Solutions</span>
-                  {isActivePath("/solutions") && (
-                    <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
-                  )}
-                </Link>
-
-                <div className="space-y-2">
-                  <p className="px-4 py-2 text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent flex items-center">
-                    <Award className="h-5 w-5 mr-2 text-primary" />
-                    Company
-                  </p>
-                  {company.map((item) => (
+                  <SheetClose asChild>
                     <Link
-                      key={item.name}
-                      href={item.href}
+                      href="/about"
                       className={cn(
-                        "flex items-center space-x-3 px-6 py-3 rounded-xl transition-all duration-300 font-medium relative",
-                        isActivePath(item.href)
-                          ? "text-primary font-semibold"
-                          : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
+                        "flex items-center space-x-4 px-4 py-4 rounded-2xl transition-all duration-300 font-medium group relative overflow-hidden",
+                        isActivePath("/about")
+                          ? "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary border border-primary/20 shadow-sm"
+                          : "hover:bg-gray-50 hover:translate-x-1"
                       )}
                     >
-                      <div
-                        className={cn(
-                          "transition-all duration-300",
-                          isActivePath(item.href)
-                            ? "text-primary"
-                            : "text-primary"
-                        )}
-                      >
-                        {React.cloneElement(item.icon, {
-                          className: "h-4 w-4",
-                        })}
+                      <div className={cn(
+                        "p-2 rounded-xl transition-all duration-300",
+                        isActivePath("/about")
+                          ? "bg-primary text-white shadow-md"
+                          : "bg-gray-100 text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110"
+                      )}>
+                        <Info className="h-4 w-4" />
                       </div>
-                      <span className="text-md">{item.name}</span>
-                      {isActivePath(item.href) && (
-                        <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                      <span className="text-lg font-semibold">About</span>
+                      {isActivePath("/about") && (
+                        <div className="absolute right-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                       )}
                     </Link>
-                  ))}
+                  </SheetClose>
+
+                  <SheetClose asChild>
+                    <Link
+                      href="/solutions"
+                      className={cn(
+                        "flex items-center space-x-4 px-4 py-4 rounded-2xl transition-all duration-300 font-medium group relative overflow-hidden",
+                        isActivePath("/solutions")
+                          ? "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary border border-primary/20 shadow-sm"
+                          : "hover:bg-gray-50 hover:translate-x-1"
+                      )}
+                    >
+                      <div className={cn(
+                        "p-2 rounded-xl transition-all duration-300",
+                        isActivePath("/solutions")
+                          ? "bg-primary text-white shadow-md"
+                          : "bg-gray-100 text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110"
+                      )}>
+                        <Target className="h-4 w-4" />
+                      </div>
+                      <span className="text-lg font-semibold">Solutions</span>
+                      {isActivePath("/solutions") && (
+                        <div className="absolute right-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      )}
+                    </Link>
+                  </SheetClose>
                 </div>
 
-                <div className="pt-6">
-                  <Button
-                    asChild
-                    className="w-full bg-primary text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                  >
-                    <Link href="/contact">
-                      <Sparkles className="h-4 w-4 mr-2" />
-                      Consult with us
+                {/* CTA Button */}
+                <div className="px-2">
+                  <SheetClose asChild>
+                    <Link
+                      href="/contact"
+                      className="flex items-center justify-center space-x-3 w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
+                    >
+                      <Sparkles className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+                      <span className="text-lg">Consult with us</span>
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </Link>
-                  </Button>
+                  </SheetClose>
+                </div>
+
+                {/* Services Section */}
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2 px-4">
+                    <div className="p-2 bg-gradient-to-r from-primary to-secondary rounded-lg">
+                      <Sparkles className="h-4 w-4 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                      Our Services
+                    </h3>
+                    <div className="flex-1 h-px bg-gradient-to-r from-primary/20 to-secondary/20"></div>
+                  </div>
+                  <div className="space-y-2 px-2">
+                    {serviceCategories.map((service, index) => (
+                      <SheetClose key={service.name} asChild>
+                        <Link
+                          href={service.href}
+                          className={cn(
+                            "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium group hover:bg-gray-50 hover:translate-x-1",
+                            isActivePath(service.href)
+                              ? "bg-gradient-to-r from-primary/5 to-secondary/5 border border-primary/20"
+                              : ""
+                          )}
+                          style={{ animationDelay: `${index * 100}ms` }}
+                        >
+                          <div
+                            className={`p-2 rounded-lg bg-gradient-to-r ${service.gradient} text-white shadow-md group-hover:scale-110 transition-transform duration-300`}
+                          >
+                            {React.cloneElement(service.icon, {
+                              className: "h-4 w-4",
+                            })}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <span className="font-semibold text-gray-900 group-hover:text-primary transition-colors duration-300">
+                              {service.name}
+                            </span>
+                          </div>
+                          {isActivePath(service.href) && (
+                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                          )}
+                        </Link>
+                      </SheetClose>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Company Section */}
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2 px-4">
+                    <div className="p-2 bg-gradient-to-r from-purple-500 to-violet-500 rounded-lg">
+                      <Award className="h-4 w-4 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold bg-gradient-to-r from-purple-500 to-violet-500 bg-clip-text text-transparent">
+                      Company
+                    </h3>
+                    <div className="flex-1 h-px bg-gradient-to-r from-purple-500/20 to-violet-500/20"></div>
+                  </div>
+                  <div className="space-y-2 px-2">
+                    {company.map((item, index) => (
+                      <SheetClose key={item.name} asChild>
+                        <Link
+                          href={item.href}
+                          className={cn(
+                            "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium group hover:bg-gray-50 hover:translate-x-1",
+                            isActivePath(item.href)
+                              ? "bg-gradient-to-r from-purple-500/5 to-violet-500/5 border border-purple-500/20"
+                              : ""
+                          )}
+                          style={{ animationDelay: `${index * 50}ms` }}
+                        >
+                          <div
+                            className={cn(
+                              "p-2 rounded-lg transition-all duration-300 group-hover:scale-110",
+                              isActivePath(item.href)
+                                ? "bg-purple-500 text-white shadow-md"
+                                : "bg-gray-100 text-purple-500 group-hover:bg-purple-500 group-hover:text-white"
+                            )}
+                          >
+                            {React.cloneElement(item.icon, {
+                              className: "h-4 w-4",
+                            })}
+                          </div>
+                          <div className="flex-1">
+                            <span className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
+                              {item.name}
+                            </span>
+                          </div>
+                          {isActivePath(item.href) && (
+                            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                          )}
+                        </Link>
+                      </SheetClose>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Footer */}
+                <div className="pt-6 border-t border-gray-100 text-center">
+                  <p className="text-sm text-gray-500 mb-2">© 2024 Jayaa IT Solution</p>
+                  <p className="text-xs text-gray-400">Securing Your Digital Future</p>
                 </div>
               </div>
             </SheetContent>

@@ -41,7 +41,7 @@ const defaultRegulatoryBodies: RegulatoryBody[] = [
     fullName: "Reserve Bank of India",
     description: "Banking and financial services regulatory compliance with stringent security and operational guidelines.",
     logo: "/regulatories/rbi.png",
-    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary",
+    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30",
     iconBg: "bg-primary"
   },
   {
@@ -49,23 +49,7 @@ const defaultRegulatoryBodies: RegulatoryBody[] = [
     fullName: "Securities and Exchange Board of India",
     description: "Capital markets and securities regulation compliance for investment and trading platforms.",
     logo: "/regulatories/sebi.png",
-    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30 text-secondary dark:text-secondary",
-    iconBg: "bg-secondary"
-  },
-  {
-    name: "NBFC",
-    fullName: "Non-Banking Financial Company",
-    description: "Non-banking financial services compliance with regulatory frameworks and operational standards.",
-    logo: "/regulatories/nbfc.png",
-    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary",
-    iconBg: "bg-primary"
-  },
-  {
-    name: "IRDAI",
-    fullName: "Insurance Regulatory and Development Authority of India",
-    description: "Insurance sector regulatory compliance with comprehensive risk management and security protocols.",
-    logo: "/regulatories/IRDA.png",
-    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30 text-secondary dark:text-secondary",
+    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30",
     iconBg: "bg-secondary"
   },
   {
@@ -73,23 +57,40 @@ const defaultRegulatoryBodies: RegulatoryBody[] = [
     fullName: "Indian Computer Emergency Response Team",
     description: "National cybersecurity guidelines and incident response framework compliance.",
     logo: "/regulatories/CERTIN.png",
-    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary",
+    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30",
     iconBg: "bg-primary"
+  },
+  {
+    name: "IRDAI",
+    fullName: "Insurance Regulatory and Development Authority of India",
+    description: "Insurance sector regulatory compliance with comprehensive risk management and security protocols.",
+    logo: "/regulatories/IRDA.png",
+    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30",
+    iconBg: "bg-secondary"
   },
   {
     name: "NIST Framework",
     fullName: "National Institute of Standards and Technology",
     description: "International cybersecurity framework standards for comprehensive risk management and security controls.",
     logo: "/regulatories/NIST.png",
-    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30 text-secondary dark:text-secondary",
+    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30",
     iconBg: "bg-secondary"
   },
+  {
+    name: "NBFC",
+    fullName: "Non-Banking Financial Company",
+    description: "Non-banking financial services compliance with regulatory frameworks and operational standards.",
+    logo: "/regulatories/nbfc.png",
+    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30",
+    iconBg: "bg-primary"
+  },
+  
   {
     name: "ADHICS",
     fullName: "Aadhaar Data Hub Information and Cyber Security",
     description: "Aadhaar ecosystem security and privacy compliance with strict data protection standards.",
     icon: <FileCheck className="h-8 w-8" />,
-    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30 text-primary dark:text-primary",
+    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30",
     iconBg: "bg-primary"
   },
   {
@@ -97,7 +98,7 @@ const defaultRegulatoryBodies: RegulatoryBody[] = [
     fullName: "National Electronic Security Authority",
     description: "National electronic security standards and cryptographic compliance for secure communications.",
     logo: "/regulatories/NESA.png",
-    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30 text-secondary dark:text-secondary",
+    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30",
     iconBg: "bg-secondary"
   }
 ]
@@ -110,6 +111,21 @@ export default function RegulatoryComplianceSection({
   regulatoryBodies = defaultRegulatoryBodies,
   className = ""
 }: RegulatoryComplianceSectionProps) {
+  // Helper function to get appropriate colors based on iconBg
+  const getThemeColors = (iconBg: string) => {
+    if (iconBg.includes('primary')) {
+      return {
+        iconColor: 'text-primary',
+        textColor: 'text-primary'
+      }
+    } else {
+      return {
+        iconColor: 'text-secondary',
+        textColor: 'text-secondary'
+      }
+    }
+  }
+
   return (
     <section className={`py-20 sm:py-28 bg-gray-50/50 dark:bg-gray-900/20 relative overflow-hidden ${className}`}>
       {/* Background Effects */}
@@ -136,56 +152,59 @@ export default function RegulatoryComplianceSection({
         </div>
 
         {/* Regulatory Bodies Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-          {regulatoryBodies.map((body, index) => (
-            <AnimatedDiv key={body.name} delay={index * 0.1}>
-              <Card className="group h-full shadow-lg hover:shadow-2xl transition-all duration-500 bg-white dark:bg-gray-900 hover:-translate-y-2 border border-gray-200/50 dark:border-gray-700/50 cursor-pointer">
-                <CardHeader className="space-y-4">
-                  <div className="flex items-center space-x-4">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${body.logo ? 'bg-white dark:bg-gray-800 border border-gray-200/50 dark:border-gray-700/50' : body.iconBg + ' text-white'} shadow-lg group-hover:scale-110 transition-all duration-500`}>
-                      {body.logo ? (
-                        <Image
-                          src={body.logo}
-                          alt={`${body.name} logo`}
-                          width={48}
-                          height={48}
-                          className="object-contain"
-                        />
-                      ) : (
-                        body.icon
-                      )}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {regulatoryBodies.map((body, index) => {
+            const themeColors = getThemeColors(body.iconBg)
+            return (
+              <AnimatedDiv key={body.name} delay={index * 0.1}>
+                <Card className="group h-full shadow-lg hover:shadow-2xl transition-all duration-500 bg-white dark:bg-gray-900 hover:-translate-y-2 border border-gray-200/50 dark:border-gray-700/50 cursor-pointer flex flex-col">
+                  <CardHeader className="space-y-4 flex-shrink-0">
+                    <div className="flex items-center space-x-4">
+                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${body.logo ? 'bg-white dark:bg-gray-800 border border-gray-200/50 dark:border-gray-700/50' : body.iconBg + ' text-white'} shadow-lg group-hover:scale-110 transition-all duration-500`}>
+                        {body.logo ? (
+                          <Image
+                            src={body.logo}
+                            alt={`${body.name} logo`}
+                            width={48}
+                            height={48}
+                            className="object-contain"
+                          />
+                        ) : (
+                          body.icon
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <CardTitle>
+                          <TypographyH4 className="text-2xl font-bold text-primary group-hover:text-secondary transition-colors duration-300 mb-1">
+                            {body.name}
+                          </TypographyH4>
+                          <TypographySmall className="text-gray-600 dark:text-gray-400 font-medium">
+                            {body.fullName}
+                          </TypographySmall>
+                        </CardTitle>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <CardTitle>
-                        <TypographyH4 className="text-2xl font-bold text-primary group-hover:text-secondary transition-colors duration-300 mb-1">
-                          {body.name}
-                        </TypographyH4>
-                        <TypographySmall className="text-gray-600 dark:text-gray-400 font-medium">
-                          {body.fullName}
-                        </TypographySmall>
-                      </CardTitle>
-                    </div>
-                  </div>
-                </CardHeader>
-                
-                <CardContent className="space-y-6">
-                  <div className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {body.description}
-                  </div>
+                  </CardHeader>
                   
-                  {/* Compliance Badge */}
-                  <div className={`flex items-center space-x-3 p-4 rounded-xl bg-gradient-to-r ${body.colorClass} border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300 hover:scale-[1.02]`}>
-                    <div className="flex-shrink-0">
-                      <CheckCircle className="h-5 w-5 text-secondary" />
+                  <CardContent className="flex-grow flex flex-col justify-between">
+                    <div className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                      {body.description}
                     </div>
-                    <div className="text-sm font-bold text-gray-800 dark:text-gray-200 uppercase tracking-wider">
-                      Compliance Aligned
+                    
+                    {/* Compliance Badge - Now with aligned colors */}
+                    <div className={`flex items-center space-x-3 p-4 rounded-xl bg-gradient-to-r ${body.colorClass} border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300 hover:scale-[1.02] mt-auto`}>
+                      <div className="flex-shrink-0">
+                        <CheckCircle className={`h-5 w-5 ${themeColors.iconColor}`} />
+                      </div>
+                      <div className={`text-sm font-bold ${themeColors.textColor} dark:${themeColors.textColor} uppercase tracking-wider`}>
+                        Compliance Aligned
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </AnimatedDiv>
-          ))}
+                  </CardContent>
+                </Card>
+              </AnimatedDiv>
+            )
+          })}
         </div>
 
         {/* Bottom Call to Action */}
