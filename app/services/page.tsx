@@ -6,6 +6,49 @@ import AnimatedDiv from "@/components/ui/animated-div";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Star, Shield, Zap, Target } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "IT Services - Comprehensive Technology Solutions",
+  description: "Explore JAYAA IT Solution's comprehensive IT services including cybersecurity, digital transformation, cloud solutions, managed services, and professional consulting. Expert support for enterprise technology needs.",
+  keywords: [
+    "IT services",
+    "cybersecurity services",
+    "digital transformation",
+    "cloud solutions",
+    "managed IT services",
+    "professional services",
+    "enterprise IT",
+    "technology consulting",
+    "zero trust security",
+    "advanced IT solutions",
+    "infrastructure management",
+    "IT support services"
+  ],
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "IT Services - Comprehensive Technology Solutions | JAYAA IT",
+    description: "Explore JAYAA IT Solution's comprehensive IT services including cybersecurity, digital transformation, cloud solutions, managed services, and professional consulting.",
+    url: "https://www.jayaaitsolution.com/services",
+    type: "website",
+    images: [
+      {
+        url: "/og-services.jpg",
+        width: 1200,
+        height: 630,
+        alt: "JAYAA IT Services - Comprehensive Technology Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "IT Services - Comprehensive Technology Solutions | JAYAA IT",
+    description: "Explore JAYAA IT Solution's comprehensive IT services including cybersecurity, digital transformation, cloud solutions, managed services, and professional consulting.",
+    images: ["/og-services.jpg"],
+  },
+};
 
 export default function ServicesPage() {
   return (

@@ -21,6 +21,47 @@ import {
   TypographyBadge,
   TypographySmall,
 } from "@/components/ui/typography";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us - Premier IT Service Provider",
+  description: "Learn about JAYAA IT Solution Pvt. Ltd., a premier IT service provider delivering innovative technology solutions, cybersecurity, and infrastructure management globally. Discover our values, expertise, and commitment to excellence.",
+  keywords: [
+    "about JAYAA IT",
+    "IT service provider",
+    "company profile",
+    "IT solutions company",
+    "technology expertise",
+    "IT professionals",
+    "enterprise IT services",
+    "cybersecurity experts",
+    "digital transformation",
+    "IT consulting firm"
+  ],
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About JAYAA IT Solution - Premier IT Service Provider",
+    description: "Learn about JAYAA IT Solution Pvt. Ltd., a premier IT service provider delivering innovative technology solutions, cybersecurity, and infrastructure management globally.",
+    url: "https://www.jayaaitsolution.com/about",
+    type: "website",
+    images: [
+      {
+        url: "/og-about.jpg",
+        width: 1200,
+        height: 630,
+        alt: "About JAYAA IT Solution - Premier IT Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About JAYAA IT Solution - Premier IT Service Provider",
+    description: "Learn about JAYAA IT Solution Pvt. Ltd., a premier IT service provider delivering innovative technology solutions, cybersecurity, and infrastructure management globally.",
+    images: ["/og-about.jpg"],
+  },
+};
 
 export default function AboutPage() {
   const achievements = [

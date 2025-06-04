@@ -1,5 +1,48 @@
 import { ServicePageLayout } from "@/components/services"
 import { Users } from "lucide-react"
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Professional IT Services - Expert Consulting & Support",
+  description: "Expert professional IT services including strategic consulting, project management, technical support, and IT training. Experienced professionals for your technology initiatives.",
+  keywords: [
+    "professional IT services",
+    "IT consulting",
+    "project management",
+    "technical support",
+    "IT training",
+    "technology consulting",
+    "expert services",
+    "strategic consulting",
+    "IT professionals",
+    "technology expertise",
+    "business consulting",
+    "IT advisory services"
+  ],
+  alternates: {
+    canonical: "/services/professional-services",
+  },
+  openGraph: {
+    title: "Professional IT Services - Expert Consulting & Support | JAYAA IT",
+    description: "Expert professional IT services including strategic consulting, project management, technical support, and IT training.",
+    url: "https://www.jayaaitsolution.com/services/professional-services",
+    type: "website",
+    images: [
+      {
+        url: "/og-professional-services.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Professional IT Services - JAYAA IT",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Professional IT Services - Expert Consulting & Support | JAYAA IT",
+    description: "Expert professional IT services including strategic consulting, project management, technical support, and IT training.",
+    images: ["/og-professional-services.jpg"],
+  },
+};
 
 const professionalServices = [
   "Strategic IT Consulting",

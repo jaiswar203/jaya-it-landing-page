@@ -4,6 +4,49 @@ import Image from "next/image"
 import Link from "next/link"
 import { Linkedin, Users, Award, ArrowRight, Mail, Star } from "lucide-react"
 import AnimatedDiv from "@/components/ui/animated-div"
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Team - Expert IT Professionals & Leaders",
+  description: "Meet the expert leadership team at JAYAA IT Solution. Experienced IT professionals with 70+ years combined experience in technology, compliance, and business development across international markets.",
+  keywords: [
+    "JAYAA IT team",
+    "IT professionals",
+    "technology leaders",
+    "IT experts",
+    "leadership team",
+    "technology consultants",
+    "IT specialists",
+    "business development",
+    "compliance experts",
+    "technology advisors",
+    "experienced professionals",
+    "IT leadership"
+  ],
+  alternates: {
+    canonical: "/team",
+  },
+  openGraph: {
+    title: "Our Team - Expert IT Professionals & Leaders | JAYAA IT",
+    description: "Meet the expert leadership team at JAYAA IT Solution. Experienced IT professionals with 70+ years combined experience in technology and business development.",
+    url: "https://www.jayaaitsolution.com/team",
+    type: "website",
+    images: [
+      {
+        url: "/og-team.jpg",
+        width: 1200,
+        height: 630,
+        alt: "JAYAA IT Team - Expert IT Professionals",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Team - Expert IT Professionals & Leaders | JAYAA IT",
+    description: "Meet the expert leadership team at JAYAA IT Solution. Experienced IT professionals with 70+ years combined experience in technology and business development.",
+    images: ["/og-team.jpg"],
+  },
+};
 
 const teamMembers = [
   {

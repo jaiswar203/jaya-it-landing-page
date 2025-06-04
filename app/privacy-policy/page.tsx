@@ -3,6 +3,53 @@ import { Button } from "@/components/ui/button"
 import { Shield, Lock, Eye, Database, Clock, Users, FileText, Mail } from "lucide-react"
 import AnimatedDiv from "@/components/ui/animated-div"
 import Link from "next/link"
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy - Data Protection & Privacy Rights",
+  description: "JAYAA IT Solution's comprehensive privacy policy. Learn how we collect, use, and protect your personal information. GDPR compliant with transparent data practices and user control.",
+  keywords: [
+    "privacy policy",
+    "data protection",
+    "GDPR compliance",
+    "personal information",
+    "data security",
+    "privacy rights",
+    "information security",
+    "data collection",
+    "user privacy",
+    "data usage",
+    "privacy practices",
+    "data retention"
+  ],
+  alternates: {
+    canonical: "/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy - Data Protection & Privacy Rights | JAYAA IT",
+    description: "JAYAA IT Solution's comprehensive privacy policy. Learn how we collect, use, and protect your personal information with GDPR compliant practices.",
+    url: "https://www.jayaaitsolution.com/privacy-policy",
+    type: "website",
+    images: [
+      {
+        url: "/og-privacy-policy.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Privacy Policy - JAYAA IT",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy - Data Protection & Privacy Rights | JAYAA IT",
+    description: "JAYAA IT Solution's comprehensive privacy policy. Learn how we collect, use, and protect your personal information with GDPR compliant practices.",
+    images: ["/og-privacy-policy.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function PrivacyPolicyPage() {
   const sections = [
@@ -150,7 +197,7 @@ export default function PrivacyPolicyPage() {
                               <span className="text-muted-foreground text-sm">{use}</span>
                             </li>
                           ))}
-            </ul>
+                        </ul>
                       </div>
                     )}
                   </CardContent>

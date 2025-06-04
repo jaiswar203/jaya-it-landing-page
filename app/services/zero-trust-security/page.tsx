@@ -1,5 +1,16 @@
 import { ServicePageLayout } from "@/components/services"
 import { ShieldCheck } from "lucide-react"
+import {
+  ZeroTrustHeroSection,
+  ZeroTrustSolutionsSection,
+  SecurityFrameworkSection,
+  ZeroTrustBenefitsSection,
+  SecurityComplianceSection,
+  ZeroTrustImplementationSection,
+  SecurityCaseStudiesSection,
+  SecurityCTASection,
+} from "@/components/services/zero-trust-security";
+import type { Metadata } from "next";
 
 const zeroTrustServices = [
   "Identity & Access Management (IAM)",
@@ -19,6 +30,48 @@ const zeroTrustStats = [
   { value: "Continuous", label: "Monitoring" },
   { value: "Real-time", label: "Threat Response" }
 ]
+
+export const metadata: Metadata = {
+  title: "Zero Trust Security Solutions - Advanced Cybersecurity",
+  description: "Implement comprehensive Zero Trust Security architecture with JAYAA IT Solution. Advanced cybersecurity, identity management, endpoint protection, and compliance solutions for enterprise security.",
+  keywords: [
+    "zero trust security",
+    "cybersecurity solutions",
+    "identity management",
+    "endpoint protection",
+    "network security",
+    "security architecture",
+    "advanced threat protection",
+    "security compliance",
+    "enterprise cybersecurity",
+    "security framework",
+    "multi-factor authentication",
+    "security monitoring"
+  ],
+  alternates: {
+    canonical: "/services/zero-trust-security",
+  },
+  openGraph: {
+    title: "Zero Trust Security Solutions - Advanced Cybersecurity | JAYAA IT",
+    description: "Implement comprehensive Zero Trust Security architecture with JAYAA IT Solution. Advanced cybersecurity, identity management, and compliance solutions.",
+    url: "https://www.jayaaitsolution.com/services/zero-trust-security",
+    type: "website",
+    images: [
+      {
+        url: "/og-zero-trust-security.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Zero Trust Security Solutions - JAYAA IT",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zero Trust Security Solutions - Advanced Cybersecurity | JAYAA IT",
+    description: "Implement comprehensive Zero Trust Security architecture with JAYAA IT Solution. Advanced cybersecurity, identity management, and compliance solutions.",
+    images: ["/og-zero-trust-security.jpg"],
+  },
+};
 
 export default function ZeroTrustSecurityPage() {
   return (

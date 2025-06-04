@@ -1,5 +1,48 @@
 import { ServicePageLayout } from "@/components/services"
 import { Zap } from "lucide-react"
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Digital Transformation Services - Modernize Your Business",
+  description: "Accelerate your digital transformation journey with JAYAA IT Solution. Cloud migration, process automation, data analytics, and modern technology solutions for business growth and efficiency.",
+  keywords: [
+    "digital transformation",
+    "cloud migration",
+    "process automation",
+    "business modernization",
+    "data analytics",
+    "digital strategy",
+    "technology modernization",
+    "enterprise transformation",
+    "automation solutions",
+    "digital innovation",
+    "business process optimization",
+    "cloud transformation"
+  ],
+  alternates: {
+    canonical: "/services/digital-transformation",
+  },
+  openGraph: {
+    title: "Digital Transformation Services - Modernize Your Business | JAYAA IT",
+    description: "Accelerate your digital transformation journey with JAYAA IT Solution. Cloud migration, process automation, data analytics, and modern technology solutions.",
+    url: "https://www.jayaaitsolution.com/services/digital-transformation",
+    type: "website",
+    images: [
+      {
+        url: "/og-digital-transformation.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Digital Transformation Services - JAYAA IT",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Digital Transformation Services - Modernize Your Business | JAYAA IT",
+    description: "Accelerate your digital transformation journey with JAYAA IT Solution. Cloud migration, process automation, data analytics, and modern technology solutions.",
+    images: ["/og-digital-transformation.jpg"],
+  },
+};
 
 const digitalTransformationServices = [
   "Legacy-to-Cloud Modernization",

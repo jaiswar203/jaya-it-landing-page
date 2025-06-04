@@ -1,5 +1,48 @@
 import { ServicePageLayout } from "@/components/services"
-import { Monitor } from "lucide-react"
+import { Monitor, Settings } from "lucide-react"
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Advanced IT Solutions - Enterprise Technology Services",
+  description: "Comprehensive advanced IT solutions including cloud infrastructure, enterprise applications, system integration, and technology consulting. Scalable solutions for modern business needs.",
+  keywords: [
+    "advanced IT solutions",
+    "enterprise technology",
+    "cloud infrastructure",
+    "system integration",
+    "enterprise applications",
+    "technology consulting",
+    "IT architecture",
+    "scalable solutions",
+    "business technology",
+    "infrastructure services",
+    "technology implementation",
+    "enterprise IT services"
+  ],
+  alternates: {
+    canonical: "/services/advanced-it-solutions",
+  },
+  openGraph: {
+    title: "Advanced IT Solutions - Enterprise Technology Services | JAYAA IT",
+    description: "Comprehensive advanced IT solutions including cloud infrastructure, enterprise applications, system integration, and technology consulting.",
+    url: "https://www.jayaaitsolution.com/services/advanced-it-solutions",
+    type: "website",
+    images: [
+      {
+        url: "/og-advanced-it-solutions.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Advanced IT Solutions - JAYAA IT",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Advanced IT Solutions - Enterprise Technology Services | JAYAA IT",
+    description: "Comprehensive advanced IT solutions including cloud infrastructure, enterprise applications, system integration, and technology consulting.",
+    images: ["/og-advanced-it-solutions.jpg"],
+  },
+};
 
 const advancedITServices = [
   "Secure Network Architecture Design",

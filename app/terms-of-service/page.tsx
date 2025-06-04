@@ -3,6 +3,53 @@ import { Button } from "@/components/ui/button"
 import { Shield, FileText, Users, Mail, Calendar } from "lucide-react"
 import AnimatedDiv from "@/components/ui/animated-div"
 import Link from "next/link"
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service - Legal Framework & User Agreement",
+  description: "JAYAA IT Solution's comprehensive terms of service. Understand your rights and responsibilities when using our IT services, including legal framework, user obligations, and service conditions.",
+  keywords: [
+    "terms of service",
+    "user agreement",
+    "legal terms",
+    "service conditions",
+    "user responsibilities",
+    "intellectual property",
+    "service agreement",
+    "legal framework",
+    "terms and conditions",
+    "service terms",
+    "user obligations",
+    "legal agreement"
+  ],
+  alternates: {
+    canonical: "/terms-of-service",
+  },
+  openGraph: {
+    title: "Terms of Service - Legal Framework & User Agreement | JAYAA IT",
+    description: "JAYAA IT Solution's comprehensive terms of service. Understand your rights and responsibilities when using our IT services and legal framework.",
+    url: "https://www.jayaaitsolution.com/terms-of-service",
+    type: "website",
+    images: [
+      {
+        url: "/og-terms-of-service.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Terms of Service - JAYAA IT",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service - Legal Framework & User Agreement | JAYAA IT",
+    description: "JAYAA IT Solution's comprehensive terms of service. Understand your rights and responsibilities when using our IT services and legal framework.",
+    images: ["/og-terms-of-service.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function TermsOfServicePage() {
   const sections = [
