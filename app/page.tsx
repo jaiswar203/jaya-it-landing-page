@@ -5,6 +5,7 @@ import {
   CybersecuritySolutionsSection,
   InformationSecurityDashboardSection,
   IndustriesWeServeSection,
+  RegulatoryComplianceSection,
   TestimonialsSection,
   WhyChooseUsSection,
   StrategicPartnersSection,
@@ -22,6 +23,7 @@ export default function HomePage() {
       <CybersecuritySolutionsSection />
       <InformationSecurityDashboardSection />
       <IndustriesWeServeSection />
+      <RegulatoryComplianceSection />
       <StrategicPartnersSection />
       {/* <TestimonialsSection /> */}
       <ClientsSection />

@@ -7,29 +7,11 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 
 const trustedCompanies = [
-  { name: "Kotak Bank", logo: "/companies/kotak.webp", width: 150, height: 75 },
-  { name: "Axis Bank", logo: "/companies/axis.png", width: 150, height: 75 },
-  { name: "Bajaj", logo: "/companies/bajaj.webp", width: 150, height: 75 },
-  { name: "HDFC Bank", logo: "/companies/hdfc.jpg", width: 150, height: 75 },
-  { name: "SBI", logo: "/companies/sbi.png", width: 150, height: 75 },
-]
-
-const keyFeatures = [
-  {
-    icon: Shield,
-    title: "Breach & Attack Simulation",
-    description: "Continuous security validation through simulated breach scenarios to test your defenses"
-  },
-  {
-    icon: DatabaseZap,
-    title: "Data Classification & Protection",
-    description: "Automated identification and protection of sensitive data across your organization"
-  },
-  {
-    icon: Search,
-    title: "VA & Penetration Testing",
-    description: "Comprehensive vulnerability assessment and penetration testing services"
-  }
+  { name: "HDFC Bank", logo: "/companies/hdfc.jpg", width: 250, height: 120 },
+  { name: "ICICI Lombard", logo: "/companies/page9_img14.png", width: 250, height: 120 },
+  { name: "Kotak Bank", logo: "/companies/kotak.webp", width: 250, height: 120 },
+  { name: "Axis Bank", logo: "/companies/axis.png", width: 250, height: 150 },
+  { name: "Bajaj", logo: "/companies/bajaj.webp", width: 250, height: 150 },
 ]
 
 // Crawling bugs/threats

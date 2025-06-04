@@ -168,7 +168,7 @@ export default function InformationSecurityDashboardSection({
 
           {/* View All Solutions Card */}
           <AnimatedDiv delay={0.8}>
-            <div className="mt-8 flex justify-end">
+            <div className="mt-8 flex justify-center">
               <motion.div
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
