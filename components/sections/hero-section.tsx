@@ -14,21 +14,36 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const trustedCompanies = [
-  { name: "HDFC Bank", logo: "/companies/hdfc.jpg", width: 250, height: 120 },
+  {
+    name: "HDFC Bank",
+    logo: "/company/hdfc-sales.png",
+    width: 250,
+    height: 120,
+  },
   {
     name: "ICICI Lombard",
-    logo: "/companies/page9_img14.png",
+    logo: "/company/icici-lombard.png",
     width: 250,
     height: 120,
   },
   {
     name: "Kotak Bank",
-    logo: "/companies/kotak.webp",
+    logo: "/company/kotak-life.png",
     width: 250,
     height: 120,
   },
-  { name: "Axis Bank", logo: "/companies/axis.png", width: 250, height: 150 },
-  { name: "Bajaj", logo: "/companies/bajaj.webp", width: 250, height: 150 },
+  {
+    name: "ICICI Bank",
+    logo: "/company/icici-bank.png",
+    width: 250,
+    height: 150,
+  },
+  {
+    name: "Bajaj Finserv",
+    logo: "/company/bajaj.png",
+    width: 250,
+    height: 150,
+  },
 ];
 
 // Crawling bugs/threats
@@ -327,7 +342,6 @@ const DataFlow = () => (
   </div>
 );
 
-
 // Data encryption streams
 const EncryptionStreams = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
@@ -378,8 +392,6 @@ const EncryptionStreams = () => (
     />
   </div>
 );
-
-
 
 // Security monitoring waves
 const MonitoringWaves = () => (
@@ -843,7 +855,7 @@ export default function HeroSection() {
                   whileHover={{ scale: 1.05 }}
                   className="group"
                 >
-                  <div className="w-40 h-24 bg-white/90 rounded-lg backdrop-blur-sm border border-white/50 shadow-lg flex items-center justify-center p-4 group-hover:bg-white transition-all duration-300 group-hover:scale-105">
+                  <div className="w-40 h-24 rounded-lg backdrop-blur-sm  flex items-center justify-center p-4 group-hover:bg-white transition-all duration-300 group-hover:scale-105">
                     <Image
                       src={company.logo}
                       alt={`${company.name} logo`}

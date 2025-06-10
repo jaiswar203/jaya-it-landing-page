@@ -49,8 +49,8 @@ const defaultRegulatoryBodies: RegulatoryBody[] = [
     fullName: "Securities and Exchange Board of India",
     description: "Capital markets and securities regulation compliance for investment and trading platforms.",
     logo: "/regulatories/sebi.png",
-    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30",
-    iconBg: "bg-secondary"
+    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30",
+    iconBg: "bg-primary"
   },
   {
     name: "Cert-IN",
@@ -65,16 +65,16 @@ const defaultRegulatoryBodies: RegulatoryBody[] = [
     fullName: "Insurance Regulatory and Development Authority of India",
     description: "Insurance sector regulatory compliance with comprehensive risk management and security protocols.",
     logo: "/regulatories/IRDA.png",
-    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30",
-    iconBg: "bg-secondary"
+    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30",
+    iconBg: "bg-primary"
   },
   {
     name: "NIST Framework",
     fullName: "National Institute of Standards and Technology",
     description: "International cybersecurity framework standards for comprehensive risk management and security controls.",
     logo: "/regulatories/NIST.png",
-    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30",
-    iconBg: "bg-secondary"
+    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30",
+    iconBg: "bg-primary"
   },
   {
     name: "NBFC",
@@ -87,9 +87,9 @@ const defaultRegulatoryBodies: RegulatoryBody[] = [
   
   {
     name: "ADHICS",
-    fullName: "Aadhaar Data Hub Information and Cyber Security",
-    description: "Aadhaar ecosystem security and privacy compliance with strict data protection standards.",
-    icon: <FileCheck className="h-8 w-8" />,
+    fullName: "Abu Dhabi Healthcare Information and Cyber Security Standard",
+    description: "The ADHICS standard is a set of guidelines designed to protect sensitive healthcare data and improve cybersecurity resilience in Abu Dhabi.",
+    logo:"/regulatories/adhics.webp",
     colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30",
     iconBg: "bg-primary"
   },
@@ -98,8 +98,8 @@ const defaultRegulatoryBodies: RegulatoryBody[] = [
     fullName: "National Electronic Security Authority",
     description: "National electronic security standards and cryptographic compliance for secure communications.",
     logo: "/regulatories/NESA.png",
-    colorClass: "from-secondary/10 to-secondary/20 dark:from-secondary-950/20 dark:to-secondary-900/30",
-    iconBg: "bg-secondary"
+    colorClass: "from-primary/10 to-primary/20 dark:from-primary-950/20 dark:to-primary-900/30",
+    iconBg: "bg-primary"
   }
 ]
 
@@ -135,7 +135,7 @@ export default function RegulatoryComplianceSection({
         {/* Section Header */}
         <div className="text-center mb-20">
           <AnimatedDiv>
-            <div className="inline-flex items-center space-x-2 bg-secondary text-white px-6 py-3 rounded-full shadow-lg mb-8">
+            <div className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg mb-8">
               <Shield className="h-5 w-5 text-white" />
               <TypographyBadge className="text-white">{badge}</TypographyBadge>
             </div>
@@ -191,12 +191,12 @@ export default function RegulatoryComplianceSection({
                       {body.description}
                     </div>
                     
-                    {/* Compliance Badge - Now with aligned colors */}
-                    <div className={`flex items-center space-x-3 p-4 rounded-xl bg-gradient-to-r ${body.colorClass} border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300 hover:scale-[1.02] mt-auto`}>
+                    {/* Compliance Badge - Properly aligned colors */}
+                    <div className={`flex items-center space-x-3 p-4 rounded-xl bg-gradient-to-r ${body.colorClass} group-hover:bg-secondary/20 border-2 transition-all duration-300 hover:scale-[1.02] mt-auto ${body.iconBg.includes('primary') ? 'border-primary/30 dark:border-primary/40' : 'border-secondary/30 dark:border-secondary/40'}`}>
                       <div className="flex-shrink-0">
-                        <CheckCircle className={`h-5 w-5 ${themeColors.iconColor}`} />
+                        <CheckCircle className={`h-5 w-5 ${themeColors.iconColor} drop-shadow-sm`} />
                       </div>
-                      <div className={`text-sm font-bold ${themeColors.textColor} dark:${themeColors.textColor} uppercase tracking-wider`}>
+                      <div className={`text-sm font-bold ${themeColors.textColor} uppercase tracking-wider drop-shadow-sm`}>
                         Compliance Aligned
                       </div>
                     </div>

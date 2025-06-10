@@ -9,6 +9,7 @@ import {
   Linkedin,
   Twitter,
   Facebook,
+  Instagram,
   ArrowRight,
   Shield,
   Zap,
@@ -185,12 +186,17 @@ export default function Footer() {
                     },
                     {
                       icon: Twitter,
-                      href: "https://x.com/jayaaitsolution",
+                      href: "https://twitter.com/jayaaitsolution",
                       label: "Twitter",
                     },
                     {
+                      icon: Instagram,
+                      href: "https://www.instagram.com/jayaaitsolution/",
+                      label: "Instagram",
+                    },
+                    {
                       icon: Facebook,
-                      href: "https://www.facebook.com/jayaaitsolution",
+                      href: "https://www.facebook.com/JayaaITSolution/",
                       label: "Facebook",
                     },
                   ].map((social) => (

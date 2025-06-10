@@ -43,27 +43,27 @@ const defaultClients: Client[] = [
   {
     id: 2,
     name: "Bajaj",
-    logo: "/companies/bajaj.webp",
+    logo: "/company/bajaj.png",
   },
   {
     id: 3,
     name: "HDFC Bank",
-    logo: "/companies/hdfc.jpg",
+    logo: "/company/hdfc-sales.png",
   },
   {
     id: 4,
     name: "Kotak Bank",
-    logo: "/companies/kotak.webp",
+    logo: "/company/kotak-life.png",
   },
   {
     id: 5,
     name: "SBI",
-    logo: "/companies/sbi.png",
+    logo: "/company/sbi-general.png",
   },
   {
     id: 6,
     name: "Client 6",
-    logo: "/companies/page9_img3.png",
+    logo: "/company/indusland.png",
   },
   {
     id: 7,
@@ -83,7 +83,7 @@ const defaultClients: Client[] = [
   {
     id: 10,
     name: "Client 10",
-    logo: "/companies/page9_img8.jpeg",
+    logo: "/company/arohi.png",
   },
   {
     id: 11,
@@ -98,12 +98,12 @@ const defaultClients: Client[] = [
   {
     id: 13,
     name: "Client 13",
-    logo: "/companies/page9_img14.png",
+    logo: "/company/icici-lombard.png",
   },
   {
     id: 14,
     name: "Client 14",
-    logo: "/companies/page9_img16.jpeg",
+    logo: "/company/oman-development-bank.png",
   },
   {
     id: 15,
@@ -113,7 +113,7 @@ const defaultClients: Client[] = [
   {
     id: 16,
     name: "Client 16",
-    logo: "/companies/page9_img18.png",
+    logo: "/company/icici-bank.png",
   },
 ];
 
@@ -250,12 +250,12 @@ export default function ClientsSection({
               >
                 {[...clients, ...clients, ...clients].map((client, index) => (
                   <SwiperSlide key={`${client.id}-${index}`}>
-                    <div className="flex items-center justify-center h-24 p-4 bg-white/80 dark:bg-gray-800/80 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
+                    <div className="flex items-center justify-center h-24 p-4 bg-white/80 dark:bg-gray-800/80 rounded-lg  transition-all duration-300 hover:scale-105">
                       <Image
                         src={client.logo}
                         alt={`${client.name} logo`}
-                        width={100}
-                        height={60}
+                        width={150}
+                        height={100}
                         className="object-contain max-w-full max-h-full transition-opacity duration-300 filter "
                         unoptimized
                       />

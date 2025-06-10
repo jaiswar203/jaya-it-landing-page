@@ -37,63 +37,98 @@ interface StrategicPartnersSectionDesktopProps {
 const defaultPartners: Partner[] = [
   {
     id: 1,
-    name: "Microsoft",
-    logo: "/partners/strategic/page10_img26.png",
+    name: "Cisco",
+    logo: "/partners/strategic/cisco.jpg",
   },
   {
     id: 2,
-    name: "Amazon Web Services",
-    logo: "/partners/strategic/page10_img25.png",
+    name: "Fortinet",
+    logo: "/partners/strategic/fortinet.png",
   },
   {
     id: 3,
-    name: "Google Cloud",
-    logo: "/partners/strategic/page10_img24.png",
+    name: "Palo Alto Networks",
+    logo: "/partners/strategic/paloalto.jpg",
   },
   {
     id: 4,
-    name: "Cisco",
-    logo: "/partners/strategic/page10_img23.png",
+    name: "CyberArk",
+    logo: "/partners/strategic/cybrark.png",
   },
   {
     id: 5,
-    name: "VMware",
-    logo: "/partners/strategic/page10_img22.png",
+    name: "RSA Security",
+    logo: "/partners/strategic/rsa.png",
   },
   {
     id: 6,
-    name: "Oracle",
-    logo: "/partners/strategic/page10_img21.png",
+    name: "Forcepoint",
+    logo: "/partners/strategic/forcepoint.png",
   },
   {
     id: 7,
-    name: "IBM",
-    logo: "/partners/strategic/page10_img20.png",
+    name: "ManageEngine",
+    logo: "/partners/strategic/manageengine.png",
   },
   {
     id: 8,
-    name: "Salesforce",
-    logo: "/partners/strategic/page10_img19.png",
+    name: "Commvault",
+    logo: "/partners/strategic/commvault.png",
   },
   {
     id: 9,
-    name: "ServiceNow",
-    logo: "/partners/strategic/page10_img18.jpeg",
+    name: "Citrix",
+    logo: "/partners/strategic/citrix.png",
   },
   {
     id: 10,
-    name: "Atlassian",
-    logo: "/partners/strategic/page10_img16.jpeg",
+    name: "Broadcom",
+    logo: "/partners/strategic/broadcom.png",
   },
   {
     id: 11,
-    name: "Adobe",
-    logo: "/partners/strategic/page10_img14.png",
+    name: "BMC Software",
+    logo: "/partners/strategic/bmc.png",
   },
   {
     id: 12,
-    name: "Slack",
-    logo: "/partners/strategic/page10_img12.png",
+    name: "AppDynamics",
+    logo: "/partners/strategic/app-dynamics.jpg",
+  },
+  {
+    id: 13,
+    name: "Arcon",
+    logo: "/partners/strategic/arcon.png",
+  },
+  {
+    id: 14,
+    name: "Beyond Security",
+    logo: "/partners/strategic/beyond.jpg",
+  },
+  {
+    id: 15,
+    name: "Seclore",
+    logo: "/partners/strategic/seclore.png",
+  },
+  {
+    id: 16,
+    name: "Versa Networks",
+    logo: "/partners/strategic/versa.png",
+  },
+  {
+    id: 17,
+    name: "Accops",
+    logo: "/partners/strategic/accops.jpg",
+  },
+  {
+    id: 18,
+    name: "VyomLabs",
+    logo: "/partners/strategic/vyomlab.png",
+  },
+  {
+    id: 19,
+    name: "Tenable",
+    logo: "/partners/strategic/tenable.png",
   },
 ];
 
@@ -207,7 +242,7 @@ export default function StrategicPartnersSectionDesktop({
                 spaceBetween={30}
                 slidesPerView={2}
                 autoplay={{
-                  delay: 2000,
+                  delay: 50,
                   disableOnInteraction: false,
                   pauseOnMouseEnter: true,
                 }}
@@ -230,7 +265,7 @@ export default function StrategicPartnersSectionDesktop({
                 {[...partners, ...partners].map((partner, index) => (
                   <SwiperSlide key={`${partner.id}-${index}`}>
                     <div className="group h-28 w-full">
-                      <div className="h-full w-full bg-white dark:bg-gray-900 rounded-2xl hover:shadow-xl flex items-center justify-center group-hover:scale-105 transition-all duration-300 p-6">
+                      <div className="h-full w-full bg-white dark:bg-gray-900 rounded-2xl  flex items-center justify-center group-hover:scale-105 transition-all duration-300 p-6">
                         <Image
                           src={partner.logo}
                           alt={`${partner.name} logo`}

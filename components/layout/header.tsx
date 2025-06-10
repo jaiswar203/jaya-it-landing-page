@@ -46,8 +46,8 @@ import {
   Sparkles,
   Home,
   Info,
-  X,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -232,26 +232,26 @@ export default function Header() {
   // Helper function to get navigation link classes
   const getNavLinkClasses = (path: string) => {
     const baseClasses =
-      "relative font-medium transition-all duration-300 hover:scale-105";
+      "relative font-bold text-lg transition-all duration-300 hover:scale-105";
     const isActive = isActivePath(path);
 
     return cn(
       navigationMenuTriggerStyle(),
       baseClasses,
-      isActive ? "text-primary font-semibold" : ""
+      isActive ? "text-primary font-bold text-xl" : ""
     );
   };
 
   // Helper function to get navigation trigger classes
   const getNavTriggerClasses = (basePath: string) => {
     const baseClasses =
-      "relative font-medium transition-all duration-300 hover:scale-105";
+      "relative font-bold text-lg transition-all duration-300 hover:scale-105";
     const isActive = pathname.startsWith(basePath);
 
     return cn(
       baseClasses,
       isActive
-        ? "text-primary font-semibold"
+        ? "text-primary font-bold text-xl"
         : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
     );
   };
@@ -259,13 +259,37 @@ export default function Header() {
   if (!mounted) return <div className="h-24" />;
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-xl shadow-2xl border-b border-primary/20"
-          : "bg-white/90 backdrop-blur-md "
-      }`}
-    >
+    <>
+      {/* Custom WhatsApp Animation Styles */}
+      <style jsx>{`
+        @keyframes slowPulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.7;
+          }
+        }
+        
+        @keyframes slowPing {
+          0% {
+            transform: scale(1);
+            opacity: 0.3;
+          }
+          75%, 100% {
+            transform: scale(1.5);
+            opacity: 0;
+          }
+        }
+      `}</style>
+      
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-xl shadow-2xl border-b border-primary/20"
+            : "bg-white/90 backdrop-blur-md "
+        }`}
+      >
       <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0 group">
@@ -545,7 +569,7 @@ export default function Header() {
                       )}>
                         <Home className="h-4 w-4" />
                       </div>
-                      <span className="text-lg font-semibold">Home</span>
+                      <span className="text-xl font-bold">Home</span>
                       {isActivePath("/") && (
                         <div className="absolute right-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                       )}
@@ -570,7 +594,7 @@ export default function Header() {
                       )}>
                         <Info className="h-4 w-4" />
                       </div>
-                      <span className="text-lg font-semibold">About</span>
+                      <span className="text-xl font-bold">About</span>
                       {isActivePath("/about") && (
                         <div className="absolute right-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                       )}
@@ -595,7 +619,7 @@ export default function Header() {
                       )}>
                         <Target className="h-4 w-4" />
                       </div>
-                      <span className="text-lg font-semibold">Solutions</span>
+                      <span className="text-xl font-bold">Solutions</span>
                       {isActivePath("/solutions") && (
                         <div className="absolute right-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                       )}
@@ -611,7 +635,7 @@ export default function Header() {
                       className="flex items-center justify-center space-x-3 w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
                     >
                       <Sparkles className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
-                      <span className="text-lg">Consult with us</span>
+                      <span className="text-xl font-bold">Consult with us</span>
                       <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </Link>
                   </SheetClose>
@@ -723,5 +747,38 @@ export default function Header() {
         </div>
       </div>
     </header>
+
+      {/* Floating WhatsApp Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <a
+          href="https://wa.me/918268949507"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center justify-center w-14 h-14 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110 hover:animate-none"
+          style={{
+            animation: 'slowPulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+          }}
+          title="Chat with us on WhatsApp"
+        >
+          <FaWhatsapp className="h-7 w-7 group-hover:scale-110 transition-transform duration-300" />
+          
+          {/* Ripple Effect */}
+          <div 
+            className="absolute inset-0 rounded-full bg-green-400 opacity-30"
+            style={{
+              animation: 'slowPing 3s cubic-bezier(0, 0, 0.2, 1) infinite'
+            }}
+          ></div>
+          
+          {/* Tooltip */}
+          <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div className="bg-gray-900 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap shadow-lg">
+              Chat on WhatsApp
+              <div className="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </>
   );
 }

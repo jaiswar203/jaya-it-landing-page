@@ -48,43 +48,43 @@ export const metadata: Metadata = {
   },
 };
 
-const teamMembers = [
-  {
-    name: "Mr. Ramesh Kumar",
-    role: "Ex. ICICI Bank IT Leader",
-    description:
-      "A technology leader with 35+ years of experience, including 20+ years in BFSI. Expert in technology adoption and enablement.",
-    image: "/placeholder.svg?width=200&height=200&text=RK",
-    linkedin: "#",
-    experience: "35+ Years",
-    specialization: "BFSI Technology",
-    gradient: "from-blue-500 to-cyan-500"
-  },
-  {
-    name: "Mr. Anwar Sadat",
-    role: "Business Development – IT",
-    company: "Oman Computer Services (OCS Infotech)",
-    description:
-      "18+ years in international markets. Strong knowledge of technology solutions and business processes. A technology enabler for customers.",
-    image: "/placeholder.svg?width=200&height=200&text=AS",
-    linkedin: "#",
-    experience: "18+ Years",
-    specialization: "International Markets",
-    gradient: "from-purple-500 to-violet-500"
-  },
-  {
-    name: "Mr. Shinaj Karuwath",
-    role: "Founder – Director",
-    company: "Principle Business Consultants",
-    description: "20+ years in compliance and audits. A mentor with excellent knowledge of compliance and ISO audits.",
-    image: "/placeholder.svg?width=200&height=200&text=SK",
-    linkedin: "#",
-    experience: "20+ Years",
-    specialization: "Compliance & Audits",
-    gradient: "from-green-500 to-emerald-500"
-  },
-  // Add more team members if available
-]
+// const teamMembers = [
+//   {
+//     name: "Mr. Ramesh Kumar",
+//     role: "Ex. ICICI Bank IT Leader",
+//     description:
+//       "A technology leader with 35+ years of experience, including 20+ years in BFSI. Expert in technology adoption and enablement.",
+//     image: "/placeholder.svg?width=200&height=200&text=RK",
+//     linkedin: "#",
+//     experience: "35+ Years",
+//     specialization: "BFSI Technology",
+//     gradient: "from-blue-500 to-cyan-500"
+//   },
+//   {
+//     name: "Mr. Anwar Sadat",
+//     role: "Business Development – IT",
+//     company: "Oman Computer Services (OCS Infotech)",
+//     description:
+//       "18+ years in international markets. Strong knowledge of technology solutions and business processes. A technology enabler for customers.",
+//     image: "/placeholder.svg?width=200&height=200&text=AS",
+//     linkedin: "#",
+//     experience: "18+ Years",
+//     specialization: "International Markets",
+//     gradient: "from-purple-500 to-violet-500"
+//   },
+//   {
+//     name: "Mr. Shinaj Karuwath",
+//     role: "Founder – Director",
+//     company: "Principle Business Consultants",
+//     description: "20+ years in compliance and audits. A mentor with excellent knowledge of compliance and ISO audits.",
+//     image: "/placeholder.svg?width=200&height=200&text=SK",
+//     linkedin: "#",
+//     experience: "20+ Years",
+//     specialization: "Compliance & Audits",
+//     gradient: "from-green-500 to-emerald-500"
+//   },
+//   // Add more team members if available
+// ]
 
 export default function TeamPage() {
   return (
@@ -146,83 +146,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Members Section */}
-      <section className="py-20 sm:py-28 bg-gradient-to-br from-primary/5 via-background to-secondary/5 relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 md:px-6 relative">
-          <AnimatedDiv className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <AnimatedDiv key={member.name} delay={index * 0.2}>
-                <Card className="group h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm hover:-translate-y-3 relative overflow-hidden">
-                  {/* Gradient Background on Hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${member.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                  
-                  <CardHeader className="relative z-10 text-center pt-8">
-                    <div className="relative mx-auto mb-6">
-                      <div className={`absolute inset-0 bg-gradient-to-r ${member.gradient} rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500`}></div>
-                      <Image
-                        src={member.image || "/placeholder.svg"}
-                        alt={member.name}
-                        width={150}
-                        height={150}
-                        className="relative rounded-full border-4 border-white dark:border-gray-800 shadow-xl group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    
-                    <CardTitle className="text-2xl font-bold text-primary group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text transition-all duration-300 mb-2">
-                      {member.name}
-                    </CardTitle>
-                    
-                    <CardDescription className="text-lg font-semibold mb-1">
-                      {member.role}
-                    </CardDescription>
-                    
-                    {member.company && (
-                      <p className="text-sm text-muted-foreground mb-4">{member.company}</p>
-                    )}
-
-                    {/* Experience & Specialization Tags */}
-                    <div className="flex flex-wrap justify-center gap-2 mb-4">
-                      <div className={`px-3 py-1 bg-gradient-to-r ${member.gradient} text-white text-xs font-semibold rounded-full shadow-md`}>
-                        {member.experience}
-                      </div>
-                      <div className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold rounded-full">
-                        {member.specialization}
-                      </div>
-                    </div>
-                  </CardHeader>
-                  
-                  <CardContent className="relative z-10 text-center px-6 pb-8">
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      {member.description}
-                    </p>
-                    
-                    <div className="flex justify-center space-x-4">
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`LinkedIn profile of ${member.name}`}
-                        className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${member.gradient} text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300`}
-                      >
-                        <Linkedin className="h-5 w-5" />
-                      </a>
-                      <button
-                        className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
-                        aria-label={`Contact ${member.name}`}
-                      >
-                        <Mail className="h-5 w-5" />
-                      </button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </AnimatedDiv>
-            ))}
-          </AnimatedDiv>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="py-20 sm:py-28 bg-gradient-to-br from-slate-50 to-gray-100 dark:from-slate-900 dark:to-gray-900 relative overflow-hidden">
