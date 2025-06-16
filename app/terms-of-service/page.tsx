@@ -213,8 +213,8 @@ export default function TermsOfServicePage() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-center space-x-2 text-muted-foreground">
                     <Mail className="h-5 w-5 text-primary" />
-                    <a href="mailto:infoj@jayaaitsolution.com" className="text-primary hover:text-secondary transition-colors font-semibold">
-                      infoj@jayaaitsolution.com
+                    <a href="mailto:info@jayaaitsolution.com" className="text-primary hover:text-secondary transition-colors font-semibold">
+                      info@jayaaitsolution.com
                     </a>
                   </div>
                   
