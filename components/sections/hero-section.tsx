@@ -44,6 +44,12 @@ const trustedCompanies = [
     width: 250,
     height: 150,
   },
+  {
+    name: "Greater Bank",
+    logo: "/company/greater-bank.png",
+    width: 250,
+    height: 150,
+  },
 ];
 
 // Crawling bugs/threats
@@ -844,7 +850,7 @@ export default function HeroSection() {
             <p className="text-gray-500 text-sm uppercase tracking-wider font-medium mb-8">
               Trusted by Leading Organizations
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-8 items-center">
               {trustedCompanies.map((company, index) => (
                 <motion.div
                   key={company.name}

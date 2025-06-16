@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
     {
       title: "Introduction",
       icon: <FileText className="h-6 w-6" />,
-      content: "Welcome to JAYAA IT Solution Pvt. Ltd. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please contact us at sanjayj@jayaaitsolution.com.",
+      content: "Welcome to JAYAA IT Solution Pvt. Ltd. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please contact us at infoj@jayaaitsolution.com.",
       gradient: "from-blue-500 to-cyan-500"
     },
     {
@@ -235,8 +235,8 @@ export default function PrivacyPolicyPage() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-center space-x-2 text-muted-foreground">
                     <Mail className="h-5 w-5 text-primary" />
-                    <a href="mailto:sanjayj@jayaaitsolution.com" className="text-primary hover:text-secondary transition-colors font-semibold">
-                      sanjayj@jayaaitsolution.com
+                    <a href="mailto:infoj@jayaaitsolution.com" className="text-primary hover:text-secondary transition-colors font-semibold">
+                      infoj@jayaaitsolution.com
                     </a>
                   </div>
                   

@@ -109,7 +109,7 @@ export default function Footer() {
               <Link href="/" className="inline-block group">
                 <div className="relative">
                   <Image
-                    src="/logo-jayaa.jpg"
+                    src="/logo-jayaa.png"
                     alt="Jayaa IT Solution Logo"
                     width={200}
                     height={50}
