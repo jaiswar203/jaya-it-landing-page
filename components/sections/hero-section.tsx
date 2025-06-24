@@ -14,12 +14,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const trustedCompanies = [
-  {
-    name: "HDFC Bank",
-    logo: "/company/hdfc-sales.png",
-    width: 250,
-    height: 120,
-  },
+
   {
     name: "ICICI Lombard",
     logo: "/company/icici-lombard.png",

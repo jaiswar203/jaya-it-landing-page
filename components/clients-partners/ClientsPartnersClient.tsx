@@ -42,11 +42,6 @@ const clients = [
     logo: "/company/bajaj.png",
   },
   {
-    id: 3,
-    name: "HDFC Bank",
-    logo: "/company/hdfc-sales.png",
-  },
-  {
     id: 4,
     name: "Kotak Bank",
     logo: "/company/kotak-life.png",
