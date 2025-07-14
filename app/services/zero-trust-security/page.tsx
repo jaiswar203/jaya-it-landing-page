@@ -1,15 +1,5 @@
 import { ServicePageLayout } from "@/components/services"
 import { ShieldCheck } from "lucide-react"
-import {
-  ZeroTrustHeroSection,
-  ZeroTrustSolutionsSection,
-  SecurityFrameworkSection,
-  ZeroTrustBenefitsSection,
-  SecurityComplianceSection,
-  ZeroTrustImplementationSection,
-  SecurityCaseStudiesSection,
-  SecurityCTASection,
-} from "@/components/services/zero-trust-security";
 import type { Metadata } from "next";
 
 const zeroTrustServices = [

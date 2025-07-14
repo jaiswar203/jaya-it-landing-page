@@ -1,5 +1,5 @@
 import { ServicePageLayout } from "@/components/services"
-import { Monitor, Settings } from "lucide-react"
+import { Monitor } from "lucide-react"
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

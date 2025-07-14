@@ -12,7 +12,6 @@ import {
 import {
   Shield,
   CheckCircle,
-  FileCheck
 } from "lucide-react"
 import Image from "next/image"
 

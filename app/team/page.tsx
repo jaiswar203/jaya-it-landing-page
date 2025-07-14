@@ -1,8 +1,7 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 import Link from "next/link"
-import { Linkedin, Users, Award, ArrowRight, Mail, Star } from "lucide-react"
+import { Users, Award, ArrowRight, Star } from "lucide-react"
 import AnimatedDiv from "@/components/ui/animated-div"
 import type { Metadata } from "next";
 
