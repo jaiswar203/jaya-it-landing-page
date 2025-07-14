@@ -232,26 +232,26 @@ export default function Header() {
   // Helper function to get navigation link classes
   const getNavLinkClasses = (path: string) => {
     const baseClasses =
-      "relative font-bold text-lg transition-all duration-300 hover:scale-105";
+      "relative font-medium text-base transition-all duration-300 hover:scale-105";
     const isActive = isActivePath(path);
 
     return cn(
       navigationMenuTriggerStyle(),
       baseClasses,
-      isActive ? "text-primary font-bold text-xl" : ""
+      isActive ? "text-primary font-medium text-base" : ""
     );
   };
 
   // Helper function to get navigation trigger classes
   const getNavTriggerClasses = (basePath: string) => {
     const baseClasses =
-      "relative font-bold text-lg transition-all duration-300 hover:scale-105";
+      "relative font-medium text-base transition-all duration-300 hover:scale-105";
     const isActive = pathname.startsWith(basePath);
 
     return cn(
       baseClasses,
       isActive
-        ? "text-primary font-bold text-xl"
+        ? "text-primary font-bold text-base"
         : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
     );
   };
@@ -430,6 +430,18 @@ export default function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
 
+            {/* Blog */}
+            <NavigationMenuItem>
+              <Link href="/blogs" legacyBehavior passHref>
+                <NavigationMenuLink className={getNavLinkClasses("/blogs")}>
+                  Blog
+                  {isActivePath("/blogs") && (
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                  )}
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+
             {/* Solutions */}
             <NavigationMenuItem>
               <Link href="/solutions" legacyBehavior passHref>
@@ -471,7 +483,7 @@ export default function Header() {
                       >
                         <div
                           className={cn(
-                            "p-2.5 rounded-lg transition-all duration-300",
+                            "p-2 rounded-lg transition-all duration-300",
                             isActivePath(item.href)
                               ? "bg-primary text-white shadow-sm"
                               : "bg-gray-100 text-primary group-hover:bg-primary group-hover:text-white"
@@ -603,6 +615,31 @@ export default function Header() {
 
                   <SheetClose asChild>
                     <Link
+                      href="/blogs"
+                      className={cn(
+                        "flex items-center space-x-4 px-4 py-4 rounded-2xl transition-all duration-300 font-medium group relative overflow-hidden",
+                        isActivePath("/blogs")
+                          ? "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary border border-primary/20 shadow-sm"
+                          : "hover:bg-gray-50 hover:translate-x-1"
+                      )}
+                    >
+                      <div className={cn(
+                        "p-2 rounded-xl transition-all duration-300",
+                        isActivePath("/blogs")
+                          ? "bg-primary text-white shadow-md"
+                          : "bg-gray-100 text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110"
+                      )}>
+                        <FileText className="h-4 w-4" />
+                      </div>
+                      <span className="text-xl font-bold">Blog</span>
+                      {isActivePath("/blogs") && (
+                        <div className="absolute right-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      )}
+                    </Link>
+                  </SheetClose>
+
+                  <SheetClose asChild>
+                    <Link
                       href="/solutions"
                       className={cn(
                         "flex items-center space-x-4 px-4 py-4 rounded-2xl transition-all duration-300 font-medium group relative overflow-hidden",
@@ -627,119 +664,95 @@ export default function Header() {
                   </SheetClose>
                 </div>
 
-                {/* CTA Button */}
-                <div className="px-2">
-                  <SheetClose asChild>
-                    <Link
-                      href="/contact"
-                      className="flex items-center justify-center space-x-3 w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
-                    >
-                      <Sparkles className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
-                      <span className="text-xl font-bold">Consult with us</span>
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </Link>
-                  </SheetClose>
+                {/* Services Accordion */}
+                <div className="px-4 py-2">
+                  <div className="border-b-2 border-gray-100" />
                 </div>
 
-                {/* Services Section */}
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2 px-4">
-                    <div className="p-2 bg-gradient-to-r from-primary to-secondary rounded-lg">
-                      <Sparkles className="h-4 w-4 text-white" />
-                    </div>
-                    <h3 className="text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between px-4">
+                    <h3 className="text-lg font-semibold text-gray-800">
                       Our Services
                     </h3>
-                    <div className="flex-1 h-px bg-gradient-to-r from-primary/20 to-secondary/20"></div>
+                    <div className="h-px flex-1 bg-gray-200 ml-4"></div>
                   </div>
-                  <div className="space-y-2 px-2">
-                    {serviceCategories.map((service, index) => (
-                      <SheetClose key={service.name} asChild>
+                  {serviceCategories.map((service) => (
+                    <div key={service.name} className="px-2">
+                      <SheetClose asChild>
                         <Link
                           href={service.href}
-                          className={cn(
-                            "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium group hover:bg-gray-50 hover:translate-x-1",
-                            isActivePath(service.href)
-                              ? "bg-gradient-to-r from-primary/5 to-secondary/5 border border-primary/20"
-                              : ""
-                          )}
-                          style={{ animationDelay: `${index * 100}ms` }}
+                          className="flex items-center justify-between w-full px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100"
                         >
-                          <div
-                            className={`p-2 rounded-lg bg-gradient-to-r ${service.gradient} text-white shadow-md group-hover:scale-110 transition-transform duration-300`}
-                          >
-                            {React.cloneElement(service.icon, {
-                              className: "h-4 w-4",
-                            })}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <span className="font-semibold text-gray-900 group-hover:text-primary transition-colors duration-300">
+                          <div className="flex items-center space-x-3">
+                            <div
+                              className={`p-2 rounded-md bg-gradient-to-r ${service.gradient}`}
+                            >
+                              {React.cloneElement(service.icon, {
+                                className: "h-5 w-5 text-white",
+                              })}
+                            </div>
+                            <span className="font-semibold text-gray-700">
                               {service.name}
                             </span>
                           </div>
-                          {isActivePath(service.href) && (
-                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                          )}
+                          <ArrowRight className="h-4 w-4 text-gray-500" />
                         </Link>
                       </SheetClose>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Company Section */}
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-2 px-4">
-                    <div className="p-2 bg-gradient-to-r from-purple-500 to-violet-500 rounded-lg">
-                      <Award className="h-4 w-4 text-white" />
-                    </div>
-                    <h3 className="text-lg font-bold bg-gradient-to-r from-purple-500 to-violet-500 bg-clip-text text-transparent">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between px-4">
+                    <h3 className="text-lg font-semibold text-gray-800">
                       Company
                     </h3>
-                    <div className="flex-1 h-px bg-gradient-to-r from-purple-500/20 to-violet-500/20"></div>
+                    <div className="h-px flex-1 bg-gray-200 ml-4"></div>
                   </div>
-                  <div className="space-y-2 px-2">
-                    {company.map((item, index) => (
-                      <SheetClose key={item.name} asChild>
+                  {company.map((item) => (
+                    <div key={item.name} className="px-2">
+                      <SheetClose asChild>
                         <Link
                           href={item.href}
-                          className={cn(
-                            "flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium group hover:bg-gray-50 hover:translate-x-1",
-                            isActivePath(item.href)
-                              ? "bg-gradient-to-r from-purple-500/5 to-violet-500/5 border border-purple-500/20"
-                              : ""
-                          )}
-                          style={{ animationDelay: `${index * 50}ms` }}
+                          className="flex items-center justify-between w-full px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100"
                         >
-                          <div
-                            className={cn(
-                              "p-2 rounded-lg transition-all duration-300 group-hover:scale-110",
-                              isActivePath(item.href)
-                                ? "bg-purple-500 text-white shadow-md"
-                                : "bg-gray-100 text-purple-500 group-hover:bg-purple-500 group-hover:text-white"
-                            )}
-                          >
-                            {React.cloneElement(item.icon, {
-                              className: "h-4 w-4",
-                            })}
-                          </div>
-                          <div className="flex-1">
-                            <span className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
+                          <div className="flex items-center space-x-3">
+                            <div className="p-2 rounded-md bg-gray-200">
+                              {React.cloneElement(item.icon, {
+                                className: "h-5 w-5 text-gray-600",
+                              })}
+                            </div>
+                            <span className="font-semibold text-gray-700">
                               {item.name}
                             </span>
                           </div>
-                          {isActivePath(item.href) && (
-                            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                          )}
+                          <ArrowRight className="h-4 w-4 text-gray-500" />
                         </Link>
                       </SheetClose>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Footer */}
-                <div className="pt-6 border-t border-gray-100 text-center">
-                  <p className="text-sm text-gray-500 mb-2">© 2024 Jayaa IT Solution</p>
-                  <p className="text-xs text-gray-400">Securing Your Digital Future</p>
+                {/* Bottom CTA */}
+                <div className="pt-6 px-3">
+                  <SheetClose asChild>
+                    <Link
+                      href="/contact"
+                      className="flex items-center justify-center w-full px-4 py-4 text-lg font-bold text-white bg-gradient-to-r from-primary to-secondary rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all"
+                    >
+                      <Phone className="h-5 w-5 mr-3" />
+                      Get a Free Consultation
+                    </Link>
+                  </SheetClose>
+                  <a
+                    href="https://wa.me/918010565561"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-full mt-3 px-4 py-3 text-lg font-bold text-green-600 bg-white border-2 border-green-500 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all"
+                  >
+                    <FaWhatsapp className="h-6 w-6 mr-3" />
+                    Chat on WhatsApp
+                  </a>
                 </div>
               </div>
             </SheetContent>
