@@ -28,12 +28,16 @@ async function seed() {
     const fileContents = await fs.readFile(jsonPath, 'utf8');
     const blogsData = JSON.parse(fileContents);
 
-    console.log('Deleting existing blogs...');
-    await blogsCollection.deleteMany({});
-
-    console.log('Inserting new blogs...');
-    const result = await blogsCollection.insertMany(blogsData);
-    console.log(`${result.insertedCount} blogs have been seeded successfully.`);
+    console.log('Checking for new blogs to insert...');
+    let insertedCount = 0;
+    for (const blog of blogsData) {
+      const exists = await blogsCollection.findOne({ id: blog.id });
+      if (!exists) {
+        await blogsCollection.insertOne(blog);
+        insertedCount++;
+      }
+    }
+    console.log(`${insertedCount} new blogs have been seeded successfully.`);
 
   } catch (error) {
     console.error('Error seeding the database:', error);

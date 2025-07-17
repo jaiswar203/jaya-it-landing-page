@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 interface BlogCardProps {
   blog: Blog;
@@ -15,7 +16,9 @@ export const BlogCardSkeleton: React.FC = () => {
   return (
     <Card className="flex flex-col h-full overflow-hidden rounded-lg shadow-lg">
       <CardHeader className="p-0">
-        <Skeleton className="w-full h-48 rounded-t-lg" />
+        <AspectRatio ratio={16/9} className="w-full rounded-t-lg overflow-hidden">
+          <Skeleton className="w-full h-full" />
+        </AspectRatio>
       </CardHeader>
       <CardContent className="flex-grow p-6">
         <Skeleton className="h-5 w-20 mb-2" />
@@ -55,14 +58,14 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
     <Card className="flex flex-col h-full overflow-hidden rounded-lg shadow-lg transition-transform transform hover:-translate-y-1">
       <CardHeader className="p-0">
-        <div className="relative w-full h-48">
+        <AspectRatio ratio={16/9} className="w-full rounded-t-lg overflow-hidden">
           <Image
             src={blog.image}
             alt={blog.title}
             layout="fill"
             objectFit="cover"
           />
-        </div>
+        </AspectRatio>
       </CardHeader>
       <CardContent className="flex-grow p-6 flex flex-col">
         <Badge variant="outline" className="mb-2 w-fit">{blog.category}</Badge>
