@@ -3,11 +3,10 @@ import ReactMarkdown, { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import Image from "next/image";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { cache } from "react";
 import { connectToDatabase } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
-import { Skeleton } from "@/components/ui/skeleton";
 
 interface Blog {
   _id: string;
@@ -37,8 +36,7 @@ const getBlog = cache(async (id: string) => {
 });
 
 export async function generateMetadata(
-  { params }: { params: { id: string } },
-  parent: ResolvingMetadata
+  { params }: { params: { id: string } }
 ): Promise<Metadata> {
   const blog = await getBlog(params.id);
 
