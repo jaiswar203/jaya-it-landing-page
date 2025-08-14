@@ -1,8 +1,11 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import dotenv from 'dotenv';
 
-const ADMIN_USERNAME = 'info@jayaitsolution.com';
-const ADMIN_PASSWORD = 'info@jayaitsolution.com';
+dotenv.config();
+
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 export interface AdminUser {
   username: string;
@@ -21,6 +24,9 @@ export async function getAdminSession(): Promise<AdminUser | null> {
     return null;
   }
   
+  if (!ADMIN_USERNAME) {
+    throw new Error('ADMIN_USERNAME is not set in environment variables');
+  }
   return {
     username: ADMIN_USERNAME,
     isAuthenticated: true
@@ -29,7 +35,6 @@ export async function getAdminSession(): Promise<AdminUser | null> {
 
 export async function requireAuth(): Promise<AdminUser> {
   const session = await getAdminSession();
-  
   if (!session) {
     redirect('/admin/login');
   }
