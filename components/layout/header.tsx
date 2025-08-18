@@ -745,7 +745,7 @@ export default function Header() {
                     </Link>
                   </SheetClose>
                   <a
-                    href="https://wa.me/918010565561"
+                    href="https://wa.me/918010565561?text=Hello%20JAYAA%20IT%20Solution!%20I'm%20interested%20in%20learning%20more%20about%20your%20IT%20services.%20Could%20you%20please%20help%20me?"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-full mt-3 px-4 py-3 text-lg font-bold text-green-600 bg-white border-2 border-green-500 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all"
@@ -762,18 +762,18 @@ export default function Header() {
     </header>
 
       {/* Floating WhatsApp Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-24 right-8 z-50">
         <a
-          href="https://wa.me/918268949507"
+          href="https://wa.me/918268949507?text=Hello%20JAYAA%20IT%20Solution!%20I'm%20interested%20in%20learning%20more%20about%20your%20IT%20services.%20Could%20you%20please%20help%20me?"
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center justify-center w-14 h-14 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110 hover:animate-none"
+          className="group inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110 hover:animate-none"
           style={{
             animation: 'slowPulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
           }}
           title="Chat with us on WhatsApp"
         >
-          <FaWhatsapp className="h-7 w-7 group-hover:scale-110 transition-transform duration-300" />
+          <FaWhatsapp className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
           
           {/* Ripple Effect */}
           <div 
