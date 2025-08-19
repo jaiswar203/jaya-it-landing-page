@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import Image from 'next/image';
 import { Blog } from '@/lib/blog';
@@ -6,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { useAnalytics } from '@/hooks/use-analytics';
 
 interface BlogCardProps {
   blog: Blog;
@@ -40,7 +43,7 @@ export const BlogCardSkeleton: React.FC = () => {
           <Skeleton className="h-10 w-10 rounded-full" />
           <div className="ml-3 space-y-1">
             <Skeleton className="h-4 w-24" />
-            <Skeleton className="h-3 w-20" />
+            <Skeleton className="h-4 w-20" />
           </div>
         </div>
       </CardFooter>
@@ -49,14 +52,42 @@ export const BlogCardSkeleton: React.FC = () => {
 };
 
 export const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
+  const { trackCustomEvent } = useAnalytics()
+
   // Function to trim text to a specific length
   const trimText = (text: string, maxLength: number = 120) => {
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength).trim() + '...';
   };
 
+  const handleBlogCardClick = () => {
+    trackCustomEvent('blog_interaction', {
+      blog_title: blog.title,
+      blog_category: blog.category,
+      blog_author: blog.author,
+      interaction_type: 'blog_card_click',
+      blog_read_time: blog.readTime,
+      blog_date: blog.date
+    })
+  }
+
+  const handleBlogCardHover = () => {
+    trackCustomEvent('blog_interaction', {
+      blog_title: blog.title,
+      blog_category: blog.category,
+      blog_author: blog.author,
+      interaction_type: 'blog_card_hover',
+      blog_read_time: blog.readTime,
+      blog_date: blog.date
+    })
+  }
+
   return (
-    <Card className="flex flex-col h-full overflow-hidden rounded-lg shadow-lg transition-transform transform hover:-translate-y-1">
+    <Card 
+      className="flex flex-col h-full overflow-hidden rounded-lg shadow-lg transition-transform transform hover:-translate-y-1 cursor-pointer"
+      onClick={handleBlogCardClick}
+      onMouseEnter={handleBlogCardHover}
+    >
       <CardHeader className="p-0">
         <AspectRatio ratio={16/9} className="w-full rounded-t-lg overflow-hidden">
           <Image

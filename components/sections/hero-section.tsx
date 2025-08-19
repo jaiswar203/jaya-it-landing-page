@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 const trustedCompanies = [
 
@@ -531,6 +532,28 @@ const CornerIndicators = () => (
 );
 
 export default function HeroSection() {
+  const { trackEvent, trackCustomEvent } = useAnalytics()
+
+  const handleExploreSolutionsClick = () => {
+    trackEvent('button_click', 'engagement', 'hero_explore_solutions', 1)
+    trackCustomEvent('hero_cta_click', {
+      button_text: 'Explore Solutions',
+      button_position: 'hero_section',
+      button_type: 'primary_cta',
+      destination: '/services'
+    })
+  }
+
+  const handleGetAssessmentClick = () => {
+    trackEvent('button_click', 'engagement', 'hero_get_assessment', 1)
+    trackCustomEvent('hero_cta_click', {
+      button_text: 'Get Free Assessment',
+      button_position: 'hero_section',
+      button_type: 'secondary_cta',
+      destination: '/contact'
+    })
+  }
+
   return (
     <section className="relative bg-white overflow-hidden">
       {/* Subtle Background Effects */}
@@ -626,6 +649,7 @@ export default function HeroSection() {
                 asChild
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 transition-all duration-300 hover:scale-105"
+                onClick={handleExploreSolutionsClick}
               >
                 <Link
                   href="/services"
@@ -642,6 +666,7 @@ export default function HeroSection() {
                 size="lg"
                 variant="outline"
                 className="border-2 border-primary text-primary hover:bg-primary/80 font-semibold px-8 py-3 transition-all duration-300 hover:scale-105"
+                onClick={handleGetAssessmentClick}
               >
                 <Link
                   href="/contact"

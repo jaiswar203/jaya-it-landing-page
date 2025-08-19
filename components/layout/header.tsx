@@ -210,6 +210,7 @@ const company = [
 export default function Header() {
   const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
   const pathname = usePathname();
 
   useEffect(() => setMounted(true), []);
@@ -255,6 +256,8 @@ export default function Header() {
         : "hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
     );
   };
+
+
 
   if (!mounted) return <div className="h-24" />;
 

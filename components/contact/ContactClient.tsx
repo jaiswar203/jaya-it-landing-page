@@ -23,14 +23,37 @@ import {
 } from "lucide-react"
 import AnimatedDiv from "@/components/ui/animated-div"
 import Link from "next/link"
+import { useAnalytics } from "@/hooks/use-analytics"
 
 export default function ContactClient() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const { trackEvent, trackCustomEvent } = useAnalytics()
 
-  // Enhanced form submission handler
+  // Enhanced form submission handler with analytics
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setIsSubmitting(true)
+    
+    // Get form data for analytics
+    const formData = new FormData(event.currentTarget)
+    const name = formData.get('name') as string
+    const email = formData.get('email') as string
+    const company = formData.get('company') as string
+    const service = formData.get('service') as string
+    
+    // Track form submission with analytics
+    trackEvent('form_submit', 'contact', 'contact_form', 1)
+    
+    // Track detailed form submission data
+    trackCustomEvent('contact_form_submission', {
+      form_type: 'contact',
+      user_name: name,
+      user_email: email,
+      company_name: company,
+      service_interest: service,
+      submission_method: 'web_form',
+      page_section: 'contact_page'
+    })
     
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 2000))

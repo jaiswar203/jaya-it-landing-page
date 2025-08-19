@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Script from "next/script"
+import { GoogleAnalytics } from '@next/third-parties/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import ConditionalLayout from "@/components/layout/conditional-layout"
@@ -117,6 +118,9 @@ export default function RootLayout({
           </ConditionalLayout>
           <CursorFollower />
         </ThemeProvider>
+        
+        {/* Google Analytics 4 */}
+        <GoogleAnalytics gaId="G-432LMKNTQ7" />
         
         {/* Tawk.to Live Chat Script */}
         <Script
